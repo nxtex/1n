@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import { gsap } from 'gsap';
 import './styles.css';
@@ -623,8 +623,29 @@ function AboutPage() {
 }
 
 function App() {
-  const path = window.location.pathname.replace(/\/+$/, "") || "/";
-  return path === "/" || path === "/index.html" ? <NetworkCanvas /> : path === "/a-propos" ? <AboutPage /> : <SubPage path={path} />;
+  const path = window.location.pathname.replace(/\\/+$/, "") || "/";
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const finishLoading = (event) => {
+      if (event.origin !== window.location.origin || event.data?.type !== "one-network-loader-finished") return;
+      setLoading(false);
+    };
+    const fallback = window.setTimeout(() => setLoading(false), 8000);
+    window.addEventListener("message", finishLoading);
+    return () => {
+      window.clearTimeout(fallback);
+      window.removeEventListener("message", finishLoading);
+    };
+  }, []);
+
+  const page = path === "/" || path === "/index.html" ? <NetworkCanvas /> : path === "/a-propos" ? <AboutPage /> : <SubPage path={path} />;
+  return <>
+    {page}
+    {loading && <div className="site-loader" aria-label="Chargement de One Network">
+      <iframe src="/loading.html" title="Chargement de One Network" />
+    </div>}
+  </>;
 }
 
 createRoot(document.getElementById('root')).render(<React.StrictMode><App /></React.StrictMode>);
