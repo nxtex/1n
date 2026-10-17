@@ -356,7 +356,7 @@ function NetworkCanvas() {
 
       <a className="glass card synotec-card" href="#partenaires-detail" aria-label="Découvrir Synotec, partenaire de distribution">
         <div className="thumb" aria-hidden="true" />
-        <div className="plus"><Icon name="arrow-up-right" /></div>
+        <div className="plus synotec-mark" aria-hidden="true"><span>SN</span></div>
         <span className="synotec-kicker">L'ÉCOSYSTÈME ONE NETWORK</span>
         <h2>L’intégration d’un côté.<br />La distribution de l’autre.</h2>
         <p className="sub">Découvrir Synotec <span aria-hidden="true">↗</span></p>
