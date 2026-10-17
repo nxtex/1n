@@ -392,8 +392,8 @@ function NetworkCanvas() {
       </footer>
     </div>
   </div>
-  <ExpertisePage embedded includeContact={false} />
   <AboutPage embedded />
+  <ExpertisePage embedded includeContact={false} />
   <SectorsPage />
   <ContactPage />
 </>;
