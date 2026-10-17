@@ -746,3 +746,9 @@ h1 .ln>span{background-image:none!important;-webkit-text-fill-color:#07142e;colo
 /* Synotec: make the plus symbol itself black */
 .synotec-card .plus{color:#000!important}
 .synotec-card .plus svg{color:#000!important;stroke:#000!important}
+
+
+/* Synotec plus: transparent center, navy plus and matching outline */
+.synotec-card .plus{background:transparent!important;color:#07142e!important;border-color:#07142e!important}
+.synotec-card .plus svg{color:#07142e!important;stroke:#07142e!important}
+.synotec-card:hover .plus,.synotec-card:focus-visible .plus{background:transparent!important;color:#07142e!important;border-color:#07142e!important}
