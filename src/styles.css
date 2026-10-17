@@ -80,7 +80,7 @@ h1 .ln:nth-child(2)>span{background-image:linear-gradient(100deg,#e3e6f4 0%,#aab
 .hr.r{left:calc(1160 * var(--u));top:calc(952 * var(--u));width:calc(140 * var(--u));background:rgba(255,255,255,.55)}
 .trust{position:absolute;left:calc(278 * var(--u));top:calc(934 * var(--u));height:calc(38 * var(--u));display:flex;align-items:center;white-space:nowrap}
 .avatars{display:flex}
-.avatars svg{width:calc(36 * var(--u));height:calc(36 * var(--u));border-radius:50%;display:block;border:1.5px solid rgba(255,255,255,.55);margin-left:calc(-9 * var(--u));background:#444;box-shadow:0 4px 12px rgba(0,0,0,.4)}
+.avatars svg{width:calc(36 * var(--u));height:calc(36 * var(--u));border-radius:50%;display:block;border:0;margin-left:calc(-9 * var(--u));background:transparent;box-shadow:none;overflow:visible}
 .avatars svg:first-child{margin-left:0}
 .trust .txt{margin-left:calc(23 * var(--u));font-size:calc(12 * var(--u));color:rgba(255,255,255,.72)}
 .trust .chev{margin-left:calc(20 * var(--u));font-size:calc(13 * var(--u));color:rgba(255,255,255,.8)}
@@ -111,7 +111,7 @@ h1 .ln:nth-child(2)>span{background-image:linear-gradient(100deg,#e3e6f4 0%,#aab
  .all{position:static;width:auto;display:flex;align-items:center;gap:14px;grid-column:1/-1;text-align:left}
  .all .plus2{margin:0;width:34px;height:34px;font-size:16px;flex:none}.all .txt{margin:0;font-size:13px;line-height:17px}
  .foot{display:flex;flex-direction:column;gap:22px}.vline,.spark,.hr{display:none}.trust,.brand{position:static}.trust{height:auto}
- .avatars svg{width:36px;height:36px;margin-left:-9px}.trust .txt{margin-left:16px;font-size:12px}.trust .chev{margin-left:14px;font-size:13px}
+ .avatars svg{width:36px;height:36px;margin-left:-9px;background:transparent;box-shadow:none}.trust .txt{margin-left:16px;font-size:12px}.trust .chev{margin-left:14px;font-size:13px}
  .brand b,.brand span{font-size:11px;line-height:15px}
 }
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
