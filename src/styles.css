@@ -392,3 +392,37 @@ h1 .ln:nth-child(2)>span{background-image:linear-gradient(100deg,#e3e6f4 0%,#aab
  .original-contact-details>div{grid-template-columns:minmax(0,1fr)}
  .original-contact-details button{justify-self:start}
 }
+
+
+/* One Network brand accent — precise, restrained use of logo blue. */
+:root{--brand-blue:#3158CE;--brand-blue-rgb:49,88,206}
+a:focus-visible,button:focus-visible{outline-color:rgba(var(--brand-blue-rgb),.95)}
+.links a[aria-current="page"]::after{background:var(--brand-blue);box-shadow:0 0 12px rgba(var(--brand-blue-rgb),.45)}
+.cta .dot{background:var(--brand-blue);color:#fff}
+.eyebrow{color:rgba(145,166,245,.9)}
+.play{border-color:rgba(var(--brand-blue-rgb),.65);color:#cbd5ff}
+.card .plus{border-color:rgba(119,148,255,.7);background:rgba(var(--brand-blue-rgb),.18)}
+.card .bar{background:rgba(111,143,255,.85)}
+.svc .n{color:rgba(147,169,255,.92)}
+.go{border-color:rgba(var(--brand-blue-rgb),.42);background:rgba(var(--brand-blue-rgb),.07)}
+.svc:hover .go,.go:hover{background:rgba(var(--brand-blue-rgb),.2);border-color:rgba(117,146,255,.9)}
+.all .plus2{border-color:rgba(117,146,255,.75);color:#dbe3ff}
+.sep{background:linear-gradient(180deg,transparent,rgba(var(--brand-blue-rgb),.28) 18%,rgba(var(--brand-blue-rgb),.28) 82%,transparent)}
+.hr.r{background:rgba(117,146,255,.7)}
+.sub-eyebrow{color:rgba(129,155,255,.95)}
+.original-jump a:hover,.original-section-link a:hover{border-color:rgba(var(--brand-blue-rgb),.65);background:rgba(var(--brand-blue-rgb),.1);color:#fff}
+.original-jump a span,.original-section-link a span{color:#829cff}
+.original-pill-grid article>span,.original-method-grid article>span,.original-sector>span{color:#829cff}
+.original-pill-grid article:hover,.original-method-grid article:hover,.original-sector:hover{border-color:rgba(var(--brand-blue-rgb),.42);background:linear-gradient(140deg,rgba(var(--brand-blue-rgb),.11),rgba(255,255,255,.012))}
+.original-highlight{border-color:rgba(var(--brand-blue-rgb),.28);background:linear-gradient(135deg,rgba(var(--brand-blue-rgb),.09),rgba(255,255,255,.012))}
+.original-contact-details>div+div{border-top-color:rgba(var(--brand-blue-rgb),.18)}
+.original-contact-details button:hover{border-color:rgba(var(--brand-blue-rgb),.8);background:rgba(var(--brand-blue-rgb),.16)}
+.original-contact-details a:hover,.about-text-link:hover{color:#91a7ff}
+.original-content{scroll-margin-top:24px}
+.original-content::before{content:"";display:block;width:34px;height:2px;margin-bottom:26px;background:linear-gradient(90deg,var(--brand-blue),rgba(var(--brand-blue-rgb),0))}
+.original-contact{border-top-color:rgba(var(--brand-blue-rgb),.25)}
+.original-contact .sub-eyebrow::before{content:"";display:inline-block;width:18px;height:1px;margin:0 10px 3px 0;background:var(--brand-blue)}
+@media(hover:hover){
+ .original-pill-grid article,.original-method-grid article,.original-sector{transition:border-color .22s ease,background .22s ease}
+ .original-contact-details button{transition:border-color .2s ease,background .2s ease}
+}
