@@ -839,3 +839,10 @@ body:has(.global-nav) .expertise-page .expertise-hero{padding-top:0}
   .global-nav .links a{font-size:12px!important}
   .global-nav .logo{font-size:27px!important}
 }
+
+/* Final contrast safeguard: inherited legacy white text must stay readable on light pages */
+:is(.subpage,.expertise-page) :is(h1,h2,h3,h4,p,li,label,legend,span,small,strong){color:#08152f}
+:is(.subpage,.expertise-page) :is(a,.sub-eyebrow,.expertise-kicker,.expertise-domain-number,.expertise-step>span){color:#3158CE}
+:is(.subpage,.expertise-page) :is(button,input,textarea,select){color:#08152f}
+:is(.subpage,.expertise-page) :is(input,textarea,select){background-color:rgba(255,255,255,.9);border-color:rgba(8,21,47,.18)}
+:is(.subpage,.expertise-page) :is(input,textarea,select)::placeholder{color:rgba(8,21,47,.45)}
