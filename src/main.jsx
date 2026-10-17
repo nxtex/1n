@@ -525,9 +525,9 @@ function SubPage({ path, embedded = false, id }) {
         <div><h2>{title}</h2><p>{body}</p></div><span className="sub-arrow">↗</span>
       </article>)}
     </section>}
-    <footer className="sub-footer">
+    {!embedded &&     <footer className="sub-footer">
       <span>ONE NETWORK</span><p>Building networks. Bridging solutions.</p><a href="/contact">Échanger sur un projet <span>↗</span></a>
-    </footer>
+    </footer>}
   </main>;
 }
 
@@ -741,12 +741,12 @@ function AboutPage({ embedded = false }) {
       <p className="sub-eyebrow">One Network · Ensemble</p>
       <h2>Et si vos technologies<br /><em>travaillaient vraiment ensemble ?</em></h2>
       <p>Parlons de vos enjeux et imaginons une infrastructure à la hauteur de vos usages.</p>
-      <a className="about-end-link" href="/contact">Échanger sur votre projet <span>↗</span></a>
+      <a className="about-end-link" href={embedded ? "#contact" : "/contact"}>Échanger sur votre projet <span>↗</span></a>
     </section>
 
-    <footer className="sub-footer">
+    {!embedded &&     <footer className="sub-footer">
       <span>ONE NETWORK</span><p>Building networks. Bridging solutions.</p><a href="/contact">Échanger sur un projet <span>↗</span></a>
-    </footer>
+    </footer>}
   </main>;
 }
 
