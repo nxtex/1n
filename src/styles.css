@@ -752,3 +752,97 @@ h1 .ln>span{background-image:none!important;-webkit-text-fill-color:#07142e;colo
 .synotec-card .plus{background:transparent!important;color:#07142e!important;border-color:#07142e!important}
 .synotec-card .plus svg{color:#07142e!important;stroke:#07142e!important}
 .synotec-card:hover .plus,.synotec-card:focus-visible .plus{background:transparent!important;color:#07142e!important;border-color:#07142e!important}
+
+
+/* Persistent global navigation: same homepage glass pill on every route */
+.global-nav{
+  --u:1px;
+  position:fixed!important;
+  z-index:1000!important;
+  top:clamp(14px,2vw,25px)!important;
+  left:50%!important;
+  right:auto!important;
+  transform:translateX(-50%);
+  width:min(1454px,calc(100vw - 48px))!important;
+  height:80px!important;
+  min-height:0!important;
+  padding:0 22px 0 34px!important;
+  border-radius:28px!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:space-between!important;
+  gap:20px!important;
+  overflow:visible!important;
+  isolation:isolate;
+}
+.global-nav .logo{position:relative!important;left:auto!important;top:auto!important;flex:0 0 auto;font-size:30px!important;white-space:nowrap}
+.global-nav .links{position:absolute!important;left:50%!important;top:0!important;transform:translateX(-50%);height:100%!important;display:flex!important;align-items:center!important;gap:clamp(16px,2.6vw,40px)!important;margin:0!important;padding:0!important;list-style:none!important}
+.global-nav .links li{margin:0;padding:0}
+.global-nav .links a{display:block;white-space:nowrap;font-size:13px!important}
+.global-nav .links a[aria-current="page"]{color:#07142e!important}
+.global-nav .links a[aria-current="page"]::after{content:"";display:block;width:18px;height:2px;margin-top:7px;border-radius:2px;background:#3158CE}
+.global-nav .cta{position:relative!important;left:auto!important;top:auto!important;flex:0 0 auto;display:inline-flex!important}
+.global-nav .mobile-menu-toggle{display:none!important}
+body:has(.global-nav) .subpage,
+body:has(.global-nav) .expertise-page{padding-top:132px!important}
+body:has(.global-nav) .subpage .sub-hero,
+body:has(.global-nav) .expertise-page .expertise-hero{padding-top:0}
+.site-loader{background:#f6f8fc!important}
+.site-loader iframe{background:#f6f8fc!important}
+@media(max-width:860px){
+  .global-nav{top:12px!important;width:calc(100vw - 28px)!important;height:64px!important;padding:0 12px 0 22px!important;border-radius:22px!important}
+  .global-nav .logo{font-size:27px!important}
+  .global-nav .links{display:none!important;transform:none!important}
+  .global-nav .links.is-open{display:flex!important;position:absolute!important;left:0!important;right:0!important;top:calc(100% + 8px)!important;height:auto!important;transform:none!important;align-items:stretch!important;flex-direction:column!important;gap:0!important;padding:12px!important;border:1px solid rgba(8,21,47,.13)!important;border-radius:20px!important;background:rgba(255,255,255,.98)!important;box-shadow:0 22px 55px rgba(7,20,46,.2)!important}
+  .global-nav .links.is-open a{padding:13px 12px!important;color:#08152f!important;font-size:15px!important}
+  .global-nav .links.is-open a[aria-current="page"]::after{display:none!important}
+  .global-nav .links.is-open a[aria-current="page"]{background:rgba(49,88,206,.08);border-radius:12px}
+  .global-nav .cta{display:none!important}
+  .global-nav .mobile-menu-toggle{display:inline-flex!important;align-items:center;gap:10px;position:relative;z-index:1002;border:1px solid rgba(7,20,46,.28);border-radius:999px;background:#fff;color:#07142e;padding:10px 12px;font:inherit;font-size:12px;cursor:pointer}
+  .global-nav .menu-icon{display:flex;flex-direction:column;gap:5px;width:17px}
+  .global-nav .menu-icon b{display:block;height:1.5px;width:17px;background:#08152f;transition:transform .2s ease}
+  .global-nav .menu-icon.is-open b:first-child{transform:translateY(3.25px) rotate(45deg)}
+  .global-nav .menu-icon.is-open b:last-child{transform:translateY(-3.25px) rotate(-45deg)}
+  body:has(.global-nav) .subpage,
+  body:has(.global-nav) .expertise-page{padding-top:108px!important}
+}
+@media(max-width:420px){
+  .global-nav{padding-left:16px!important}
+  .global-nav .logo{font-size:24px!important}
+}
+/* Legibility pass for elements that retained white-on-light styling */
+.subpage .sub-footer,.subpage .sub-footer p,.subpage .sub-footer span,
+.expertise-page .expertise-hero-foot,.expertise-page .expertise-hero-foot span,
+.expertise-page .expertise-building-groups h3,
+.expertise-page .expertise-contact-copy h2,
+.expertise-page .expertise-contact-copy p,
+.expertise-page .expertise-contact-details span,
+.expertise-page .expertise-contact-details a{color:#08152f}
+.expertise-page .expertise-kicker,
+.expertise-page .expertise-domain-number,
+.expertise-page .expertise-step>span{color:#3158CE!important}
+.expertise-page .expertise-step h3,
+.expertise-page .expertise-method h2,
+.expertise-page .expertise-choice h2,
+.expertise-page .expertise-contact h2{color:#07142e!important}
+.expertise-page .expertise-hero-foot{border-color:rgba(8,21,47,.16)}
+.expertise-page .expertise-building-groups h3{border-bottom-color:rgba(8,21,47,.16)}
+.expertise-page .expertise-domain li,
+.expertise-page .expertise-step p,
+.expertise-page .expertise-choice>p,
+.expertise-page .expertise-contact-copy>p:last-child{color:rgba(8,21,47,.72)!important}
+
+/* Switch to the compact shared menu before the desktop links become crowded */
+@media(min-width:861px) and (max-width:900px){
+  .global-nav{width:calc(100vw - 32px)!important;padding-inline:22px!important}
+  .global-nav .links{gap:14px!important}
+  .global-nav .links a{font-size:12px!important}
+  .global-nav .logo{font-size:27px!important}
+}
+
+/* Final contrast safeguard: inherited legacy white text must stay readable on light pages */
+:is(.subpage,.expertise-page) :is(h1,h2,h3,h4,p,li,label,legend,span,small,strong){color:#08152f}
+:is(.subpage,.expertise-page) :is(a,.sub-eyebrow,.expertise-kicker,.expertise-domain-number,.expertise-step>span){color:#3158CE}
+:is(.subpage,.expertise-page) :is(button,input,textarea,select){color:#08152f}
+:is(.subpage,.expertise-page) :is(input,textarea,select){background-color:rgba(255,255,255,.9);border-color:rgba(8,21,47,.18)}
+:is(.subpage,.expertise-page) :is(input,textarea,select)::placeholder{color:rgba(8,21,47,.45)}
