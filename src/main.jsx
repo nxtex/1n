@@ -473,20 +473,72 @@ function SectorsPage() {
 
 function ContactPage() {
   const [copied, setCopied] = useState("");
+  const [submitted, setSubmitted] = useState(false);
   async function copyValue(value) {
     try { await navigator.clipboard.writeText(value); setCopied(value); window.setTimeout(() => setCopied(""), 1600); } catch { setCopied(""); }
   }
+  function submitContact(event) {
+    event.preventDefault();
+    const form = event.currentTarget;
+    if (!form.reportValidity()) return;
+    const data = new FormData(form);
+    const domains = data.getAll("domaines");
+    const body = [
+      `Nom : ${data.get("nom")}`,
+      `Société : ${data.get("societe") || "—"}`,
+      `E-mail : ${data.get("email")}`,
+      `Projet : ${data.get("projet")}`,
+      `Domaines : ${domains.join(", ") || "—"}`,
+      "",
+      data.get("message"),
+    ].join("\n");
+    setSubmitted(true);
+    window.location.href = `mailto:contact@onenetwork.dz?subject=${encodeURIComponent("Demande de contact — One Network")}&body=${encodeURIComponent(body)}`;
+  }
   return <main id="contact" className="subpage original-page singlepage-section">
-    <section className="original-contact">
-      <div>
-        <p className="sub-eyebrow">Contact</p>
-        <h2>Parlons de votre projet.</h2>
-        <p>Nouvelle installation, modernisation d’un site ou évolution de vos infrastructures : contactez-nous pour échanger sur vos besoins.</p>
-      </div>
-      <div className="original-contact-details">
-        <div><span>E-mail</span><a href="mailto:contact@onenetwork.dz">contact@onenetwork.dz</a><button type="button" onClick={() => copyValue("contact@onenetwork.dz")}>{copied === "contact@onenetwork.dz" ? "Copié" : "Copier"}</button></div>
-        <div><span>Site web</span><a href="https://www.onenetwork.dz">www.onenetwork.dz</a><button type="button" onClick={() => copyValue("https://www.onenetwork.dz")}>{copied === "https://www.onenetwork.dz" ? "Copié" : "Copier"}</button></div>
-      </div>
+    <section className="contact-page-intro">
+      <p className="sub-eyebrow">Contact</p>
+      <h2>Parlons de votre projet.</h2>
+      <p>Nouvelle installation, modernisation d’un site ou évolution de vos infrastructures : contactez-nous pour échanger sur vos besoins.</p>
+    </section>
+    <section className="contact-page-layout" aria-label="Coordonnées et formulaire de contact">
+      <aside className="contact-page-side">
+        <div className="contact-page-card">
+          <span className="contact-page-label">E-mail</span>
+          <a href="mailto:contact@onenetwork.dz">contact@onenetwork.dz</a>
+          <button type="button" onClick={() => copyValue("contact@onenetwork.dz")}>{copied === "contact@onenetwork.dz" ? "Copié" : "Copier l’e-mail"}</button>
+        </div>
+        <div className="contact-page-card">
+          <span className="contact-page-label">Site web</span>
+          <a href="https://www.onenetwork.dz">www.onenetwork.dz</a>
+          <button type="button" onClick={() => copyValue("https://www.onenetwork.dz")}>{copied === "https://www.onenetwork.dz" ? "Copié" : "Copier le lien"}</button>
+        </div>
+        <p className="contact-page-note">Le formulaire prépare un e-mail dans votre application de messagerie. Votre message n’est pas envoyé automatiquement depuis le site.</p>
+      </aside>
+      <form className="contact-page-form" onSubmit={submitContact}>
+        <div className="contact-page-fields">
+          <div className="contact-page-row">
+            <label>Nom *<input name="nom" type="text" autoComplete="name" placeholder="Votre nom" required /></label>
+            <label>Société<input name="societe" type="text" autoComplete="organization" placeholder="Votre organisation" /></label>
+          </div>
+          <label>E-mail *<input name="email" type="email" autoComplete="email" placeholder="vous@exemple.com" required /></label>
+          <fieldset>
+            <legend>Votre projet</legend>
+            <div className="contact-page-pills">
+              {["Nouvelle installation", "Modernisation d’un site", "Évolution de vos infrastructures", "Autre"].map((v, i) => <label key={v}><input type="radio" name="projet" value={v} defaultChecked={i === 0} /><span>{v}</span></label>)}
+            </div>
+          </fieldset>
+          <fieldset>
+            <legend>Domaines concernés</legend>
+            <div className="contact-page-pills">
+              {["Réseaux et communications", "Serveurs, stockage et sauvegarde", "Cybersécurité", "Infrastructures de centres de données", "Sûreté et automatisation des bâtiments"].map(v => <label key={v}><input type="checkbox" name="domaines" value={v} /><span>{v}</span></label>)}
+            </div>
+          </fieldset>
+          <label>Message *<textarea name="message" placeholder="Décrivez votre besoin, votre site, vos contraintes." required /></label>
+          <button className="contact-page-submit" type="submit">Préparer le message <Icon /></button>
+          {submitted && <p className="contact-page-status" role="status">Votre application de messagerie devrait s’ouvrir. Vérifiez le message avant de l’envoyer.</p>}
+        </div>
+      </form>
     </section>
   </main>;
 }
