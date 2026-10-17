@@ -88,6 +88,7 @@ h1 .ln:nth-child(2)>span{background-image:linear-gradient(100deg,#e3e6f4 0%,#aab
 .brand b{display:block;font-size:calc(11 * var(--u));line-height:calc(15 * var(--u));letter-spacing:.24em;font-weight:500;color:#fff}
 .brand span{display:block;font-size:calc(11 * var(--u));line-height:calc(15.5 * var(--u));letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.5)}
 .cta .dot,.btn-round,.go,.play,.card .plus{overflow:hidden}
+.mobile-menu-toggle{display:none}
 /* Mobile layout */
 @media(max-width:860px){
  .stage{--u:1px;aspect-ratio:auto;display:flex;flex-direction:column;gap:28px;padding-block:16px 24px}
