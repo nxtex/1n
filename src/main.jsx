@@ -157,9 +157,9 @@ function NetworkCanvas() {
         const x = X(orb.x + orb.dx + sx * 26);
         const y = Y(orb.y + orb.dy + sy * 22);
         const gradient = ctx.createRadialGradient(x, y, 0, x, y, radius);
-        gradient.addColorStop(0, `rgba(255,190,120,${(0.3 * orb.a * orbAlpha).toFixed(3)})`);
-        gradient.addColorStop(0.55, `rgba(255,170,100,${(0.12 * orb.a * orbAlpha).toFixed(3)})`);
-        gradient.addColorStop(1, 'rgba(255,170,100,0)');
+        gradient.addColorStop(0, `rgba(49,88,206,${(0.22 * orb.a * orbAlpha).toFixed(3)})`);
+        gradient.addColorStop(0.55, `rgba(49,88,206,${(0.10 * orb.a * orbAlpha).toFixed(3)})`);
+        gradient.addColorStop(1, 'rgba(49,88,206,0)');
         ctx.fillStyle = gradient; ctx.beginPath(); ctx.arc(x, y, radius, 0, Math.PI * 2); ctx.fill();
       });
 
@@ -170,16 +170,16 @@ function NetworkCanvas() {
         const ax = X(edge.a.x + sx * 12); const ay = Y(edge.a.y + sy * 10);
         const bx = X(edge.b.x + sx * 12); const by = Y(edge.b.y + sy * 10);
         const gradient = ctx.createLinearGradient(ax, ay, bx, by);
-        gradient.addColorStop(0, 'rgba(214,224,248,.50)');
-        gradient.addColorStop(edge.far ? 0.7 : 1, edge.far ? 'rgba(170,190,235,.14)' : 'rgba(214,224,248,.40)');
-        if (edge.far) gradient.addColorStop(1, 'rgba(170,190,235,0)');
+        gradient.addColorStop(0, 'rgba(49,88,206,.32)');
+        gradient.addColorStop(edge.far ? 0.7 : 1, edge.far ? 'rgba(49,88,206,.10)' : 'rgba(49,88,206,.24)');
+        if (edge.far) gradient.addColorStop(1, 'rgba(49,88,206,0)');
         ctx.strokeStyle = gradient; ctx.beginPath(); ctx.moveTo(ax, ay);
         ctx.lineTo(ax + (bx - ax) * progress, ay + (by - ay) * progress); ctx.stroke();
       });
 
       dust.forEach((particle) => {
         const twinkle = reducedMotion.matches ? 1 : 0.7 + 0.3 * Math.sin(state.time * 1.1 + particle.tw);
-        ctx.fillStyle = `rgba(255,214,170,${(particle.a * twinkle * orbAlpha).toFixed(3)})`;
+        ctx.fillStyle = `rgba(49,88,206,${(particle.a * twinkle * orbAlpha * 0.7).toFixed(3)})`;
         ctx.beginPath(); ctx.arc(X(particle.x + sx * 6), Y(particle.y + sy * 5), particle.r * scale, 0, Math.PI * 2); ctx.fill();
       });
 
@@ -190,9 +190,9 @@ function NetworkCanvas() {
         const y = Y(edge.a.y + (edge.b.y - edge.a.y) * pulse.t + sy * 10);
         const radius = 16 * scale;
         const gradient = ctx.createRadialGradient(x, y, 0, x, y, radius);
-        gradient.addColorStop(0, `rgba(255,240,215,${(0.95 * pulse.a).toFixed(3)})`);
-        gradient.addColorStop(0.3, `rgba(255,190,120,${(0.4 * pulse.a).toFixed(3)})`);
-        gradient.addColorStop(1, 'rgba(255,170,100,0)');
+        gradient.addColorStop(0, `rgba(49,88,206,${(0.72 * pulse.a).toFixed(3)})`);
+        gradient.addColorStop(0.3, `rgba(49,88,206,${(0.3 * pulse.a).toFixed(3)})`);
+        gradient.addColorStop(1, 'rgba(49,88,206,0)');
         ctx.fillStyle = gradient; ctx.beginPath(); ctx.arc(x, y, radius, 0, Math.PI * 2); ctx.fill();
       });
 
@@ -203,15 +203,15 @@ function NetworkCanvas() {
         const pulse = reducedMotion.matches ? 1 : (0.88 + 0.12 * Math.sin(state.time * 0.77 + index * 1.9)) * node.pulse;
         const glow = radius * (node.soft ? 4.2 : 7) * pulse;
         let gradient = ctx.createRadialGradient(x, y, 0, x, y, glow);
-        gradient.addColorStop(0, node.soft ? 'rgba(255,200,140,.55)' : 'rgba(255,224,180,.55)');
-        gradient.addColorStop(0.25, 'rgba(255,176,100,.22)');
-        gradient.addColorStop(1, 'rgba(255,160,90,0)');
+        gradient.addColorStop(0, node.soft ? 'rgba(49,88,206,.28)' : 'rgba(49,88,206,.34)');
+        gradient.addColorStop(0.25, 'rgba(49,88,206,.15)');
+        gradient.addColorStop(1, 'rgba(49,88,206,0)');
         ctx.fillStyle = gradient; ctx.beginPath(); ctx.arc(x, y, glow, 0, Math.PI * 2); ctx.fill();
         if (!node.soft) {
           gradient = ctx.createRadialGradient(x, y, 0, x, y, radius * 1.7);
-          gradient.addColorStop(0, 'rgba(255,255,255,1)');
-          gradient.addColorStop(0.45, 'rgba(255,238,210,.95)');
-          gradient.addColorStop(1, 'rgba(255,200,140,0)');
+          gradient.addColorStop(0, 'rgba(7,20,46,.95)');
+          gradient.addColorStop(0.45, 'rgba(49,88,206,.75)');
+          gradient.addColorStop(1, 'rgba(49,88,206,0)');
           ctx.fillStyle = gradient; ctx.beginPath(); ctx.arc(x, y, radius * 1.7, 0, Math.PI * 2); ctx.fill();
         }
       });
