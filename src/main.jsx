@@ -276,10 +276,10 @@ function NetworkCanvas() {
         .from('.trust .txt, .trust .chev', { x: -8, autoAlpha: 0, stagger: 0.08, duration: 0.8 }, 2.4)
         .from('.brand b, .brand span', { y: 8, autoAlpha: 0, stagger: 0.1, duration: 0.8 }, 2.4);
 
-      idleTweens.push(gsap.to('h1 .ln:nth-child(2) > span', { backgroundPosition: '100% 0', duration: 7, ease: 'sine.inOut', yoyo: true, repeat: -1, delay: 3.7 }));
-      idleTweens.push(gsap.to('.scroll svg', { y: 6, duration: 1.3, ease: 'sine.inOut', yoyo: true, repeat: -1, delay: 4 }));
-      idleTweens.push(gsap.to('.scroll span', { opacity: 0.35, duration: 1.3, ease: 'sine.inOut', yoyo: true, repeat: -1, delay: 4 }));
-      idleTweens.push(gsap.to('.trust .chev', { x: 5, duration: 0.9, ease: 'sine.inOut', yoyo: true, repeat: -1, delay: 4 }));
+      idleTweens.push(gsap.to(page.querySelector('h1 .ln:nth-child(2) > span'), { backgroundPosition: '100% 0', duration: 7, ease: 'sine.inOut', yoyo: true, repeat: -1, delay: 3.7 }));
+      idleTweens.push(gsap.to(page.querySelector('.scroll svg'), { y: 6, duration: 1.3, ease: 'sine.inOut', yoyo: true, repeat: -1, delay: 4 }));
+      idleTweens.push(gsap.to(page.querySelector('.scroll span'), { opacity: 0.35, duration: 1.3, ease: 'sine.inOut', yoyo: true, repeat: -1, delay: 4 }));
+      idleTweens.push(gsap.to(page.querySelector('.trust .chev'), { x: 5, duration: 0.9, ease: 'sine.inOut', yoyo: true, repeat: -1, delay: 4 }));
     }
 
     if (canHover.matches && !reducedMotion.matches) {
@@ -287,9 +287,9 @@ function NetworkCanvas() {
         const nx = (event.clientX / window.innerWidth - 0.5) * 2;
         const ny = (event.clientY / window.innerHeight - 0.5) * 2;
         gsap.to(state, { px: -nx, py: -ny, duration: 1.4, ease: 'power3.out', overwrite: 'auto' });
-        gsap.to('.card', { x: -nx * 9, y: -ny * 7, duration: 1.2, ease: 'power3.out', overwrite: 'auto' });
-        gsap.to('.services', { x: -nx * 4, duration: 1.2, ease: 'power3.out', overwrite: 'auto' });
-        gsap.to('h1', { x: nx * 3, duration: 1.2, ease: 'power3.out', overwrite: 'auto' });
+        gsap.to(page.querySelector('.card'), { x: -nx * 9, y: -ny * 7, duration: 1.2, ease: 'power3.out', overwrite: 'auto' });
+        gsap.to(page.querySelector('.services'), { x: -nx * 4, duration: 1.2, ease: 'power3.out', overwrite: 'auto' });
+        gsap.to(page.querySelector('h1'), { x: nx * 3, duration: 1.2, ease: 'power3.out', overwrite: 'auto' });
       };
       listen(window, 'pointermove', onPointerMove, { passive: true });
 
