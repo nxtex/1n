@@ -331,7 +331,7 @@ function NetworkCanvas() {
           <li><a href="#a-propos-section">À propos</a></li>
           <li><a href="#expertise-details">Expertises</a></li>
           <li><a href="#secteurs-detail">Secteurs</a></li>
-          <li><a href="#partenaires-detail">Partenaires</a></li>
+          <li><a href="#partenaires">Partenaires</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
         <a className="cta" href="#contact">Nous contacter <span className="dot"><Icon /></span></a>
@@ -394,150 +394,97 @@ function NetworkCanvas() {
   </div>
   <ExpertisePage embedded includeContact={false} />
   <AboutPage embedded />
-  <SubPage path="/secteurs" embedded id="secteurs-detail" />
-  <SubPage path="/partenaires" embedded id="partenaires-detail" />
-  <SubPage path="/contact" embedded id="contact" />
+  <SectorsPage />
+  <ContactPage />
 </>;
 }
 
 
-const pageContent = {
-  "/a-propos": {
-    eyebrow: "One Network · Notre approche",
-    title: "La technologie doit rapprocher.",
-    intro: "Nous concevons et intégrons des infrastructures qui relient les personnes, les systèmes et les usages.",
-    sections: [
-      ["Une vision d’ensemble", "Réseaux, cloud, cybersécurité et systèmes connectés sont pensés comme les composantes d’un même environnement."],
-      ["Une approche concrète", "Du cadrage à l’intégration, chaque projet s’appuie sur les contraintes du terrain, les objectifs métiers et la continuité d’activité."],
-      ["Dans la durée", "Des solutions conçues pour rester fiables, maintenables et capables d’évoluer avec vos besoins."]
-    ]
-  },
-  "/expertises": {
-    eyebrow: "Nos expertises",
-    title: "Les bonnes fondations. Au bon endroit.",
-    intro: "Quatre domaines complémentaires pour construire, protéger et faire évoluer vos infrastructures technologiques.",
-    cards: [
-      ["01", "Réseaux & infrastructures", "Connecter les sites, les équipes et les applications.", "/expertises/reseaux"],
-      ["02", "Datacenter & virtualisation", "Des environnements d’hébergement performants et résilients.", "/expertises/datacenter"],
-      ["03", "Cybersécurité", "Intégrer la sécurité et renforcer la maîtrise des risques.", "/expertises/cybersecurite"],
-      ["04", "Sécurité électronique & bâtiments", "Faire dialoguer les systèmes numériques et physiques.", "/expertises/batiments"]
-    ]
-  },
-  "/expertises/reseaux": {
-    eyebrow: "Expertise · 01",
-    title: "Réseaux & infrastructures",
-    intro: "Des infrastructures réseau pensées pour relier vos sites, vos équipes et vos applications avec fiabilité.",
-    sections: [
-      ["Connectivité", "Architecture LAN, WAN et Wi-Fi adaptée à vos usages et à vos contraintes."],
-      ["Conception & intégration", "Des fondations documentées, cohérentes et évolutives."],
-      ["Continuité", "Une attention portée à la disponibilité, à la supervision et à la performance."]
-    ]
-  },
-  "/expertises/datacenter": {
-    eyebrow: "Expertise · 02",
-    title: "Datacenter & virtualisation",
-    intro: "Des environnements d’hébergement conçus pour concilier performance, disponibilité et évolutivité.",
-    sections: [
-      ["Infrastructure", "Des plateformes dimensionnées selon les charges, les usages et les objectifs de service."],
-      ["Virtualisation & cloud", "Des environnements rationalisés et plus simples à faire évoluer."],
-      ["Résilience", "Une conception attentive à la sauvegarde, à la reprise et à la continuité d’activité."]
-    ]
-  },
-  "/expertises/cybersecurite": {
-    eyebrow: "Expertise · 03",
-    title: "Cybersécurité",
-    intro: "La sécurité intégrée à l’infrastructure pour réduire les risques et renforcer la résilience.",
-    sections: [
-      ["Prévenir", "Identifier les risques et renforcer les fondations de sécurité."],
-      ["Protéger", "Mettre en place des mesures adaptées aux systèmes, aux accès et aux usages."],
-      ["Faire évoluer", "Inscrire la sécurité dans une démarche continue, pragmatique et mesurable."]
-    ]
-  },
-  "/expertises/batiments": {
-    eyebrow: "Expertise · 04",
-    title: "Sécurité électronique & bâtiments",
-    intro: "Des systèmes connectés qui contribuent à des espaces plus sûrs, plus intelligents et mieux intégrés.",
-    sections: [
-      ["Sécurité des espaces", "Des dispositifs de sécurité électronique adaptés aux lieux et à leurs usages."],
-      ["Systèmes connectés", "Une intégration cohérente entre équipements, réseaux et systèmes de supervision."],
-      ["Convergence", "Le numérique et le bâtiment pensés ensemble, dès la conception."]
-    ]
-  },
-  "/secteurs": {
-    eyebrow: "Nos secteurs",
-    title: "Des réponses adaptées à chaque environnement.",
-    intro: "Les infrastructures doivent répondre aux réalités du terrain, aux usages et aux exigences de chaque organisation.",
-    sections: [
-      ["Entreprises & sièges", "Des systèmes fiables pour les équipes, les outils et les sites."],
-      ["Sites industriels & logistiques", "Une attention particulière à la disponibilité, à la connectivité et à la sécurité."],
-      ["Bâtiments & environnements tertiaires", "Des technologies intégrées au service des occupants et des exploitants."],
-      ["Organisations multisites", "Une architecture cohérente pour relier les implantations et simplifier les opérations."]
-    ]
-  },
-  "/partenaires": {
-    eyebrow: "Écosystème",
-    title: "Construire les bonnes connexions.",
-    intro: "Des projets solides reposent sur une collaboration claire entre les équipes, les clients et les partenaires technologiques.",
-    sections: [
-      ["Une approche collaborative", "Les expertises sont mobilisées selon les besoins réels du projet."],
-      ["Des solutions cohérentes", "Le choix des technologies s’inscrit dans l’architecture globale et les objectifs à atteindre."],
-      ["Un objectif commun", "Créer des environnements fiables, intégrés et conçus pour durer."]
-    ]
-  },
-  "/contact": {
-    eyebrow: "Parlons de votre projet",
-    title: "Connectons vos prochaines idées.",
-    intro: "Vous préparez une évolution d’infrastructure, un projet de connectivité ou un besoin de sécurisation ? Présentez-nous votre contexte.",
-    sections: [
-      ["Un premier échange", "Partagez vos enjeux, votre environnement et les résultats que vous souhaitez atteindre."],
-      ["Une réponse adaptée", "Chaque projet commence par la compréhension de vos besoins et de vos contraintes."]
-    ]
-  }
-};
-
-function SubPage({ path, embedded = false, id }) {
-  const data = pageContent[path] || pageContent["/expertises"];
-  const isOverview = Boolean(data.cards);
-  return <main id={id} className={embedded ? "subpage singlepage-section" : "subpage"}>
-    {!embedded && <header className="sub-nav">
-      <a className="sub-logo" href="/">One network.</a>
-      <nav aria-label="Navigation principale">
-        <a href="/">Accueil</a>
-        <a href="/a-propos">À propos</a>
-        <a href="/expertises">Expertises</a>
-        <a href="/secteurs">Secteurs</a>
-        <a href="/partenaires">Partenaires</a>
-        <a className="sub-contact" href="/contact">Parlons de votre projet <span>↗</span></a>
-      </nav>
-    </header>}
+function AboutPage({ embedded = false }) {
+  return <main id={embedded ? "a-propos-section" : undefined} className={embedded ? "subpage original-page singlepage-section" : "subpage original-page"}>
     <section className="sub-hero">
-      <p className="sub-eyebrow">{data.eyebrow}</p>
-      <h1>{data.title}</h1>
-      <p className="sub-intro">{data.intro}</p>
+      <p className="sub-eyebrow">À propos</p>
+      <h1>One Network,<br />à vos côtés.</h1>
+      <p className="sub-intro">Un partenaire unique pour vos infrastructures technologiques.</p>
+      <nav className="original-jump" aria-label="Dans cette page">
+        <a href="#qui-nous-sommes">Qui nous sommes <span>↘</span></a>
+        <a href="#notre-maniere">Notre manière de travailler <span>↘</span></a>
+        <a href="#partenaire-unique">Un partenaire unique <span>↘</span></a>
+        <a href="#contact">Parlons de votre projet <span>↘</span></a>
+      </nav>
     </section>
-    {isOverview ? <section className="sub-cards" aria-label="Nos expertises">
-      {data.cards.map(([number, title, body, href]) => <a className="sub-card" href={href} key={number}>
-        <span className="sub-number">{number}</span><h2>{title}</h2><p>{body}</p><span className="sub-arrow">↗</span>
-      </a>)}
-    </section> : <section className="sub-sections">
-      {data.sections.map(([title, body], index) => <article className="sub-section" key={title}>
-        <span className="sub-number">{String(index + 1).padStart(2, "0")}</span>
-        <div><h2>{title}</h2><p>{body}</p></div><span className="sub-arrow">↗</span>
-      </article>)}
-    </section>}
-    {!embedded &&     <footer className="sub-footer">
-      <span>ONE NETWORK</span><p>Building networks. Bridging solutions.</p><a href="/contact">Échanger sur un projet <span>↗</span></a>
-    </footer>}
+    <section className="original-content" id="qui-nous-sommes">
+      <p className="sub-eyebrow">One Network</p>
+      <h2>Qui nous sommes.</h2>
+      <p>One Network est spécialisé dans l’intégration de solutions informatiques et de communication, la cybersécurité, les infrastructures de centres de données et l’automatisation des bâtiments.</p>
+      <p>Nous accompagnons les entreprises, les acteurs industriels et les institutions dans la conception, le déploiement et la maintenance de leurs infrastructures. Notre démarche associe analyse des besoins, ingénierie et mise en œuvre technique.</p>
+      <a className="about-text-link" href="#expertise-details">Découvrir nos expertises <span>↗</span></a>
+      <div className="original-pill-grid">
+        <article><span>01</span><h3>Solutions informatiques et de communication</h3></article>
+        <article><span>02</span><h3>Cybersécurité</h3></article>
+        <article><span>03</span><h3>Infrastructures de centres de données</h3></article>
+        <article><span>04</span><h3>Automatisation des bâtiments</h3></article>
+      </div>
+    </section>
+    <section className="original-content" id="notre-maniere">
+      <p className="sub-eyebrow">À vos côtés</p>
+      <h2>Notre manière de travailler.</h2>
+      <div className="original-method-grid">
+        <article><span>01</span><h3>Comprendre</h3><p>Comprendre vos priorités avant de proposer une solution.</p></article>
+        <article><span>02</span><h3>Adapter</h3><p>Adapter les choix techniques à votre environnement.</p></article>
+        <article><span>03</span><h3>Soigner</h3><p>Soigner l’installation et l’intégration.</p></article>
+        <article><span>04</span><h3>Poursuivre</h3><p>Poursuivre l’accompagnement après le déploiement.</p></article>
+      </div>
+    </section>
+    <section className="original-content original-highlight" id="partenaire-unique">
+      <p className="sub-eyebrow">Un partenaire unique</p>
+      <h2>Un partenaire unique pour vos infrastructures technologiques.</h2>
+      <p>Nous concevons, déployons et maintenons les solutions qui connectent vos équipes, protègent vos données et accompagnent l’évolution de vos installations.</p>
+      <p>Réseaux, cybersécurité, serveurs, centres de données et bâtiments : nous réunissons plusieurs expertises pour vous accompagner tout au long de votre projet.</p>
+    </section>
   </main>;
 }
 
+function SectorsPage() {
+  const sectors = ["Entreprises", "Industrie", "Administrations", "Santé", "Éducation", "Banque et finance", "Commerce et distribution", "Énergie et services aux collectivités", "Hôtellerie", "Infrastructures et construction"];
+  return <main id="secteurs-detail" className="subpage original-page singlepage-section">
+    <section className="sub-hero">
+      <p className="sub-eyebrow">Secteurs</p>
+      <h1>Nos secteurs<br />d’activité.</h1>
+      <p className="sub-intro">Nous accompagnons les entreprises, les acteurs industriels et les institutions dans la conception, le déploiement et la maintenance de leurs infrastructures.</p>
+    </section>
+    <section className="original-sector-grid" aria-label="Nos secteurs d’activité">
+      {sectors.map((sector, index) => <article className="original-sector" key={sector}><span>{String(index + 1).padStart(2, "0")}</span><h2>{sector}</h2></article>)}
+    </section>
+    <p className="original-section-link"><a href="#expertise-details">Découvrir nos expertises <span>↗</span></a></p>
+  </main>;
+}
 
+function ContactPage() {
+  const [copied, setCopied] = useState("");
+  async function copyValue(value) {
+    try { await navigator.clipboard.writeText(value); setCopied(value); window.setTimeout(() => setCopied(""), 1600); } catch { setCopied(""); }
+  }
+  return <main id="contact" className="subpage original-page singlepage-section">
+    <section className="original-contact">
+      <div>
+        <p className="sub-eyebrow">Contact</p>
+        <h2>Parlons de votre projet.</h2>
+        <p>Nouvelle installation, modernisation d’un site ou évolution de vos infrastructures : contactez-nous pour échanger sur vos besoins.</p>
+      </div>
+      <div className="original-contact-details">
+        <div><span>E-mail</span><a href="mailto:contact@onenetwork.com">contact@onenetwork.com</a><button type="button" onClick={() => copyValue("contact@onenetwork.com")}>{copied === "contact@onenetwork.com" ? "Copié" : "Copier"}</button></div>
+        <div><span>Site web</span><a href="https://www.onenetwork.dz">www.onenetwork.dz</a><button type="button" onClick={() => copyValue("https://www.onenetwork.dz")}>{copied === "https://www.onenetwork.dz" ? "Copié" : "Copier"}</button></div>
+      </div>
+    </section>
+  </main>;
+}
 
 function ExpertisePage({ embedded = false, includeContact = true }) {
   const domains = [
     { id: "reseaux", number: "01", title: "Réseaux et communications", icon: "⌁", items: ["Réseaux LAN, WAN et Wi-Fi", "Infrastructure de câblage", "Téléphonie IP et communications unifiées", "Salles de réunion et visioconférence"] },
     { id: "serveurs", number: "02", title: "Serveurs, stockage et sauvegarde", icon: "▤", items: ["Infrastructures serveurs et virtualisation", "Stockage SAN et NAS", "Sauvegarde et protection des données"] },
-    { id: "cyber", number: "03", title: "Cybersécurité", icon: "◇", items: ["Protection des réseaux par pare-feu nouvelle génération et VPN", "Protection des utilisateurs", "Sécurisation des postes de travail et des terminaux"] },
+    { id: "cyber", number: "03", title: "Cybersécurité", icon: "◇", items: ["Protection des réseaux par des pare-feu de nouvelle génération et des VPN", "Protection des utilisateurs", "Sécurisation des postes de travail et des terminaux"] },
     { id: "datacenter", number: "04", title: "Infrastructures de centres de données", icon: "▥", items: ["Aménagement des salles informatiques", "Distribution électrique", "Refroidissement et supervision de l’environnement technique"] },
   ];
   const buildingGroups = [
@@ -546,10 +493,10 @@ function ExpertisePage({ embedded = false, includeContact = true }) {
     { title: "Bâtiment intelligent", items: ["Gestion technique des bâtiments (GTB et GTC)", "Comptage intelligent", "Gestion de l’éclairage"] },
   ];
   const steps = [
-    { number: "01", title: "Comprendre", text: "Analyser vos besoins, votre environnement et les objectifs du projet." },
-    { number: "02", title: "Concevoir", text: "Définir l’architecture de la solution et préparer les études techniques." },
-    { number: "03", title: "Réaliser", text: "Installer, configurer et intégrer les équipements retenus." },
-    { number: "04", title: "Maintenir et faire évoluer", text: "Assurer le support et accompagner vos installations dans la durée." },
+    { number: "01", title: "Comprendre", text: "Nous analysons vos besoins et votre environnement technique. Les audits, les études et les échanges avec vos équipes permettent de définir les bases du projet." },
+    { number: "02", title: "Concevoir", text: "Nous réalisons les études d’ingénierie, définissons l’architecture de la solution et préparons la documentation technique." },
+    { number: "03", title: "Réaliser", text: "Nous installons, configurons et intégrons les équipements et les solutions retenus." },
+    { number: "04", title: "Maintenir et faire évoluer", text: "Nous assurons la maintenance préventive et corrective ainsi que le support technique pour accompagner vos installations dans la durée." },
   ];
 
   useEffect(() => {
@@ -776,7 +723,7 @@ function App() {
       "/expertises/cybersecurite": "cyber",
       "/expertises/batiments": "batiments",
       "/secteurs": "secteurs-detail",
-      "/partenaires": "partenaires-detail",
+      "/partenaires": "partenaires",
       "/contact": "contact",
     };
     const targetId = routeTargets[path];
