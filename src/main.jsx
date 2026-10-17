@@ -380,9 +380,9 @@ function NetworkCanvas() {
         <i className="hr l" />
         <a className="trust" href="#partenaires-detail" id="partenaires">
           <span className="avatars" aria-hidden="true">
-            <svg viewBox="0 0 36 36" role="img"><circle cx="18" cy="18" r="17" fill="none" stroke="#fff" strokeWidth="1.5"/><path d="M8 25V11h4l6 8 6-8h4v14h-4v-8l-6 7-6-7v8z" fill="#fff"/></svg>
-            <svg viewBox="0 0 36 36" role="img"><circle cx="18" cy="18" r="17" fill="none" stroke="#fff" strokeWidth="1.5"/><path d="M9 9h18v4H13v4h11v4H13v2h14v4H9z" fill="#fff"/></svg>
-            <svg viewBox="0 0 36 36" role="img"><circle cx="18" cy="18" r="17" fill="none" stroke="#fff" strokeWidth="1.5"/><path d="M18 6l11 6v12l-11 6-11-6V12zm0 4.5L11 14v8l7 3.8 7-3.8v-8z" fill="none" stroke="#fff" strokeWidth="1.5"/><path d="M16 14h4v8h-4z" fill="#fff"/></svg>
+            <svg viewBox="0 0 36 36"><circle cx="18" cy="18" r="16.5" fill="none" stroke="#fff" strokeWidth="1.5"/><path d="M9 24V12h3l6 7 6-7h3v12h-3v-7l-6 7-6-7v7z" fill="#fff"/></svg>
+            <svg viewBox="0 0 36 36"><circle cx="18" cy="18" r="16.5" fill="none" stroke="#fff" strokeWidth="1.5"/><path d="M9 9h18v4H13v4h11v4H13v2h14v4H9z" fill="#fff"/></svg>
+            <svg viewBox="0 0 36 36"><circle cx="18" cy="18" r="16.5" fill="none" stroke="#fff" strokeWidth="1.5"/><path d="M18 6l11 6v12l-11 6-11-6V12zm0 4.5L11 14v8l7 3.8 7-3.8v-8z" fill="#fff"/><path d="M16 14h4v8h-4z" fill="#fff"/></svg>
           </span>
           <span className="txt">Ils nous font confiance</span>
           <span className="chev"><Icon name="chev" /></span>
