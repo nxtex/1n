@@ -725,3 +725,19 @@ h1 .ln>span{background-image:none!important;-webkit-text-fill-color:#07142e;colo
 .scroll{color:rgba(8,21,47,.58)}
 .actions .rule{background:rgba(8,21,47,.2)}
 .play{border-color:rgba(49,88,206,.3);background:rgba(49,88,206,.04);color:#3158CE}
+
+
+/* Navigation fixes: visible mobile toggle, opaque menu above page content */
+@media(max-width:900px){
+  .site-header{position:relative;z-index:100;isolation:isolate}
+  .site-menu-toggle{display:inline-flex!important;visibility:visible!important;opacity:1!important;color:#07142e!important;background:#fff!important;border:1px solid rgba(7,20,46,.28)!important;box-shadow:0 4px 16px rgba(7,20,46,.10);position:relative;z-index:102}
+  .site-menu-lines i{background:#07142e!important}
+  .site-navigation.is-open{display:flex!important;position:absolute;z-index:101!important;top:calc(100% + 8px);left:14px;right:14px;background:#fff!important;color:#07142e!important;box-shadow:0 22px 55px rgba(7,20,46,.2)!important;isolation:isolate}
+  .nav{position:relative;z-index:100!important;isolation:isolate;overflow:visible!important}
+  .nav .mobile-menu-toggle{display:inline-flex!important;visibility:visible!important;opacity:1!important;color:#07142e!important;background:#fff!important;border:1px solid rgba(7,20,46,.28)!important;box-shadow:0 4px 16px rgba(7,20,46,.10);position:relative;z-index:102!important}
+  .nav .menu-icon b{background:#07142e!important}
+  .nav .links.is-open{z-index:101!important;position:absolute!important;background:#fff!important;color:#07142e!important;border-color:rgba(8,21,47,.14)!important;box-shadow:0 22px 55px rgba(7,20,46,.2)!important;isolation:isolate}
+  .nav .links.is-open a{color:#08152f!important}
+}
+.synotec-card .synotec-mark{background:#08152f!important;color:#fff!important;border-color:#08152f!important}
+.synotec-card:hover .synotec-mark,.synotec-card:focus-visible .synotec-mark{background:#000!important;color:#fff!important;border-color:#000!important}
