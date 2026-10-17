@@ -376,7 +376,7 @@ function NetworkCanvas() {
       </nav>
 
       <footer className="foot">
-        <div className="vline" aria-hidden="true"><svg viewBox="0 0 10 60"><path d="M5 2v22M2 21l3 3 3-3"/><path d="M5 36v22M2 40l3-4 3 4"/></svg></div>
+        <div className="vline" aria-hidden="true" />
         <i className="spark" />
         <i className="hr l" />
         <a className="trust" href="#partenaires-detail" id="partenaires">
