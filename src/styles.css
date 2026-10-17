@@ -895,3 +895,9 @@ body:has(.global-nav) .expertise-page .expertise-hero{padding-top:0}
 .synotec-modal-action span{color:#c91424!important}
 .synotec-modal-action:hover{color:#80050d!important}
 .synotec-modal-overlay{background:rgba(238,243,251,.82)!important}
+
+/* Use the exact static logo artwork from the preloader in the shared navbar */
+.global-nav .logo{height:100%;display:flex!important;align-items:center!important}
+.global-nav-logo-mark{display:block;width:clamp(150px,14vw,205px);height:auto;max-height:40px;object-fit:contain}
+@media(max-width:860px){.global-nav-logo-mark{width:clamp(142px,42vw,174px);max-height:34px}}
+@media(max-width:420px){.global-nav-logo-mark{width:142px;max-height:31px}}

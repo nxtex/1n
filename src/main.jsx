@@ -66,7 +66,7 @@ function GlobalNavigation({ active, onNavigate }) {
   const links = [["/", "Accueil"], ["/a-propos/", "À propos"], ["/expertises/", "Expertises"], ["/secteurs/", "Secteurs"], ["/partenaires/", "Partenaires"], ["/contact/", "Contact"]];
   const routeId = (href) => href.replace(/^\/+|\/+$/g, "");
   return <header className="glass nav global-nav">
-    <a className="logo" href={sitePath("/")} aria-label="One network, accueil" onClick={(e)=>onNavigate(e,"/")}>One network.</a>
+    <a className="logo" href={sitePath("/")} aria-label="One Network, accueil" onClick={(e)=>onNavigate(e,"/")}><img className="global-nav-logo-mark" src={sitePath("/one-network-logo.svg")} alt="" /></a>
     <ul id="mobile-navigation" className={mobileMenuOpen ? "links is-open" : "links"}>
       {links.map(([href,label]) => <li key={href}><a href={sitePath(href)} aria-current={(active === routeId(href)) || (href === "/" && active === "") ? "page" : undefined} onClick={(e)=>{setMobileMenuOpen(false);onNavigate(e,href)}}>{label}</a></li>)}
     </ul>
