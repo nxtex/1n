@@ -426,3 +426,22 @@ a:focus-visible,button:focus-visible{outline-color:rgba(var(--brand-blue-rgb),.9
  .original-pill-grid article,.original-method-grid article,.original-sector{transition:border-color .22s ease,background .22s ease}
  .original-contact-details button{transition:border-color .2s ease,background .2s ease}
 }
+
+
+/* Synotec partner bridge */
+.synotec-card{display:block;color:inherit;text-decoration:none;overflow:hidden;background:linear-gradient(125deg,rgba(128,5,13,.96),rgba(76,3,10,.98) 72%,rgba(43,5,12,.98));border:1px solid rgba(255,255,255,.13);transition:transform .28s ease,border-color .28s ease,box-shadow .28s ease}
+.synotec-card::before,.synotec-card::after{content:"";position:absolute;pointer-events:none;border-radius:50%;border:1px solid rgba(255,255,255,.09)}
+.synotec-card::before{width:calc(230 * var(--u));height:calc(230 * var(--u));right:calc(-112 * var(--u));top:calc(-135 * var(--u));background:radial-gradient(circle at 38% 68%,rgba(220,24,37,.34),rgba(128,5,13,.02) 68%)}
+.synotec-card::after{width:calc(170 * var(--u));height:calc(170 * var(--u));right:calc(-92 * var(--u));bottom:calc(-118 * var(--u));border-color:rgba(255,255,255,.07)}
+.synotec-card:hover{transform:translateY(calc(-3 * var(--u)));border-color:rgba(49,88,206,.72);box-shadow:0 16px 42px rgba(0,0,0,.22)}
+.synotec-card .thumb{background:linear-gradient(145deg,rgba(220,25,39,.12),rgba(26,2,8,.55)),radial-gradient(ellipse at 50% 18%,#ed3640 0%,#a20b19 28%,#4b0710 72%);border:1px solid rgba(255,255,255,.13)}
+.synotec-card .thumb::before{background:linear-gradient(145deg,transparent 0 32%,rgba(24,2,8,.72) 33% 100%);clip-path:polygon(0 34%,100% 0,100% 84%,22% 100%)}
+.synotec-card .thumb::after{background:linear-gradient(180deg,transparent,rgba(225,30,43,.65));clip-path:polygon(0 60%,55% 20%,100% 46%,100% 100%,0 100%)}
+.synotec-card .plus{background:#fff;color:#80050d;border-color:#fff}
+.synotec-card .synotec-kicker{position:absolute;left:calc(144 * var(--u));top:calc(24 * var(--u));font-size:calc(7.5 * var(--u));letter-spacing:.12em;color:rgba(255,255,255,.72)}
+.synotec-card h2{top:calc(49 * var(--u));font-size:calc(16.5 * var(--u));line-height:calc(21 * var(--u));width:calc(220 * var(--u));}
+.synotec-card .sub{top:calc(117 * var(--u));color:rgba(255,255,255,.78);transition:color .2s ease}
+.synotec-card .sub span{color:#fff;margin-left:3px}
+.synotec-card .bar{background:#3158CE;width:calc(38 * var(--u))}
+.synotec-card:hover .sub{color:#fff}
+@media(max-width:860px){.synotec-card .synotec-kicker{left:144px;top:23px;font-size:7.5px}.synotec-card h2{left:144px;top:49px;width:calc(100% - 160px);font-size:16px;line-height:21px}.synotec-card .sub{left:144px;top:117px;font-size:12px}}
