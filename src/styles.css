@@ -846,3 +846,27 @@ body:has(.global-nav) .expertise-page .expertise-hero{padding-top:0}
 :is(.subpage,.expertise-page) :is(button,input,textarea,select){color:#08152f}
 :is(.subpage,.expertise-page) :is(input,textarea,select){background-color:rgba(255,255,255,.9);border-color:rgba(8,21,47,.18)}
 :is(.subpage,.expertise-page) :is(input,textarea,select)::placeholder{color:rgba(8,21,47,.45)}
+
+
+/* Contrast repair: Expertise page and contact form on the light theme */
+.expertise-page .expertise-hero h1 em,
+.expertise-page .expertise-section-heading h2 em,
+.expertise-page .expertise-choice h2 em{color:#3158CE!important;-webkit-text-fill-color:#3158CE!important}
+.expertise-page .expertise-jump{border-color:rgba(8,21,47,.18)!important;background:linear-gradient(145deg,rgba(255,255,255,.96),rgba(239,244,252,.92))!important;box-shadow:0 16px 38px rgba(17,38,78,.08)}
+.expertise-page .expertise-jump>p{color:rgba(8,21,47,.62)!important}
+.expertise-page .expertise-jump>a{color:#08152f!important;border-top-color:rgba(8,21,47,.12)!important}
+.expertise-page .expertise-jump>a:hover{background:rgba(49,88,206,.07)!important;color:#07142e!important}
+.expertise-page .expertise-jump>a span{color:#3158CE!important}
+.expertise-page .expertise-hero-foot,
+.expertise-page .expertise-hero-foot span{color:rgba(8,21,47,.55)!important}
+.expertise-page .expertise-hero{border-bottom-color:rgba(8,21,47,.16)!important}
+.expertise-page .expertise-choice h2 em{color:#3158CE!important}
+.contact-page-pills input:checked+span{background:#08152f!important;border-color:#08152f!important;color:#fff!important}
+.contact-page-pills input:checked+span,
+.contact-page-pills label:hover span{font-weight:500}
+.contact-page-pills input:focus-visible+span{outline:2px solid #3158CE!important;outline-offset:3px}
+.contact-page-submit{background:#08152f!important;color:#fff!important;border:1px solid #08152f!important}
+.contact-page-submit svg{background:#3158CE!important;color:#fff!important}
+.contact-page-submit:hover{background:#14264b!important;color:#fff!important}
+.contact-page-submit:focus-visible{outline:3px solid rgba(49,88,206,.45);outline-offset:4px}
+.contact-page-card>button{color:#08152f!important}
