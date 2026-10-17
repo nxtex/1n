@@ -16,4 +16,4 @@
 <path d="M 2084.16 410.35 L 2103.78 390.72 A 1.01 1.01 0.0 0 1 2105.24 390.75 L 2189.65 483.67 A 1.01 1.01 0.0 0 1 2188.90 485.36 L 2151.45 485.36 A 1.01 1.01 0.0 0 1 2150.70 485.03 L 2084.13 411.74 A 1.01 1.01 0.0 0 1 2084.16 410.35 Z" class="d" data-r="net" data-i="6"/>
 <circle cx="2238.28" cy="460.82" r="26.32" class="b" data-r="dot"/>
   <style>.b{fill:#3158ce}.d{fill:#07142e}.b[data-r="net"][data-i="1"]{fill:#07142e}</style>
-</svg>
+<style>.b{fill:#3158ce}.d{fill:#07142e}.b[data-r="net"][data-i="1"]{fill:#07142e}</style></svg>
