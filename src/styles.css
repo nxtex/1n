@@ -456,3 +456,24 @@ a:focus-visible,button:focus-visible{outline-color:rgba(var(--brand-blue-rgb),.9
 .synotec-card .synotec-mark{display:grid;place-items:center;background:rgba(255,255,255,.08);color:#fff;border:1px solid rgba(255,255,255,.82)}
 .synotec-card .synotec-mark span{font-size:calc(10 * var(--u));font-weight:600;letter-spacing:-.06em}
 @media(max-width:860px){.synotec-card .synotec-mark span{font-size:10px}}
+
+
+/* Synotec card: static plus button and explanatory modal */
+.synotec-card{appearance:none;text-align:left;font:inherit;cursor:pointer;padding:0}
+.synotec-card .synotec-mark{transform:none!important;transition:none!important}
+.synotec-card .synotec-mark svg{width:calc(18 * var(--u));height:calc(18 * var(--u));stroke:currentColor;stroke-width:1.7;fill:none}
+.synotec-card:hover .synotec-mark,.synotec-card:focus-visible .synotec-mark{transform:none!important}
+.synotec-overlay{position:fixed;inset:0;z-index:10000;display:grid;place-items:center;padding:24px;background:rgba(5,7,12,.76);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);animation:synotec-fade-in .2s ease both}
+.synotec-modal{position:relative;width:min(100%,540px);padding:clamp(30px,5vw,52px);border:1px solid rgba(255,255,255,.25);border-radius:24px;background:linear-gradient(145deg,#50050c,#21080d 82%);box-shadow:0 28px 100px rgba(0,0,0,.48);color:#fff}
+.synotec-modal-close{position:absolute;top:16px;right:17px;width:38px;height:38px;display:grid;place-items:center;border:1px solid rgba(255,255,255,.34);border-radius:50%;background:rgba(255,255,255,.06);color:#fff;font-size:26px;font-weight:300;line-height:1;cursor:pointer}
+.synotec-modal-kicker{margin:0 42px 24px 0;color:rgba(255,255,255,.68);font-size:10px;letter-spacing:.18em}
+.synotec-modal h2{margin:0 0 20px;font-size:clamp(42px,7vw,64px);font-weight:350;letter-spacing:-.06em;line-height:1}
+.synotec-modal h2 span{color:rgba(255,255,255,.5)}
+.synotec-modal>p:not(.synotec-modal-kicker):not(.synotec-modal-note){max-width:430px;margin:0;color:rgba(255,255,255,.78);font-size:16px;line-height:1.8;font-weight:300}
+.synotec-modal-divider{height:1px;margin:28px 0 18px;background:rgba(255,255,255,.22)}
+.synotec-modal-note{margin:0;color:rgba(255,255,255,.9);font-size:13px;letter-spacing:.01em}
+.synotec-modal-action{display:flex;align-items:center;justify-content:space-between;gap:30px;width:100%;margin-top:30px;padding:14px 0 0;border:0;border-top:1px solid rgba(255,255,255,.22);background:transparent;color:#fff;font:inherit;font-size:13px;cursor:pointer}
+.synotec-modal-action span{font-size:19px}
+@keyframes synotec-fade-in{from{opacity:0}to{opacity:1}}
+@media(max-width:600px){.synotec-overlay{padding:16px}.synotec-modal{padding:30px 24px;border-radius:20px}.synotec-modal>p:not(.synotec-modal-kicker):not(.synotec-modal-note){font-size:15px}}
+@media(prefers-reduced-motion:reduce){.synotec-overlay{animation:none}}
