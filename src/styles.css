@@ -44,9 +44,9 @@ h1 .ln:nth-child(2)>span{background-image:linear-gradient(100deg,#e3e6f4 0%,#aab
 .actions .video{font-size:calc(14 * var(--u));font-weight:400;color:var(--fg-soft)}
 .play{margin-left:calc(16 * var(--u));width:calc(32 * var(--u));height:calc(32 * var(--u));border-radius:50%;border:1px solid rgba(255,255,255,.55);display:grid;place-items:center;font-size:calc(12 * var(--u));background:rgba(255,255,255,.04)}
 .play svg{fill:currentColor;stroke:none}
-.scroll{position:absolute;left:calc(46 * var(--u));top:calc(634 * var(--u));width:calc(90 * var(--u));height:calc(60 * var(--u));color:rgba(255,255,255,.8)}
-.scroll svg{position:absolute;left:0;top:0;width:calc(10 * var(--u));height:calc(60 * var(--u));overflow:visible;fill:none;stroke:currentColor;stroke-width:1}
-.scroll span{position:absolute;left:calc(35 * var(--u));top:calc(41 * var(--u));font-size:calc(11.5 * var(--u));color:rgba(255,255,255,.42);letter-spacing:.01em}
+.scroll{position:absolute;left:calc(46 * var(--u));top:calc(646 * var(--u));height:calc(32 * var(--u));display:flex;align-items:center;gap:calc(11 * var(--u));color:rgba(255,255,255,.78)}
+.scroll svg{position:static;flex:none;width:calc(28 * var(--u));height:calc(28 * var(--u));overflow:visible;fill:none;stroke:currentColor;stroke-width:1.15;stroke-linecap:round;stroke-linejoin:round}
+.scroll span{position:static;font-size:calc(10.5 * var(--u));line-height:1;color:rgba(255,255,255,.64);letter-spacing:.22em;font-weight:500}
 /* Feature card */
 .card{left:calc(794 * var(--u));top:calc(195 * var(--u));width:calc(376 * var(--u));height:calc(172 * var(--u));border-radius:calc(30 * var(--u))}
 .card .thumb{position:absolute;left:calc(22 * var(--u));top:calc(21 * var(--u));width:calc(94 * var(--u));height:calc(128 * var(--u));border-radius:calc(14 * var(--u));overflow:hidden;background:radial-gradient(90% 40% at 12% 8%,#f0c79a 0%,#d79c6a 38%,transparent 75%),radial-gradient(60% 50% at 92% 92%,rgba(120,175,225,.75),transparent 70%),linear-gradient(165deg,#8e5b3c 0%,#3a3a4a 28%,#141a26 58%,#0b1019 100%);box-shadow:inset 0 0 0 1px rgba(255,255,255,.1)}
