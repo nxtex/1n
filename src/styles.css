@@ -337,3 +337,8 @@ h1 .ln:nth-child(2)>span{background-image:linear-gradient(100deg,#e3e6f4 0%,#aab
  .expertise-contact-details{padding-inline:16px}
 }
 @media(prefers-reduced-motion:reduce){.expertise-page .expertise-reveal:not(.is-visible),.expertise-page .expertise-reveal.is-visible{opacity:1;transition:none}.expertise-page *{scroll-behavior:auto}}
+
+/* One-page navigation: each section is a stable scroll target. */
+.singlepage-section{scroll-margin-top:24px;border-top:1px solid rgba(255,255,255,.055)}
+.singlepage-section .sub-nav{display:none}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
