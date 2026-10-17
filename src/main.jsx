@@ -354,13 +354,14 @@ function NetworkCanvas() {
         </div>
       </section>
 
-      <aside className="glass card">
-        <div className="thumb" />
-        <div className="plus"><Icon name="plus" /></div>
-        <h2>Des environnements fiables et sécurisés</h2>
-        <p className="sub">Du bâtiment au cloud</p>
+      <a className="glass card synotec-card" href="#partenaires-detail" aria-label="Découvrir Synotec, partenaire de distribution">
+        <div className="thumb" aria-hidden="true" />
+        <div className="plus"><Icon name="arrow-up-right" /></div>
+        <span className="synotec-kicker">L'ÉCOSYSTÈME ONE NETWORK</span>
+        <h2>L’intégration d’un côté.<br />La distribution de l’autre.</h2>
+        <p className="sub">Découvrir Synotec <span aria-hidden="true">↗</span></p>
         <span className="bar" />
-      </aside>
+      </a>
 
       <nav className="glass services" id="expertises" aria-label="Expertises">
         <a className="svc s1" href="#reseaux"><span className="n">01</span><span className="t">Réseaux &amp;<br />infrastructures</span><span className="go"><Icon /></span></a>
