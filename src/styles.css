@@ -831,3 +831,11 @@ body:has(.global-nav) .expertise-page .expertise-hero{padding-top:0}
 .expertise-page .expertise-step p,
 .expertise-page .expertise-choice>p,
 .expertise-page .expertise-contact-copy>p:last-child{color:rgba(8,21,47,.72)!important}
+
+/* Switch to the compact shared menu before the desktop links become crowded */
+@media(min-width:861px) and (max-width:900px){
+  .global-nav{width:calc(100vw - 32px)!important;padding-inline:22px!important}
+  .global-nav .links{gap:14px!important}
+  .global-nav .links a{font-size:12px!important}
+  .global-nav .logo{font-size:27px!important}
+}
