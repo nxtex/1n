@@ -237,45 +237,14 @@ function NetworkCanvas() {
     };
     reducedMotion.addEventListener?.('change', motionChange);
 
+    state.reveal = 1;
+    gsap.set('.nav, .eyebrow, h1, .lede, .actions, .scroll, .card, .services, .foot > *, .ln', { autoAlpha: 1, clearProps: 'transform' });
     if (reducedMotion.matches) {
-      state.reveal = 1;
       paintOnce();
     } else {
       raf = requestAnimationFrame(tick);
-      gsap.set('.nav, .eyebrow, h1, .lede, .actions, .scroll, .card, .services, .foot > *', { autoAlpha: 1 });
-      gsap.set('.ln', { autoAlpha: 1 });
-      introTimeline = gsap.timeline({ defaults: { ease: 'power3.out' }, onComplete: startIdle });
-      introTimeline.to(state, { reveal: 1, duration: 3.4, ease: 'power2.inOut' }, 0)
-        .from('.nav', { y: -36, autoAlpha: 0, duration: 1 }, 0.15)
-        .from('.logo', { x: -16, autoAlpha: 0, duration: 0.8 }, 0.35)
-        .from('.links li', { y: -10, autoAlpha: 0, stagger: 0.06, duration: 0.7 }, 0.45)
-        .from('.cta', { scale: 0.86, autoAlpha: 0, duration: 0.9, ease: 'back.out(1.6)' }, 0.6)
-        .from('.eyebrow', { autoAlpha: 0, letterSpacing: '0.9em', duration: 1.5 }, 0.5)
-        .from('h1 .ln > span', { yPercent: 118, skewY: 4, duration: 1.3, stagger: 0.14, ease: 'expo.out' }, 0.65)
-        .from('.lede', { y: 24, autoAlpha: 0, duration: 1 }, 1.15)
-        .from('.btn-round', { scale: 0, duration: 0.9, ease: 'back.out(2)' }, 1.35)
-        .from('.actions .label, .actions .video', { x: -14, autoAlpha: 0, stagger: 0.1, duration: 0.8 }, 1.45)
-        .from('.actions .rule', { scaleX: 0, transformOrigin: '0 50%', duration: 0.7 }, 1.55)
-        .from('.play', { scale: 0, duration: 0.8, ease: 'back.out(2)' }, 1.65)
-        .from('.scroll', { autoAlpha: 0, duration: 1 }, 2)
-        .from('.card', { y: 50, scale: 0.95, autoAlpha: 0, duration: 1.2, ease: 'expo.out' }, 0.9)
-        .from('.card .thumb', { clipPath: 'inset(0 0 100% 0 round 14px)', duration: 1.1, ease: 'power3.inOut' }, 1.2)
-        .from('.card .plus', { scale: 0, rotate: -90, duration: 0.9, ease: 'back.out(2)' }, 1.5)
-        .from('.card h2', { y: 14, autoAlpha: 0, duration: 0.8 }, 1.4)
-        .from('.card .sub', { y: 10, autoAlpha: 0, duration: 0.8 }, 1.55)
-        .from('.card .bar', { scaleX: 0, transformOrigin: '0 50%', duration: 0.8 }, 1.7)
-        .from('.services', { y: 70, autoAlpha: 0, duration: 1.2, ease: 'expo.out' }, 1.1)
-        .from('.svc', { y: 22, autoAlpha: 0, stagger: 0.1, duration: 0.9 }, 1.5)
-        .from('.sep', { scaleY: 0, transformOrigin: '50% 0', stagger: 0.1, duration: 0.9 }, 1.55)
-        .from('.svc .go', { scale: 0, stagger: 0.1, duration: 0.7, ease: 'back.out(2)' }, 1.75)
-        .from('.all', { x: 14, autoAlpha: 0, duration: 0.8 }, 2)
-        .from('.vline, .spark', { autoAlpha: 0, duration: 0.8 }, 2)
-        .from('.hr.l', { scaleX: 0, transformOrigin: '0 50%', duration: 1.1, ease: 'power3.inOut' }, 2.1)
-        .from('.hr.r', { scaleX: 0, transformOrigin: '100% 50%', duration: 1.1, ease: 'power3.inOut' }, 2.1)
-        .from('.avatars svg', { x: -14, scale: 0.4, autoAlpha: 0, stagger: 0.12, duration: 0.7, ease: 'back.out(2)' }, 2.2)
-        .from('.trust .txt, .trust .chev', { x: -8, autoAlpha: 0, stagger: 0.08, duration: 0.8 }, 2.4)
-        .from('.brand b, .brand span', { y: 8, autoAlpha: 0, stagger: 0.1, duration: 0.8 }, 2.4);
-
+      startIdle();
+      // Keep only subtle ambient details; no staged entrance animation.
       idleTweens.push(gsap.to(page.querySelector('h1 .ln:nth-child(2) > span'), { backgroundPosition: '100% 0', duration: 7, ease: 'sine.inOut', yoyo: true, repeat: -1, delay: 3.7 }));
       idleTweens.push(gsap.to(page.querySelector('.scroll svg'), { y: 6, duration: 1.3, ease: 'sine.inOut', yoyo: true, repeat: -1, delay: 4 }));
       idleTweens.push(gsap.to(page.querySelector('.scroll span'), { opacity: 0.35, duration: 1.3, ease: 'sine.inOut', yoyo: true, repeat: -1, delay: 4 }));
@@ -283,15 +252,6 @@ function NetworkCanvas() {
     }
 
     if (canHover.matches && !reducedMotion.matches) {
-      const onPointerMove = (event) => {
-        const nx = (event.clientX / window.innerWidth - 0.5) * 2;
-        const ny = (event.clientY / window.innerHeight - 0.5) * 2;
-        gsap.to(state, { px: -nx, py: -ny, duration: 1.4, ease: 'power3.out', overwrite: 'auto' });
-        gsap.to(page.querySelector('.card'), { x: -nx * 9, y: -ny * 7, duration: 1.2, ease: 'power3.out', overwrite: 'auto' });
-        gsap.to(page.querySelector('.services'), { x: -nx * 4, duration: 1.2, ease: 'power3.out', overwrite: 'auto' });
-        gsap.to(page.querySelector('h1'), { x: nx * 3, duration: 1.2, ease: 'power3.out', overwrite: 'auto' });
-      };
-      listen(window, 'pointermove', onPointerMove, { passive: true });
       [...page.querySelectorAll('.glass')].forEach((element) => {
         listen(element, 'pointerenter', () => gsap.to(element, { '--sheen': 0.13, duration: 0.6 }));
         listen(element, 'pointermove', (event) => {
