@@ -403,7 +403,7 @@ function NetworkCanvas() {
       <h2 id="synotec-modal-title">Synotec<span>.</span></h2>
       <p>Synotec est la société de distribution liée à l’écosystème One Network. Elle complète l’activité d’intégration en portant le volet distribution des solutions.</p>
       <div className="synotec-modal-divider" />
-      <p className="synotec-modal-note">L’intégration d’un côté. La distribution de l’autre.</p>
+      <p className="synotec-modal-note">Smart Network and Security Solutions</p>
       <button className="synotec-modal-action" type="button" onClick={() => setSynotecOpen(false)}>J’ai compris <span aria-hidden="true">↗</span></button>
     </section>
   </div>}
