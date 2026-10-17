@@ -449,7 +449,7 @@ function AboutPage({ embedded = false }) {
         <a href="#qui-nous-sommes">Qui nous sommes <span>↘</span></a>
         <a href="#notre-maniere">Notre manière de travailler <span>↘</span></a>
         <a href="#partenaire-unique">Un partenaire unique <span>↘</span></a>
-        <a href="#contact">Parlons de votre projet <span>↘</span></a>
+        <a href={sitePath("/contact/")}>Parlons de votre projet <span>↗</span></a>
       </nav>
     </section>
     <section className="original-content" id="qui-nous-sommes">
@@ -457,7 +457,7 @@ function AboutPage({ embedded = false }) {
       <h2>Qui nous sommes.</h2>
       <p>One Network est spécialisé dans l’intégration de solutions informatiques et de communication, la cybersécurité, les infrastructures de centres de données et l’automatisation des bâtiments.</p>
       <p>Nous accompagnons les entreprises, les acteurs industriels et les institutions dans la conception, le déploiement et la maintenance de leurs infrastructures. Notre démarche associe analyse des besoins, ingénierie et mise en œuvre technique.</p>
-      <a className="about-text-link" href="#expertise-details">Découvrir nos expertises <span>↗</span></a>
+      <a className="about-text-link" href={sitePath("/expertises/")}>Découvrir nos expertises <span>↗</span></a>
       <div className="original-pill-grid">
         <article><span>01</span><h3>Solutions informatiques et de communication</h3></article>
         <article><span>02</span><h3>Cybersécurité</h3></article>
