@@ -717,3 +717,11 @@ body{color:#08152f}
 .synotec-card .synotec-mark{background:rgba(49,88,206,.07);color:#3158CE;border-color:rgba(49,88,206,.4)}
 .synotec-card .bar{background:#3158CE}
 .synotec-card:hover{border-color:rgba(49,88,206,.4);box-shadow:0 18px 44px rgba(17,38,78,.13)}
+
+/* Explicitly replace the original white gradient lettering with deep navy */
+h1 .ln>span{background-image:none!important;-webkit-text-fill-color:#07142e;color:#07142e}
+.hero h1{color:#07142e}
+.scroll span{color:rgba(8,21,47,.58)}
+.scroll{color:rgba(8,21,47,.58)}
+.actions .rule{background:rgba(8,21,47,.2)}
+.play{border-color:rgba(49,88,206,.3);background:rgba(49,88,206,.04);color:#3158CE}
