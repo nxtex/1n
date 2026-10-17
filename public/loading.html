@@ -6,14 +6,14 @@
 <title>One network — Chargement</title>
 <style>
 :root{
-  color-scheme:dark;
-  --bg:rgb(6, 8, 16); --ink:#efedf8; --blue:#3158ce; --track:rgba(190,200,255,.12);
-  --glow:rgba(62,80,160,.035);
+  color-scheme:light;
+  --bg:#f6f8fc; --ink:#07142e; --blue:#3158ce; --track:rgba(7,20,46,.12);
+  --glow:rgba(49,88,206,.07);
   box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
 }
 html{scroll-padding-top:env(safe-area-inset-top,0px)}
 html,body{height:100%;margin:0}
-body{background:radial-gradient(ellipse at 50% 55%,#080b13 0%,#070910 38%,var(--bg) 75%);display:flex;align-items:center;justify-content:center;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;overflow:hidden}
+body{background:radial-gradient(ellipse at 50% 55%,#ffffff 0%,#f8faff 38%,var(--bg) 75%);display:flex;align-items:center;justify-content:center;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;overflow:hidden}
 .stage{position:relative;width:min(760px,88vw);display:flex;flex-direction:column;align-items:center;gap:clamp(18px,4vw,34px)}
 .stage::before{content:"";position:absolute;inset:-30% -10%;background:radial-gradient(closest-side,var(--glow),transparent 70%);z-index:0;pointer-events:none}
 svg{position:relative;z-index:1;width:100%;height:auto;max-width:100%;overflow:visible}
