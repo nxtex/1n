@@ -741,3 +741,8 @@ h1 .ln>span{background-image:none!important;-webkit-text-fill-color:#07142e;colo
 }
 .synotec-card .synotec-mark{background:#08152f!important;color:#fff!important;border-color:#08152f!important}
 .synotec-card:hover .synotec-mark,.synotec-card:focus-visible .synotec-mark{background:#000!important;color:#fff!important;border-color:#000!important}
+
+
+/* Synotec: make the plus symbol itself black */
+.synotec-card .plus{color:#000!important}
+.synotec-card .plus svg{color:#000!important;stroke:#000!important}
