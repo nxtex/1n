@@ -369,14 +369,14 @@ function NetworkCanvas() {
       <header className="glass nav">
         <a className="logo" href="#accueil" aria-label="One network, accueil">One network.</a>
         <ul className="links">
-          <li><a href="#accueil" aria-current="page">Accueil</a></li>
-          <li><a href="#accueil">À propos</a></li>
-          <li><a href="#expertises">Expertises</a></li>
-          <li><a href="#secteurs">Secteurs</a></li>
-          <li><a href="#partenaires">Partenaires</a></li>
-          <li><a href="#expertises">Contact</a></li>
+          <li><a href="/" aria-current="page">Accueil</a></li>
+          <li><a href="/a-propos">À propos</a></li>
+          <li><a href="/expertises">Expertises</a></li>
+          <li><a href="/secteurs">Secteurs</a></li>
+          <li><a href="/partenaires">Partenaires</a></li>
+          <li><a href="/contact">Contact</a></li>
         </ul>
-        <a className="cta" href="#expertises">Nous contacter <span className="dot"><Icon /></span></a>
+        <a className="cta" href="/contact">Nous contacter <span className="dot"><Icon /></span></a>
       </header>
 
       <section className="hero" id="accueil">
@@ -384,8 +384,8 @@ function NetworkCanvas() {
         <h1><span className="ln"><span>Des infrastructures</span></span><span className="ln"><span>pour demain.</span></span></h1>
         <p className="lede">Concevoir, déployer et accompagner des infrastructures performantes, sécurisées et évolutives.</p>
         <div className="actions">
-          <a className="btn-round" href="#expertises" aria-label="Découvrir nos expertises"><Icon /></a>
-          <a className="label" href="#expertises">Découvrir nos expertises</a>
+          <a className="btn-round" href="/expertises" aria-label="Découvrir nos expertises"><Icon /></a>
+          <a className="label" href="/expertises">Découvrir nos expertises</a>
           <span className="rule" />
           <a className="video" href="#accueil">Voir la vidéo</a>
           <a className="play" href="#accueil" aria-label="Voir la vidéo"><Icon name="play" /></a>
@@ -405,22 +405,22 @@ function NetworkCanvas() {
       </aside>
 
       <nav className="glass services" id="expertises" aria-label="Expertises">
-        <a className="svc s1" href="#expertises"><span className="n">01</span><span className="t">Réseaux &amp;<br />infrastructures</span><span className="go"><Icon /></span></a>
+        <a className="svc s1" href="/expertises/reseaux"><span className="n">01</span><span className="t">Réseaux &amp;<br />infrastructures</span><span className="go"><Icon /></span></a>
         <i className="sep a" />
-        <a className="svc s2" href="#expertises"><span className="n">02</span><span className="t">Datacenter &amp;<br />virtualisation</span><span className="go"><Icon /></span></a>
+        <a className="svc s2" href="/expertises/datacenter"><span className="n">02</span><span className="t">Datacenter &amp;<br />virtualisation</span><span className="go"><Icon /></span></a>
         <i className="sep b" />
-        <a className="svc s3 one-line" href="#expertises"><span className="n">03</span><span className="t">Cybersécurité</span><span className="go"><Icon /></span></a>
+        <a className="svc s3 one-line" href="/expertises/cybersecurite"><span className="n">03</span><span className="t">Cybersécurité</span><span className="go"><Icon /></span></a>
         <i className="sep c" />
-        <a className="svc s4" href="#expertises"><span className="n">04</span><span className="t">Sécurité électronique<br />&amp; bâtiments</span><span className="go"><Icon /></span></a>
+        <a className="svc s4" href="/expertises/batiments"><span className="n">04</span><span className="t">Sécurité électronique<br />&amp; bâtiments</span><span className="go"><Icon /></span></a>
         <i className="sep d" />
-        <a className="all" href="#secteurs" id="secteurs"><span className="plus2"><Icon name="plus" /></span><span className="txt">Tous nos<br />secteurs</span></a>
+        <a className="all" href="/secteurs" id="secteurs"><span className="plus2"><Icon name="plus" /></span><span className="txt">Tous nos<br />secteurs</span></a>
       </nav>
 
       <footer className="foot">
         <div className="vline" aria-hidden="true"><svg viewBox="0 0 10 60"><path d="M5 2v22M2 21l3 3 3-3"/><path d="M5 36v22M2 40l3-4 3 4"/></svg></div>
         <i className="spark" />
         <i className="hr l" />
-        <a className="trust" href="#partenaires" id="partenaires">
+        <a className="trust" href="/partenaires" id="partenaires">
           <span className="avatars" aria-hidden="true">
             <svg viewBox="0 0 36 36"><rect width="36" height="36" fill="#7b8696"/><path d="M3 36c1-8 8-11 15-11s14 3 15 11z" fill="#1c2431"/><path d="M14 25l4 5 4-5z" fill="#f2f2f2"/><ellipse cx="18" cy="16" rx="6.3" ry="7.6" fill="#e3b799"/><path d="M11.3 14.5c-.4-6 4-8.6 7-8.6s7.2 2.2 6.6 8.6c-1.2-3.2-3.6-4.2-6.6-4.2s-5.6 1-7 4.2z" fill="#4a3426"/></svg>
             <svg viewBox="0 0 36 36"><rect width="36" height="36" fill="#a49a90"/><path d="M3 36c1-8 8-11 15-11s14 3 15 11z" fill="#2a2f3a"/><path d="M14 25l4 5 4-5z" fill="#eee"/><ellipse cx="18" cy="16" rx="6.2" ry="7.5" fill="#d9a785"/><path d="M11.4 15c-.8-6.2 3.8-9 6.8-9s7 2.6 6.4 9c-1-3.4-3.4-4.6-6.4-4.6S12.8 11.6 11.4 15z" fill="#2b211b"/></svg>
@@ -436,8 +436,140 @@ function NetworkCanvas() {
   </div>;
 }
 
+
+const pageContent = {
+  "/a-propos": {
+    eyebrow: "One Network · Notre approche",
+    title: "La technologie doit rapprocher.",
+    intro: "Nous concevons et intégrons des infrastructures qui relient les personnes, les systèmes et les usages.",
+    sections: [
+      ["Une vision d’ensemble", "Réseaux, cloud, cybersécurité et systèmes connectés sont pensés comme les composantes d’un même environnement."],
+      ["Une approche concrète", "Du cadrage à l’intégration, chaque projet s’appuie sur les contraintes du terrain, les objectifs métiers et la continuité d’activité."],
+      ["Dans la durée", "Des solutions conçues pour rester fiables, maintenables et capables d’évoluer avec vos besoins."]
+    ]
+  },
+  "/expertises": {
+    eyebrow: "Nos expertises",
+    title: "Les bonnes fondations. Au bon endroit.",
+    intro: "Quatre domaines complémentaires pour construire, protéger et faire évoluer vos infrastructures technologiques.",
+    cards: [
+      ["01", "Réseaux & infrastructures", "Connecter les sites, les équipes et les applications.", "/expertises/reseaux"],
+      ["02", "Datacenter & virtualisation", "Des environnements d’hébergement performants et résilients.", "/expertises/datacenter"],
+      ["03", "Cybersécurité", "Intégrer la sécurité et renforcer la maîtrise des risques.", "/expertises/cybersecurite"],
+      ["04", "Sécurité électronique & bâtiments", "Faire dialoguer les systèmes numériques et physiques.", "/expertises/batiments"]
+    ]
+  },
+  "/expertises/reseaux": {
+    eyebrow: "Expertise · 01",
+    title: "Réseaux & infrastructures",
+    intro: "Des infrastructures réseau pensées pour relier vos sites, vos équipes et vos applications avec fiabilité.",
+    sections: [
+      ["Connectivité", "Architecture LAN, WAN et Wi-Fi adaptée à vos usages et à vos contraintes."],
+      ["Conception & intégration", "Des fondations documentées, cohérentes et évolutives."],
+      ["Continuité", "Une attention portée à la disponibilité, à la supervision et à la performance."]
+    ]
+  },
+  "/expertises/datacenter": {
+    eyebrow: "Expertise · 02",
+    title: "Datacenter & virtualisation",
+    intro: "Des environnements d’hébergement conçus pour concilier performance, disponibilité et évolutivité.",
+    sections: [
+      ["Infrastructure", "Des plateformes dimensionnées selon les charges, les usages et les objectifs de service."],
+      ["Virtualisation & cloud", "Des environnements rationalisés et plus simples à faire évoluer."],
+      ["Résilience", "Une conception attentive à la sauvegarde, à la reprise et à la continuité d’activité."]
+    ]
+  },
+  "/expertises/cybersecurite": {
+    eyebrow: "Expertise · 03",
+    title: "Cybersécurité",
+    intro: "La sécurité intégrée à l’infrastructure pour réduire les risques et renforcer la résilience.",
+    sections: [
+      ["Prévenir", "Identifier les risques et renforcer les fondations de sécurité."],
+      ["Protéger", "Mettre en place des mesures adaptées aux systèmes, aux accès et aux usages."],
+      ["Faire évoluer", "Inscrire la sécurité dans une démarche continue, pragmatique et mesurable."]
+    ]
+  },
+  "/expertises/batiments": {
+    eyebrow: "Expertise · 04",
+    title: "Sécurité électronique & bâtiments",
+    intro: "Des systèmes connectés qui contribuent à des espaces plus sûrs, plus intelligents et mieux intégrés.",
+    sections: [
+      ["Sécurité des espaces", "Des dispositifs de sécurité électronique adaptés aux lieux et à leurs usages."],
+      ["Systèmes connectés", "Une intégration cohérente entre équipements, réseaux et systèmes de supervision."],
+      ["Convergence", "Le numérique et le bâtiment pensés ensemble, dès la conception."]
+    ]
+  },
+  "/secteurs": {
+    eyebrow: "Nos secteurs",
+    title: "Des réponses adaptées à chaque environnement.",
+    intro: "Les infrastructures doivent répondre aux réalités du terrain, aux usages et aux exigences de chaque organisation.",
+    sections: [
+      ["Entreprises & sièges", "Des systèmes fiables pour les équipes, les outils et les sites."],
+      ["Sites industriels & logistiques", "Une attention particulière à la disponibilité, à la connectivité et à la sécurité."],
+      ["Bâtiments & environnements tertiaires", "Des technologies intégrées au service des occupants et des exploitants."],
+      ["Organisations multisites", "Une architecture cohérente pour relier les implantations et simplifier les opérations."]
+    ]
+  },
+  "/partenaires": {
+    eyebrow: "Écosystème",
+    title: "Construire les bonnes connexions.",
+    intro: "Des projets solides reposent sur une collaboration claire entre les équipes, les clients et les partenaires technologiques.",
+    sections: [
+      ["Une approche collaborative", "Les expertises sont mobilisées selon les besoins réels du projet."],
+      ["Des solutions cohérentes", "Le choix des technologies s’inscrit dans l’architecture globale et les objectifs à atteindre."],
+      ["Un objectif commun", "Créer des environnements fiables, intégrés et conçus pour durer."]
+    ]
+  },
+  "/contact": {
+    eyebrow: "Parlons de votre projet",
+    title: "Connectons vos prochaines idées.",
+    intro: "Vous préparez une évolution d’infrastructure, un projet de connectivité ou un besoin de sécurisation ? Présentez-nous votre contexte.",
+    sections: [
+      ["Un premier échange", "Partagez vos enjeux, votre environnement et les résultats que vous souhaitez atteindre."],
+      ["Une réponse adaptée", "Chaque projet commence par la compréhension de vos besoins et de vos contraintes."]
+    ]
+  }
+};
+
+function SubPage({ path }) {
+  const data = pageContent[path] || pageContent["/expertises"];
+  const isOverview = Boolean(data.cards);
+  return <main className="subpage">
+    <header className="sub-nav">
+      <a className="sub-logo" href="/">One network.</a>
+      <nav aria-label="Navigation principale">
+        <a href="/">Accueil</a>
+        <a href="/a-propos">À propos</a>
+        <a href="/expertises">Expertises</a>
+        <a href="/secteurs">Secteurs</a>
+        <a href="/partenaires">Partenaires</a>
+        <a className="sub-contact" href="/contact">Parlons de votre projet <span>↗</span></a>
+      </nav>
+    </header>
+    <section className="sub-hero">
+      <p className="sub-eyebrow">{data.eyebrow}</p>
+      <h1>{data.title}</h1>
+      <p className="sub-intro">{data.intro}</p>
+    </section>
+    {isOverview ? <section className="sub-cards" aria-label="Nos expertises">
+      {data.cards.map(([number, title, body, href]) => <a className="sub-card" href={href} key={number}>
+        <span className="sub-number">{number}</span><h2>{title}</h2><p>{body}</p><span className="sub-arrow">↗</span>
+      </a>)}
+    </section> : <section className="sub-sections">
+      {data.sections.map(([title, body], index) => <article className="sub-section" key={title}>
+        <span className="sub-number">{String(index + 1).padStart(2, "0")}</span>
+        <div><h2>{title}</h2><p>{body}</p></div><span className="sub-arrow">↗</span>
+      </article>)}
+    </section>}
+    <footer className="sub-footer">
+      <span>ONE NETWORK</span><p>Building networks. Bridging solutions.</p><a href="/contact">Échanger sur un projet <span>↗</span></a>
+    </footer>
+  </main>;
+}
+
 function App() {
-  return <NetworkCanvas />;
+  const path = window.location.pathname.replace(/\\/+$/, "") || "/";
+  return path === "/" || path === "/index.html" ? <NetworkCanvas /> : <SubPage path={path} />;
 }
 
 createRoot(document.getElementById('root')).render(<React.StrictMode><App /></React.StrictMode>);
