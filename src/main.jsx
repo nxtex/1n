@@ -33,6 +33,7 @@ function Icon({ name = 'arrow' }) {
 }
 
 function NetworkCanvas() {
+  const [synotecOpen, setSynotecOpen] = useState(false);
   const canvasRef = useRef(null);
   const pageRef = useRef(null);
 
@@ -296,11 +297,9 @@ function NetworkCanvas() {
       const card = page.querySelector('.card');
       if (card) {
         listen(card, 'pointerenter', () => {
-          gsap.to(card.querySelector('.plus'), { rotate: 90, scale: 1.1, duration: 0.6, ease: 'back.out(2)' });
           gsap.to(card.querySelector('.bar'), { scaleX: 1.75, transformOrigin: '0 50%', duration: 0.6 });
         });
         listen(card, 'pointerleave', () => {
-          gsap.to(card.querySelector('.plus'), { rotate: 0, scale: 1, duration: 0.6 });
           gsap.to(card.querySelector('.bar'), { scaleX: 1, duration: 0.6 });
         });
       }
@@ -354,14 +353,14 @@ function NetworkCanvas() {
         </div>
       </section>
 
-      <a className="glass card synotec-card" href="#partenaires-detail" aria-label="Découvrir Synotec, partenaire de distribution">
+      <button className="glass card synotec-card" type="button" onClick={() => setSynotecOpen(true)} aria-label="En savoir plus sur Synotec" aria-haspopup="dialog">
         <div className="thumb" aria-hidden="true" />
-        <div className="plus synotec-mark" aria-hidden="true"><span>SN</span></div>
+        <span className="plus synotec-mark" aria-hidden="true"><Icon name="plus" /></span>
         <span className="synotec-kicker">L'ÉCOSYSTÈME ONE NETWORK</span>
         <h2>L’intégration d’un côté.<br />La distribution de l’autre.</h2>
-        <p className="sub">Découvrir Synotec <span aria-hidden="true">↗</span></p>
+        <span className="sub">En savoir plus <span aria-hidden="true">↗</span></span>
         <span className="bar" />
-      </a>
+      </button>
 
       <nav className="glass services" id="expertises" aria-label="Expertises">
         <a className="svc s1" href="#reseaux"><span className="n">01</span><span className="t">Réseaux &amp;<br />infrastructures</span><span className="go"><Icon /></span></a>
@@ -397,6 +396,17 @@ function NetworkCanvas() {
   <ExpertisePage embedded includeContact={false} />
   <SectorsPage />
   <ContactPage />
+  {synotecOpen && <div className="synotec-overlay" role="presentation" onMouseDown={(event) => { if (event.target === event.currentTarget) setSynotecOpen(false); }}>
+    <section className="synotec-modal" role="dialog" aria-modal="true" aria-labelledby="synotec-modal-title">
+      <button className="synotec-modal-close" type="button" onClick={() => setSynotecOpen(false)} aria-label="Fermer la fenêtre">×</button>
+      <p className="synotec-modal-kicker">L'ÉCOSYSTÈME ONE NETWORK</p>
+      <h2 id="synotec-modal-title">Synotec<span>.</span></h2>
+      <p>Synotec est la société de distribution liée à l’écosystème One Network. Elle complète l’activité d’intégration en portant le volet distribution des solutions.</p>
+      <div className="synotec-modal-divider" />
+      <p className="synotec-modal-note">L’intégration d’un côté. La distribution de l’autre.</p>
+      <button className="synotec-modal-action" type="button" onClick={() => setSynotecOpen(false)}>J’ai compris <span aria-hidden="true">↗</span></button>
+    </section>
+  </div>}
 </>;
 }
 
