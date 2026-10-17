@@ -357,7 +357,7 @@ function NetworkCanvas() {
         <div className="thumb" aria-hidden="true" />
         <span className="plus synotec-mark" aria-hidden="true"><Icon name="plus" /></span>
         <span className="synotec-kicker">L’ÉCOSYSTÈME ONE NETWORK</span>
-        <h2>Smart Network and Security Solutions</h2>
+        <h2>Smart Network<br />Security Solutions</h2>
         <span className="sub">En savoir plus <span aria-hidden="true">↗</span></span>
         <span className="bar" />
       </button>
