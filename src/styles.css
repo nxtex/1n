@@ -780,7 +780,7 @@ h1 .ln>span{background-image:none!important;-webkit-text-fill-color:#07142e;colo
 .global-nav .links li{margin:0;padding:0}
 .global-nav .links a{display:block;white-space:nowrap;font-size:13px!important}
 .global-nav .links a[aria-current="page"]{color:#07142e!important}
-.global-nav .links a[aria-current="page"]::after{content:"";display:block;width:18px;height:2px;margin-top:7px;border-radius:2px;background:#3158CE}
+.global-nav .links a[aria-current="page"]::after{content:"";display:block;width:5px;height:5px;margin:7px auto 0;border-radius:50%;background:#3158CE}
 .global-nav .cta{position:relative!important;left:auto!important;top:auto!important;flex:0 0 auto;display:inline-flex!important}
 .global-nav .mobile-menu-toggle{display:none!important}
 body:has(.global-nav) .subpage,
