@@ -870,3 +870,28 @@ body:has(.global-nav) .expertise-page .expertise-hero{padding-top:0}
 .contact-page-submit:hover{background:#14264b!important;color:#fff!important}
 .contact-page-submit:focus-visible{outline:3px solid rgba(49,88,206,.45);outline-offset:4px}
 .contact-page-card>button{color:#08152f!important}
+
+
+/* Synotec identity: retain its signature red in the modal while preserving the site's light theme */
+.synotec-modal{
+  background:
+    radial-gradient(ellipse at 100% 0%,rgba(220,24,37,.18),transparent 48%),
+    linear-gradient(145deg,#fff 0%,#fff 58%,#fff7f7 100%)!important;
+  border-color:rgba(128,5,13,.28)!important;
+  box-shadow:0 28px 100px rgba(20,40,80,.2),inset 4px 0 0 #80050d!important;
+}
+.synotec-modal::before{
+  content:"";
+  position:absolute;
+  left:0;top:24px;bottom:24px;
+  width:3px;border-radius:0 4px 4px 0;
+  background:linear-gradient(180deg,#ed3640,#80050d);
+}
+.synotec-modal h2 span{color:#c91424!important}
+.synotec-modal-kicker{color:#9b1520!important}
+.synotec-modal-close{border-color:rgba(128,5,13,.24)!important;background:rgba(220,24,37,.055)!important;color:#80050d!important}
+.synotec-modal-divider{background:linear-gradient(90deg,rgba(128,5,13,.42),rgba(128,5,13,.08))!important}
+.synotec-modal-action{border-top-color:rgba(128,5,13,.2)!important}
+.synotec-modal-action span{color:#c91424!important}
+.synotec-modal-action:hover{color:#80050d!important}
+.synotec-modal-overlay{background:rgba(238,243,251,.82)!important}
