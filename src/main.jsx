@@ -279,7 +279,7 @@ function NetworkCanvas() {
         if (!element || !svg) return;
         listen(element, 'pointerenter', () => gsap.to(svg, { xPercent: 140, duration: 0.2, ease: 'power2.in', overwrite: true, onComplete: () => gsap.fromTo(svg, { xPercent: -140 }, { xPercent: 0, duration: 0.5, ease: 'power3.out' }) }));
       }
-      page.querySelectorAll('.cta').forEach((element) => { magnet(element, 0.22); animateArrow(element, element.querySelector('.dot svg')); });
+      // Contact CTA stays fixed; motion remains enabled for other interactive elements.
       page.querySelectorAll('.btn-round').forEach((element) => { magnet(element, 0.3); animateArrow(element, element.querySelector('svg')); });
       page.querySelectorAll('.play').forEach((element) => magnet(element, 0.3));
       page.querySelectorAll('.svc').forEach((element) => {
