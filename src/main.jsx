@@ -704,7 +704,7 @@ function App() {
   return <>
     <NetworkCanvas />
     {loading && <div className="site-loader" aria-label="Chargement de One Network">
-      <iframe src="/loading.html" title="Chargement de One Network" />
+      <iframe src={`${import.meta.env.BASE_URL}loading.html`} title="Chargement de One Network" />
     </div>}
   </>;
 }
