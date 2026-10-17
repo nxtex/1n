@@ -708,7 +708,8 @@ function App() {
     const destination = (base || "") + (path === "/" ? "/" : path + "/");
     window.history.replaceState(null, "", destination);
   }, []);
-  const [loading, setLoading] = useState(true);
+  // The animated loading screen is only part of the initial homepage entry.
+  const [loading, setLoading] = useState(path === "/");
 
   useEffect(() => {
     const finishLoading = (event) => {
