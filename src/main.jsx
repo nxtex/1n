@@ -233,8 +233,6 @@ function NetworkCanvas() {
         introTimeline?.kill();
         gsap.set('.nav, .eyebrow, h1, .lede, .actions, .scroll, .card, .services, .foot > *', { clearProps: 'all' });
         paintOnce();
-      } else if (!disposed) {
-        raf = requestAnimationFrame(tick);
       }
     };
     reducedMotion.addEventListener?.('change', motionChange);
@@ -295,7 +293,7 @@ function NetworkCanvas() {
       };
       listen(window, 'pointermove', onPointerMove, { passive: true });
 
-      [...document.querySelectorAll('.glass')].forEach((element) => {
+      [...page.querySelectorAll('.glass')].forEach((element) => {
         listen(element, 'pointerenter', () => gsap.to(element, { '--sheen': 0.13, duration: 0.6 }));
         listen(element, 'pointermove', (event) => {
           const rect = element.getBoundingClientRect();
@@ -305,7 +303,7 @@ function NetworkCanvas() {
         listen(element, 'pointerleave', () => gsap.to(element, { '--sheen': 0, duration: 0.8 }));
       });
 
-      const links = [...document.querySelectorAll('.links a')];
+      const links = [...page.querySelectorAll('.links a')];
       links.forEach((link) => {
         listen(link, 'pointerenter', () => {
           gsap.to(links, { opacity: 0.42, duration: 0.3, overwrite: 'auto' });
@@ -326,29 +324,29 @@ function NetworkCanvas() {
         if (!element || !svg) return;
         listen(element, 'pointerenter', () => gsap.to(svg, { xPercent: 140, duration: 0.2, ease: 'power2.in', overwrite: true, onComplete: () => gsap.fromTo(svg, { xPercent: -140 }, { xPercent: 0, duration: 0.5, ease: 'power3.out' }) }));
       }
-      document.querySelectorAll('.cta').forEach((element) => { magnet(element, 0.22); animateArrow(element, element.querySelector('.dot svg')); });
-      document.querySelectorAll('.btn-round').forEach((element) => { magnet(element, 0.3); animateArrow(element, element.querySelector('svg')); });
-      document.querySelectorAll('.play').forEach((element) => magnet(element, 0.3));
-      document.querySelectorAll('.svc').forEach((element) => {
+      page.querySelectorAll('.cta').forEach((element) => { magnet(element, 0.22); animateArrow(element, element.querySelector('.dot svg')); });
+      page.querySelectorAll('.btn-round').forEach((element) => { magnet(element, 0.3); animateArrow(element, element.querySelector('svg')); });
+      page.querySelectorAll('.play').forEach((element) => magnet(element, 0.3));
+      page.querySelectorAll('.svc').forEach((element) => {
         const go = element.querySelector('.go');
         magnet(go, 0.25); animateArrow(element, go?.querySelector('svg'));
         listen(element, 'pointerenter', () => gsap.to(element.querySelector('.t'), { x: 6, duration: 0.45 }));
         listen(element, 'pointerleave', () => gsap.to(element.querySelector('.t'), { x: 0, duration: 0.6 }));
       });
-      const all = document.querySelector('.all');
+      const all = page.querySelector('.all');
       if (all) {
-        listen(all, 'pointerenter', () => gsap.to('.plus2', { rotate: 90, scale: 1.12, duration: 0.6, ease: 'back.out(2)' }));
-        listen(all, 'pointerleave', () => gsap.to('.plus2', { rotate: 0, scale: 1, duration: 0.6 }));
+        listen(all, 'pointerenter', () => gsap.to(all.querySelector('.plus2'), { rotate: 90, scale: 1.12, duration: 0.6, ease: 'back.out(2)' }));
+        listen(all, 'pointerleave', () => gsap.to(all.querySelector('.plus2'), { rotate: 0, scale: 1, duration: 0.6 }));
       }
-      const card = document.querySelector('.card');
+      const card = page.querySelector('.card');
       if (card) {
         listen(card, 'pointerenter', () => {
-          gsap.to('.card .plus', { rotate: 90, scale: 1.1, duration: 0.6, ease: 'back.out(2)' });
-          gsap.to('.card .bar', { scaleX: 1.75, transformOrigin: '0 50%', duration: 0.6 });
+          gsap.to(card.querySelector('.plus'), { rotate: 90, scale: 1.1, duration: 0.6, ease: 'back.out(2)' });
+          gsap.to(card.querySelector('.bar'), { scaleX: 1.75, transformOrigin: '0 50%', duration: 0.6 });
         });
         listen(card, 'pointerleave', () => {
-          gsap.to('.card .plus', { rotate: 0, scale: 1, duration: 0.6 });
-          gsap.to('.card .bar', { scaleX: 1, duration: 0.6 });
+          gsap.to(card.querySelector('.plus'), { rotate: 0, scale: 1, duration: 0.6 });
+          gsap.to(card.querySelector('.bar'), { scaleX: 1, duration: 0.6 });
         });
       }
     }
