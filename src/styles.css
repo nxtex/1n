@@ -445,3 +445,6 @@ a:focus-visible,button:focus-visible{outline-color:rgba(var(--brand-blue-rgb),.9
 .synotec-card .bar{background:#3158CE;width:calc(38 * var(--u))}
 .synotec-card:hover .sub{color:#fff}
 @media(max-width:860px){.synotec-card .synotec-kicker{left:144px;top:23px;font-size:7.5px}.synotec-card h2{left:144px;top:49px;width:calc(100% - 160px);font-size:16px;line-height:21px}.synotec-card .sub{left:144px;top:117px;font-size:12px}}
+
+/* Keep the Synotec bridge clean: remove the two decorative circular outlines/glow. */
+.synotec-card::before,.synotec-card::after{display:none!important;content:none!important}
