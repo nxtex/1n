@@ -515,3 +515,41 @@ a:focus-visible,button:focus-visible{outline-color:rgba(var(--brand-blue-rgb),.9
 .contact-page-submit:hover{transform:translateY(-1px)}
 @media(max-width:760px){.contact-page-layout{grid-template-columns:minmax(0,1fr)}.contact-page-side{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.contact-page-note{grid-column:1/-1}}
 @media(max-width:520px){.contact-page-row,.contact-page-side{grid-template-columns:minmax(0,1fr)}.contact-page-form{padding:20px}.contact-page-intro{padding-top:58px}}
+
+
+/* Shared navigation for separate pages */
+.site-header{position:relative;z-index:50;min-height:92px;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:0 clamp(22px,5.2vw,84px);border-bottom:1px solid rgba(255,255,255,.1);background:rgba(5,7,14,.78);-webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px)}
+.site-logo{font-size:30px;letter-spacing:-.045em;white-space:nowrap;font-weight:500}
+.site-navigation{display:flex;align-items:center;justify-content:flex-end;gap:clamp(14px,2vw,30px);font-size:13px;color:rgba(244,245,249,.78)}
+.site-navigation>a{padding:10px 0;white-space:nowrap;transition:color .2s ease}
+.site-navigation>a:hover,.site-navigation>a[aria-current="page"]{color:#fff}
+.site-navigation>a[aria-current="page"]::after{content:"";display:block;height:2px;width:18px;margin-top:7px;background:var(--brand-blue);border-radius:2px}
+.site-navigation .site-nav-contact{display:inline-flex;align-items:center;gap:18px;padding:12px 15px 12px 20px;border-radius:999px;background:#fff;color:#080b12}
+.site-nav-contact span{display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:#3158CE;color:#fff;font-size:17px}
+.site-menu-toggle{display:none}
+@media(max-width:900px){
+ .site-header{min-height:76px;padding-inline:22px}
+ .site-logo{font-size:27px}
+ .site-menu-toggle{display:inline-flex;align-items:center;gap:12px;position:relative;z-index:60;border:1px solid rgba(255,255,255,.22);border-radius:999px;background:rgba(255,255,255,.06);color:#fff;padding:10px 14px;font:inherit;font-size:12px;cursor:pointer}
+ .site-menu-lines{display:flex;flex-direction:column;justify-content:center;gap:5px;width:18px;height:18px}
+ .site-menu-lines i{display:block;width:18px;height:1.5px;background:currentColor;transition:transform .22s ease}
+ .site-menu-toggle.is-open .site-menu-lines i:first-child{transform:translateY(3.25px) rotate(45deg)}
+ .site-menu-toggle.is-open .site-menu-lines i:last-child{transform:translateY(-3.25px) rotate(-45deg)}
+ .site-navigation{display:none;position:absolute;top:calc(100% + 8px);left:14px;right:14px;align-items:stretch;gap:0;padding:12px;border:1px solid rgba(255,255,255,.16);border-radius:22px;background:rgba(7,10,20,.97);box-shadow:0 24px 70px rgba(0,0,0,.5);-webkit-backdrop-filter:blur(24px);backdrop-filter:blur(24px)}
+ .site-navigation.is-open{display:flex;flex-direction:column}
+ .site-navigation>a{padding:14px 12px;border-radius:12px;font-size:15px}
+ .site-navigation>a[aria-current="page"]::after{display:none}
+ .site-navigation>a[aria-current="page"]{background:rgba(49,88,206,.16)}
+ .site-navigation .site-nav-contact{justify-content:space-between;margin-top:8px;padding:8px 12px 8px 16px}
+}
+@media(max-width:860px){
+ .nav .cta{display:none}
+ .nav .mobile-menu-toggle{display:inline-flex;align-items:center;gap:10px;position:relative;z-index:60;border:1px solid rgba(255,255,255,.2);border-radius:999px;background:rgba(255,255,255,.06);color:#fff;padding:10px 12px;font:inherit;font-size:12px;cursor:pointer}
+ .nav .menu-icon{display:flex;flex-direction:column;gap:5px;width:17px}
+ .nav .menu-icon b{display:block;height:1.5px;width:17px;background:currentColor;transition:transform .2s ease}
+ .nav .menu-icon.is-open b:first-child{transform:translateY(3.25px) rotate(45deg)}
+ .nav .menu-icon.is-open b:last-child{transform:translateY(-3.25px) rotate(-45deg)}
+ .nav .links.is-open{display:flex;position:absolute;z-index:80;top:calc(100% + 8px);left:0;right:0;height:auto;align-items:stretch;flex-direction:column;gap:0;padding:12px;border:1px solid rgba(255,255,255,.16);border-radius:20px;background:rgba(7,10,20,.97);box-shadow:0 24px 70px rgba(0,0,0,.5);-webkit-backdrop-filter:blur(24px);backdrop-filter:blur(24px)}
+ .nav .links.is-open a{padding:13px 12px;font-size:15px}
+ .nav .links.is-open a[aria-current="page"]::after{display:none}
+}
