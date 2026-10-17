@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="robots" content="noindex">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Redirection — One Network</title>
+  <script>
+    (function () {
+      var path = window.location.pathname.replace(/^\/1n(?=\/|$)/, '') || '/';
+      var query = new URLSearchParams(window.location.search);
+      var route = path + (query.toString() ? '?' + query.toString() : '');
+      window.location.replace('/1n/?route=' + encodeURIComponent(path));
+    })();
+  </script>
+</head>
+<body>
+  <p>Redirection vers One Network…</p>
+</body>
+</html>
