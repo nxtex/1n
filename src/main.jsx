@@ -61,6 +61,22 @@ function SiteHeader({ active = "" }) {
   </header>;
 }
 
+function GlobalNavigation({ active, onNavigate }) {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const links = [["/", "Accueil"], ["/a-propos/", "À propos"], ["/expertises/", "Expertises"], ["/secteurs/", "Secteurs"], ["/partenaires/", "Partenaires"], ["/contact/", "Contact"]];
+  const routeId = (href) => href.replace(/^\/+|\/+$/g, "");
+  return <header className="glass nav global-nav">
+    <a className="logo" href={sitePath("/")} aria-label="One network, accueil" onClick={(e)=>onNavigate(e,"/")}>One network.</a>
+    <ul id="mobile-navigation" className={mobileMenuOpen ? "links is-open" : "links"}>
+      {links.map(([href,label]) => <li key={href}><a href={sitePath(href)} aria-current={(active === routeId(href)) || (href === "/" && active === "") ? "page" : undefined} onClick={(e)=>{setMobileMenuOpen(false);onNavigate(e,href)}}>{label}</a></li>)}
+    </ul>
+    <a className="cta" href={sitePath("/contact/")} onClick={(e)=>{setMobileMenuOpen(false);onNavigate(e,"/contact/")}}>Nous contacter <span className="dot"><Icon /></span></a>
+    <button className="mobile-menu-toggle" type="button" aria-label={mobileMenuOpen ? "Fermer le menu" : "Ouvrir le menu"} aria-expanded={mobileMenuOpen} aria-controls="mobile-navigation" onClick={() => setMobileMenuOpen(open => !open)}>
+      <span>{mobileMenuOpen ? "Fermer" : "Menu"}</span><i className={mobileMenuOpen ? "menu-icon is-open" : "menu-icon"}><b/><b/></i>
+    </button>
+  </header>;
+}
+
 function NetworkCanvas() {
   const [synotecOpen, setSynotecOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -353,22 +369,6 @@ function NetworkCanvas() {
     <canvas id="net" ref={canvasRef} aria-hidden="true" />
     <div className="vignette" />
     <div className="stage">
-      <header className="glass nav">
-        <a className="logo" href={sitePath("/")} aria-label="One network, accueil">One network.</a>
-        <ul id="mobile-navigation" className={mobileMenuOpen ? "links is-open" : "links"} onClick={() => setMobileMenuOpen(false)}>
-          <li><a href={sitePath("/")} aria-current="page">Accueil</a></li>
-          <li><a href={sitePath("/a-propos/")}>À propos</a></li>
-          <li><a href={sitePath("/expertises/")}>Expertises</a></li>
-          <li><a href={sitePath("/secteurs/")}>Secteurs</a></li>
-          <li><a href={sitePath("/partenaires/")}>Partenaires</a></li>
-          <li><a href={sitePath("/contact/")}>Contact</a></li>
-        </ul>
-        <a className="cta" href={sitePath("/contact/")} onClick={() => setMobileMenuOpen(false)}>Nous contacter <span className="dot"><Icon /></span></a>
-        <button className="mobile-menu-toggle" type="button" aria-label={mobileMenuOpen ? "Fermer le menu" : "Ouvrir le menu"} aria-expanded={mobileMenuOpen} aria-controls="mobile-navigation" onClick={() => setMobileMenuOpen(open => !open)}>
-          <span>{mobileMenuOpen ? "Fermer" : "Menu"}</span><i className={mobileMenuOpen ? "menu-icon is-open" : "menu-icon"}><b/><b/></i>
-        </button>
-      </header>
-
       <section className="hero" id="accueil">
         <p className="eyebrow">Infrastructures &amp; solutions TIC</p>
         <h1><span className="ln"><span>Des infrastructures</span></span><span className="ln"><span>pour demain.</span></span></h1>
@@ -440,7 +440,7 @@ function NetworkCanvas() {
 
 
 function AboutPage({ embedded = false }) {
-  return <>{!embedded && <SiteHeader active="a-propos" />}<main id={embedded ? "a-propos-section" : undefined} className={embedded ? "subpage original-page singlepage-section" : "subpage original-page"}>
+  return <><main id={embedded ? "a-propos-section" : undefined} className={embedded ? "subpage original-page singlepage-section" : "subpage original-page"}>
     <section className="sub-hero">
       <p className="sub-eyebrow">À propos</p>
       <h1>One Network,<br />à vos côtés.</h1>
@@ -486,7 +486,7 @@ function AboutPage({ embedded = false }) {
 
 function SectorsPage() {
   const sectors = ["Entreprises", "Industrie", "Administrations", "Santé", "Éducation", "Banque et finance", "Commerce et distribution", "Énergie et services aux collectivités", "Hôtellerie", "Infrastructures et construction"];
-  return <><SiteHeader active="secteurs" /><main id="secteurs-detail" className="subpage original-page">
+  return <><main id="secteurs-detail" className="subpage original-page">
     <section className="sub-hero">
       <p className="sub-eyebrow">Secteurs</p>
       <h1>Nos secteurs<br />d’activité.</h1>
@@ -523,7 +523,7 @@ function ContactPage() {
     setSubmitted(true);
     window.location.href = `mailto:contact@onenetwork.dz?subject=${encodeURIComponent("Demande de contact — One Network")}&body=${encodeURIComponent(body)}`;
   }
-  return <><SiteHeader active="contact" /><main id="contact" className="subpage original-page">
+  return <><main id="contact" className="subpage original-page">
     <section className="contact-page-intro">
       <p className="sub-eyebrow">Contact</p>
       <h2>Parlons de votre projet.</h2>
@@ -611,7 +611,7 @@ function ExpertisePage({ embedded = false, includeContact = true }) {
 
   return <main id={embedded ? "expertise-details" : undefined} className={embedded ? "subpage expertise-page singlepage-section" : "subpage expertise-page"}>
     <div className="expertise-atmosphere" aria-hidden="true" />
-    {!embedded && <SiteHeader active="expertises" />}
+    
 
     <section className="expertise-hero">
       <div className="expertise-hero-copy">
@@ -688,7 +688,7 @@ function PartnersPage() {
     { number: "02", title: "Cybersécurité", text: "Des solutions de protection adaptées aux risques et aux usages." },
     { number: "03", title: "Infrastructures", text: "Des équipements fiables pour les environnements informatiques critiques." },
   ];
-  return <><SiteHeader active="partenaires" /><main className="subpage original-page partners-page">
+  return <><main className="subpage original-page partners-page">
     <section className="sub-hero"><p className="sub-eyebrow">Partenaires</p><h1>Un écosystème<br />de confiance.</h1><p className="sub-intro">One Network s’appuie sur un écosystème de technologies et de partenaires pour construire des solutions adaptées à chaque environnement.</p></section>
     <section className="original-content"><h2>La bonne technologie pour chaque besoin.</h2><p>Notre approche multi-constructeurs permet d’étudier les solutions selon vos objectifs, vos contraintes et votre environnement technique.</p>
       <div className="original-pill-grid">{partners.map(item => <article key={item.number}><span>{item.number}</span><h3>{item.title}</h3><p>{item.text}</p></article>)}</div>
@@ -699,42 +699,63 @@ function PartnersPage() {
 
 function App() {
   const base = (import.meta.env.BASE_URL || "/").replace(/\/$/, "");
-  const routeFromFallback = new URLSearchParams(window.location.search).get("route");
-  const rawPath = routeFromFallback || window.location.pathname;
-  const withoutBase = base && base !== "/" && rawPath.startsWith(base) ? rawPath.slice(base.length) || "/" : rawPath;
-  const path = withoutBase.replace(/\/+$/, "") || "/";
+  const resolvePath = (rawPath) => {
+    const routeFromFallback = new URLSearchParams(window.location.search).get("route");
+    const raw = routeFromFallback || rawPath;
+    const withoutBase = base && base !== "/" && raw.startsWith(base) ? raw.slice(base.length) || "/" : raw;
+    return withoutBase.replace(/\/+$/, "") || "/";
+  };
+  const [path, setPath] = useState(() => resolvePath(window.location.pathname));
+  const [loading, setLoading] = useState(() => resolvePath(window.location.pathname) === "/");
+  const active = path.replace(/^\/+|\/+$/g, "");
   useEffect(() => {
-    if (!routeFromFallback) return;
-    const destination = (base || "") + (path === "/" ? "/" : path + "/");
-    window.history.replaceState(null, "", destination);
-  }, []);
-  // The animated loading screen is only part of the initial homepage entry.
-  const [loading, setLoading] = useState(path === "/");
-
-  useEffect(() => {
-    const finishLoading = (event) => {
-      if (event.origin !== window.location.origin || event.data?.type !== "one-network-loader-finished") return;
-      setLoading(false);
+    const routeFromFallback = new URLSearchParams(window.location.search).get("route");
+    if (routeFromFallback) {
+      const destination = (base || "") + (path === "/" ? "/" : path + "/");
+      window.history.replaceState(null, "", destination);
+    }
+    const onPopState = () => { setPath(resolvePath(window.location.pathname)); window.scrollTo({top:0,behavior:"auto"}); };
+    const onClick = (event) => {
+      if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+      const anchor = event.target.closest("a[href]");
+      if (!anchor || anchor.target === "_blank" || anchor.hasAttribute("download")) return;
+      const url = new URL(anchor.href, window.location.href);
+      if (url.origin !== window.location.origin || (anchor.hash && url.pathname === window.location.pathname)) return;
+      const nextPath = resolvePath(url.pathname);
+      if (!["/","/a-propos","/expertises","/secteurs","/partenaires","/contact"].includes(nextPath)) return;
+      event.preventDefault();
+      if (nextPath !== path) { window.history.pushState(null, "", url.pathname); setPath(nextPath); window.scrollTo({top:0,behavior:"auto"}); }
     };
+    window.addEventListener("popstate", onPopState);
+    document.addEventListener("click", onClick);
+    return () => { window.removeEventListener("popstate", onPopState); document.removeEventListener("click", onClick); };
+  }, [path, base]);
+  useEffect(() => {
+    if (!loading) return undefined;
+    const finishLoading = (event) => { if (event.origin === window.location.origin && event.data?.type === "one-network-loader-finished") setLoading(false); };
     const fallback = window.setTimeout(() => setLoading(false), 8000);
     window.addEventListener("message", finishLoading);
-    return () => {
-      window.clearTimeout(fallback);
-      window.removeEventListener("message", finishLoading);
-    };
-  }, []);
-
+    return () => { window.clearTimeout(fallback); window.removeEventListener("message", finishLoading); };
+  }, [loading]);
+  const valid = ["/","/a-propos","/expertises","/secteurs","/partenaires","/contact"].includes(path);
+  const navigate = (event, href) => {
+    const url = new URL(sitePath(href), window.location.origin);
+    const nextPath = resolvePath(url.pathname);
+    if (url.origin === window.location.origin && ["/","/a-propos","/expertises","/secteurs","/partenaires","/contact"].includes(nextPath)) {
+      event.preventDefault();
+      if (nextPath !== path) { window.history.pushState(null,"",url.pathname); setPath(nextPath); window.scrollTo({top:0,behavior:"auto"}); }
+    }
+  };
   return <>
+    <GlobalNavigation active={active} onNavigate={navigate} />
     {path === "/" && <NetworkCanvas />}
     {path === "/a-propos" && <AboutPage />}
     {path === "/expertises" && <ExpertisePage />}
     {path === "/secteurs" && <SectorsPage />}
     {path === "/partenaires" && <PartnersPage />}
     {path === "/contact" && <ContactPage />}
-    {!["/", "/a-propos", "/expertises", "/secteurs", "/partenaires", "/contact"].includes(path) && <main className="subpage original-page"><section className="sub-hero"><p className="sub-eyebrow">Page introuvable</p><h1>Cette page<br/>n’existe pas.</h1><p className="sub-intro">La page demandée n’a pas été trouvée.</p><p className="original-section-link"><a href={sitePath("/")}>Retour à l’accueil <span>↗</span></a></p></section></main>}
-    {loading && <div className="site-loader" aria-label="Chargement de One Network">
-      <iframe src={`${import.meta.env.BASE_URL}loading.html`} title="Chargement de One Network" />
-    </div>}
+    {!valid && <main className="subpage original-page"><section className="sub-hero"><p className="sub-eyebrow">Page introuvable</p><h1>Cette page<br/>n’existe pas.</h1><p className="sub-intro">La page demandée n’a pas été trouvée.</p><p className="original-section-link"><a href={sitePath("/")}>Retour à l’accueil <span>↗</span></a></p></section></main>}
+    {loading && path === "/" && <div className="site-loader" aria-label="Chargement de One Network"><iframe src={import.meta.env.BASE_URL + "loading.html"} title="Chargement de One Network" /></div>}
   </>;
 }
 
