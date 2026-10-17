@@ -623,7 +623,7 @@ function AboutPage() {
 }
 
 function App() {
-  const path = window.location.pathname.replace(/\\/+$/, "") || "/";
+  const path = window.location.pathname.replace(/\/+$/, "") || "/";
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
