@@ -750,7 +750,7 @@ function App() {
     <GlobalNavigation active={active} onNavigate={navigate} />
     {path === "/" && <NetworkCanvas />}
     {path === "/a-propos" && <AboutPage />}
-    {path === "/expertises" && <ExpertisePage />}
+    {path === "/expertises" && <ExpertisePage includeContact={false} />}
     {path === "/secteurs" && <SectorsPage />}
     {path === "/partenaires" && <PartnersPage />}
     {path === "/contact" && <ContactPage />}
