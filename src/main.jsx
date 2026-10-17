@@ -34,6 +34,7 @@ function Icon({ name = 'arrow' }) {
 
 function NetworkCanvas() {
   const [synotecOpen, setSynotecOpen] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const canvasRef = useRef(null);
   const pageRef = useRef(null);
 
@@ -325,7 +326,7 @@ function NetworkCanvas() {
     <div className="stage">
       <header className="glass nav">
         <a className="logo" href="#accueil" aria-label="One network, accueil">One network.</a>
-        <ul className="links">
+        <ul id="mobile-navigation" className={mobileMenuOpen ? "links is-open" : "links"} onClick={() => setMobileMenuOpen(false)}>
           <li><a href="#accueil" aria-current="page">Accueil</a></li>
           <li><a href="#a-propos-section">À propos</a></li>
           <li><a href="#expertise-details">Expertises</a></li>
@@ -333,7 +334,10 @@ function NetworkCanvas() {
           <li><a href="#partenaires">Partenaires</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
-        <a className="cta" href="#contact">Nous contacter <span className="dot"><Icon /></span></a>
+        <a className="cta" href="#contact" onClick={() => setMobileMenuOpen(false)}>Nous contacter <span className="dot"><Icon /></span></a>
+        <button className="mobile-menu-toggle" type="button" aria-label={mobileMenuOpen ? "Fermer le menu" : "Ouvrir le menu"} aria-expanded={mobileMenuOpen} aria-controls="mobile-navigation" onClick={() => setMobileMenuOpen(open => !open)}>
+          <span>{mobileMenuOpen ? "Fermer" : "Menu"}</span><i className={mobileMenuOpen ? "menu-icon is-open" : "menu-icon"}><b/><b/></i>
+        </button>
       </header>
 
       <section className="hero" id="accueil">
@@ -343,9 +347,7 @@ function NetworkCanvas() {
         <div className="actions">
           <a className="btn-round" href="#expertise-details" aria-label="Découvrir nos expertises"><Icon /></a>
           <a className="label" href="#expertise-details">Découvrir nos expertises</a>
-          <span className="rule" />
-          <a className="video" href="#accueil">Voir la vidéo</a>
-          <a className="play" href="#accueil" aria-label="Voir la vidéo"><Icon name="play" /></a>
+
         </div>
         <div className="scroll" aria-label="Défiler vers le bas">
           <svg viewBox="0 0 28 28" aria-hidden="true"><circle cx="14" cy="14" r="12.5"/><path d="M14 7.5v12M9.5 15l4.5 4.5 4.5-4.5"/></svg>
