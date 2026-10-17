@@ -1,14 +1,14 @@
 # One Network — React + Vite
 
-Reproduction React de la page d'accueil One Network, adaptée aux navigateurs WebKit (Safari sur macOS, iPhone et iPad).
+Reproduction React de la page d'accueil One Network, adaptée aux navigateurs WebKit : Safari sur macOS, iPhone et iPad.
 
 ## Stack
 
-- React 19
-- Vite
+- React 18
+- Vite 6
 - GSAP 3 pour les animations d'entrée et les interactions
 - Canvas 2D pour le réseau lumineux en arrière-plan
-- CSS avec `-webkit-backdrop-filter`, `viewport-fit=cover` et respect des zones de sécurité iOS
+- CSS avec `-webkit-backdrop-filter`, `viewport-fit=cover` et prise en charge des safe areas iOS
 
 ## Développement
 
@@ -24,4 +24,4 @@ npm run build
 npm run preview
 ```
 
-L'animation est réduite automatiquement lorsque le système a activé « Réduire les animations ». Le contenu de la page reste lisible même si l'animation échoue à se charger.
+La page respecte `prefers-reduced-motion`. Un fichier de secours révèle le contenu et conserve le réseau animé si GSAP n'est pas disponible.
