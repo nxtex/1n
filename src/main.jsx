@@ -32,6 +32,35 @@ function Icon({ name = 'arrow' }) {
   return <svg className="i" viewBox="0 0 24 24" aria-hidden="true">{paths[name]}</svg>;
 }
 
+function sitePath(path) {
+  const base = import.meta.env.BASE_URL || "/";
+  const normalizedBase = base.endsWith("/") ? base : base + "/";
+  if (path === "/") return normalizedBase;
+  return normalizedBase + path.replace(/^\/+/, "");
+}
+
+function SiteHeader({ active = "" }) {
+  const [open, setOpen] = useState(false);
+  const links = [
+    ["", "Accueil", "/"],
+    ["a-propos", "À propos", "/a-propos/"],
+    ["expertises", "Expertises", "/expertises/"],
+    ["secteurs", "Secteurs", "/secteurs/"],
+    ["partenaires", "Partenaires", "/partenaires/"],
+    ["contact", "Contact", "/contact/"],
+  ];
+  return <header className="site-header">
+    <a className="site-logo" href={sitePath("/")} aria-label="One Network, accueil">One network.</a>
+    <button className={open ? "site-menu-toggle is-open" : "site-menu-toggle"} type="button" aria-label={open ? "Fermer le menu" : "Ouvrir le menu"} aria-expanded={open} aria-controls="site-primary-navigation" onClick={() => setOpen(value => !value)}>
+      <span className="site-menu-lines"><i/><i/></span><span className="site-menu-label">{open ? "Fermer" : "Menu"}</span>
+    </button>
+    <nav id="site-primary-navigation" className={open ? "site-navigation is-open" : "site-navigation"} aria-label="Navigation principale">
+      {links.map(([id, label, path]) => <a key={id || "home"} href={sitePath(path)} aria-current={active === id ? "page" : undefined} onClick={() => setOpen(false)}>{label}</a>)}
+      <a className="site-nav-contact" href={sitePath("/contact/")} onClick={() => setOpen(false)}>Nous contacter <span>↗</span></a>
+    </nav>
+  </header>;
+}
+
 function NetworkCanvas() {
   const [synotecOpen, setSynotecOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -128,9 +157,9 @@ function NetworkCanvas() {
         const x = X(orb.x + orb.dx + sx * 26);
         const y = Y(orb.y + orb.dy + sy * 22);
         const gradient = ctx.createRadialGradient(x, y, 0, x, y, radius);
-        gradient.addColorStop(0, `rgba(255,190,120,${(0.3 * orb.a * orbAlpha).toFixed(3)})`);
-        gradient.addColorStop(0.55, `rgba(255,170,100,${(0.12 * orb.a * orbAlpha).toFixed(3)})`);
-        gradient.addColorStop(1, 'rgba(255,170,100,0)');
+        gradient.addColorStop(0, `rgba(49,88,206,${(0.22 * orb.a * orbAlpha).toFixed(3)})`);
+        gradient.addColorStop(0.55, `rgba(49,88,206,${(0.10 * orb.a * orbAlpha).toFixed(3)})`);
+        gradient.addColorStop(1, 'rgba(49,88,206,0)');
         ctx.fillStyle = gradient; ctx.beginPath(); ctx.arc(x, y, radius, 0, Math.PI * 2); ctx.fill();
       });
 
@@ -141,16 +170,16 @@ function NetworkCanvas() {
         const ax = X(edge.a.x + sx * 12); const ay = Y(edge.a.y + sy * 10);
         const bx = X(edge.b.x + sx * 12); const by = Y(edge.b.y + sy * 10);
         const gradient = ctx.createLinearGradient(ax, ay, bx, by);
-        gradient.addColorStop(0, 'rgba(214,224,248,.50)');
-        gradient.addColorStop(edge.far ? 0.7 : 1, edge.far ? 'rgba(170,190,235,.14)' : 'rgba(214,224,248,.40)');
-        if (edge.far) gradient.addColorStop(1, 'rgba(170,190,235,0)');
+        gradient.addColorStop(0, 'rgba(49,88,206,.32)');
+        gradient.addColorStop(edge.far ? 0.7 : 1, edge.far ? 'rgba(49,88,206,.10)' : 'rgba(49,88,206,.24)');
+        if (edge.far) gradient.addColorStop(1, 'rgba(49,88,206,0)');
         ctx.strokeStyle = gradient; ctx.beginPath(); ctx.moveTo(ax, ay);
         ctx.lineTo(ax + (bx - ax) * progress, ay + (by - ay) * progress); ctx.stroke();
       });
 
       dust.forEach((particle) => {
         const twinkle = reducedMotion.matches ? 1 : 0.7 + 0.3 * Math.sin(state.time * 1.1 + particle.tw);
-        ctx.fillStyle = `rgba(255,214,170,${(particle.a * twinkle * orbAlpha).toFixed(3)})`;
+        ctx.fillStyle = `rgba(49,88,206,${(particle.a * twinkle * orbAlpha * 0.7).toFixed(3)})`;
         ctx.beginPath(); ctx.arc(X(particle.x + sx * 6), Y(particle.y + sy * 5), particle.r * scale, 0, Math.PI * 2); ctx.fill();
       });
 
@@ -161,9 +190,9 @@ function NetworkCanvas() {
         const y = Y(edge.a.y + (edge.b.y - edge.a.y) * pulse.t + sy * 10);
         const radius = 16 * scale;
         const gradient = ctx.createRadialGradient(x, y, 0, x, y, radius);
-        gradient.addColorStop(0, `rgba(255,240,215,${(0.95 * pulse.a).toFixed(3)})`);
-        gradient.addColorStop(0.3, `rgba(255,190,120,${(0.4 * pulse.a).toFixed(3)})`);
-        gradient.addColorStop(1, 'rgba(255,170,100,0)');
+        gradient.addColorStop(0, `rgba(49,88,206,${(0.72 * pulse.a).toFixed(3)})`);
+        gradient.addColorStop(0.3, `rgba(49,88,206,${(0.3 * pulse.a).toFixed(3)})`);
+        gradient.addColorStop(1, 'rgba(49,88,206,0)');
         ctx.fillStyle = gradient; ctx.beginPath(); ctx.arc(x, y, radius, 0, Math.PI * 2); ctx.fill();
       });
 
@@ -174,15 +203,15 @@ function NetworkCanvas() {
         const pulse = reducedMotion.matches ? 1 : (0.88 + 0.12 * Math.sin(state.time * 0.77 + index * 1.9)) * node.pulse;
         const glow = radius * (node.soft ? 4.2 : 7) * pulse;
         let gradient = ctx.createRadialGradient(x, y, 0, x, y, glow);
-        gradient.addColorStop(0, node.soft ? 'rgba(255,200,140,.55)' : 'rgba(255,224,180,.55)');
-        gradient.addColorStop(0.25, 'rgba(255,176,100,.22)');
-        gradient.addColorStop(1, 'rgba(255,160,90,0)');
+        gradient.addColorStop(0, node.soft ? 'rgba(49,88,206,.28)' : 'rgba(49,88,206,.34)');
+        gradient.addColorStop(0.25, 'rgba(49,88,206,.15)');
+        gradient.addColorStop(1, 'rgba(49,88,206,0)');
         ctx.fillStyle = gradient; ctx.beginPath(); ctx.arc(x, y, glow, 0, Math.PI * 2); ctx.fill();
         if (!node.soft) {
           gradient = ctx.createRadialGradient(x, y, 0, x, y, radius * 1.7);
-          gradient.addColorStop(0, 'rgba(255,255,255,1)');
-          gradient.addColorStop(0.45, 'rgba(255,238,210,.95)');
-          gradient.addColorStop(1, 'rgba(255,200,140,0)');
+          gradient.addColorStop(0, 'rgba(7,20,46,.95)');
+          gradient.addColorStop(0.45, 'rgba(49,88,206,.75)');
+          gradient.addColorStop(1, 'rgba(49,88,206,0)');
           ctx.fillStyle = gradient; ctx.beginPath(); ctx.arc(x, y, radius * 1.7, 0, Math.PI * 2); ctx.fill();
         }
       });
@@ -325,16 +354,16 @@ function NetworkCanvas() {
     <div className="vignette" />
     <div className="stage">
       <header className="glass nav">
-        <a className="logo" href="#accueil" aria-label="One network, accueil">One network.</a>
+        <a className="logo" href={sitePath("/")} aria-label="One network, accueil">One network.</a>
         <ul id="mobile-navigation" className={mobileMenuOpen ? "links is-open" : "links"} onClick={() => setMobileMenuOpen(false)}>
-          <li><a href="#accueil" aria-current="page">Accueil</a></li>
-          <li><a href="#a-propos-section">À propos</a></li>
-          <li><a href="#expertise-details">Expertises</a></li>
-          <li><a href="#secteurs-detail">Secteurs</a></li>
-          <li><a href="#partenaires">Partenaires</a></li>
-          <li><a href="#contact">Contact</a></li>
+          <li><a href={sitePath("/")} aria-current="page">Accueil</a></li>
+          <li><a href={sitePath("/a-propos/")}>À propos</a></li>
+          <li><a href={sitePath("/expertises/")}>Expertises</a></li>
+          <li><a href={sitePath("/secteurs/")}>Secteurs</a></li>
+          <li><a href={sitePath("/partenaires/")}>Partenaires</a></li>
+          <li><a href={sitePath("/contact/")}>Contact</a></li>
         </ul>
-        <a className="cta" href="#contact" onClick={() => setMobileMenuOpen(false)}>Nous contacter <span className="dot"><Icon /></span></a>
+        <a className="cta" href={sitePath("/contact/")} onClick={() => setMobileMenuOpen(false)}>Nous contacter <span className="dot"><Icon /></span></a>
         <button className="mobile-menu-toggle" type="button" aria-label={mobileMenuOpen ? "Fermer le menu" : "Ouvrir le menu"} aria-expanded={mobileMenuOpen} aria-controls="mobile-navigation" onClick={() => setMobileMenuOpen(open => !open)}>
           <span>{mobileMenuOpen ? "Fermer" : "Menu"}</span><i className={mobileMenuOpen ? "menu-icon is-open" : "menu-icon"}><b/><b/></i>
         </button>
@@ -345,8 +374,8 @@ function NetworkCanvas() {
         <h1><span className="ln"><span>Des infrastructures</span></span><span className="ln"><span>pour demain.</span></span></h1>
         <p className="lede">Concevoir, déployer et accompagner des infrastructures performantes, sécurisées et évolutives.</p>
         <div className="actions">
-          <a className="btn-round" href="#expertise-details" aria-label="Découvrir nos expertises"><Icon /></a>
-          <a className="label" href="#expertise-details">Découvrir nos expertises</a>
+          <a className="btn-round" href={sitePath("/expertises/")} aria-label="Découvrir nos expertises"><Icon /></a>
+          <a className="label" href={sitePath("/expertises/")}>Découvrir nos expertises</a>
 
         </div>
         <div className="scroll" aria-label="Défiler vers le bas">
@@ -365,22 +394,22 @@ function NetworkCanvas() {
       </button>
 
       <nav className="glass services" id="expertises" aria-label="Expertises">
-        <a className="svc s1" href="#reseaux"><span className="n">01</span><span className="t">Réseaux &amp;<br />infrastructures</span><span className="go"><Icon /></span></a>
+        <a className="svc s1" href={sitePath("/expertises/#reseaux")}><span className="n">01</span><span className="t">Réseaux &amp;<br />infrastructures</span><span className="go"><Icon /></span></a>
         <i className="sep a" />
-        <a className="svc s2" href="#datacenter"><span className="n">02</span><span className="t">Datacenter &amp;<br />virtualisation</span><span className="go"><Icon /></span></a>
+        <a className="svc s2" href={sitePath("/expertises/#datacenter")}><span className="n">02</span><span className="t">Datacenter &amp;<br />virtualisation</span><span className="go"><Icon /></span></a>
         <i className="sep b" />
-        <a className="svc s3 one-line" href="#cyber"><span className="n">03</span><span className="t">Cybersécurité</span><span className="go"><Icon /></span></a>
+        <a className="svc s3 one-line" href={sitePath("/expertises/#cyber")}><span className="n">03</span><span className="t">Cybersécurité</span><span className="go"><Icon /></span></a>
         <i className="sep c" />
-        <a className="svc s4" href="#batiments"><span className="n">04</span><span className="t">Sécurité électronique<br />&amp; bâtiments</span><span className="go"><Icon /></span></a>
+        <a className="svc s4" href={sitePath("/expertises/#batiments")}><span className="n">04</span><span className="t">Sécurité électronique<br />&amp; bâtiments</span><span className="go"><Icon /></span></a>
         <i className="sep d" />
-        <a className="all" href="#secteurs-detail" id="secteurs"><span className="plus2"><Icon name="plus" /></span><span className="txt">Tous nos<br />secteurs</span></a>
+        <a className="all" href={sitePath("/secteurs/")} id="secteurs"><span className="plus2"><Icon name="plus" /></span><span className="txt">Tous nos<br />secteurs</span></a>
       </nav>
 
       <footer className="foot">
         <div className="vline" aria-hidden="true" />
         <i className="spark" />
         <i className="hr l" />
-        <a className="trust" href="#partenaires-detail" id="partenaires">
+        <a className="trust" href={sitePath("/partenaires/")} id="partenaires">
           <span className="avatars" aria-hidden="true">
             <svg viewBox="0 0 36 36"><circle cx="18" cy="18" r="16.5" fill="none" stroke="#fff" strokeWidth="1.5"/><path d="M9 24V12h3l6 7 6-7h3v12h-3v-7l-6 7-6-7v7z" fill="#fff"/></svg>
             <svg viewBox="0 0 36 36"><circle cx="18" cy="18" r="16.5" fill="none" stroke="#fff" strokeWidth="1.5"/><path d="M9 9h18v4H13v4h11v4H13v2h14v4H9z" fill="#fff"/></svg>
@@ -394,10 +423,7 @@ function NetworkCanvas() {
       </footer>
     </div>
   </div>
-  <AboutPage embedded />
-  <ExpertisePage embedded includeContact={false} />
-  <SectorsPage />
-  <ContactPage />
+  
   {synotecOpen && <div className="synotec-overlay" role="presentation" onMouseDown={(event) => { if (event.target === event.currentTarget) setSynotecOpen(false); }}>
     <section className="synotec-modal" role="dialog" aria-modal="true" aria-labelledby="synotec-modal-title">
       <button className="synotec-modal-close" type="button" onClick={() => setSynotecOpen(false)} aria-label="Fermer la fenêtre">×</button>
@@ -414,7 +440,7 @@ function NetworkCanvas() {
 
 
 function AboutPage({ embedded = false }) {
-  return <main id={embedded ? "a-propos-section" : undefined} className={embedded ? "subpage original-page singlepage-section" : "subpage original-page"}>
+  return <>{!embedded && <SiteHeader active="a-propos" />}<main id={embedded ? "a-propos-section" : undefined} className={embedded ? "subpage original-page singlepage-section" : "subpage original-page"}>
     <section className="sub-hero">
       <p className="sub-eyebrow">À propos</p>
       <h1>One Network,<br />à vos côtés.</h1>
@@ -423,7 +449,7 @@ function AboutPage({ embedded = false }) {
         <a href="#qui-nous-sommes">Qui nous sommes <span>↘</span></a>
         <a href="#notre-maniere">Notre manière de travailler <span>↘</span></a>
         <a href="#partenaire-unique">Un partenaire unique <span>↘</span></a>
-        <a href="#contact">Parlons de votre projet <span>↘</span></a>
+        <a href={sitePath("/contact/")}>Parlons de votre projet <span>↗</span></a>
       </nav>
     </section>
     <section className="original-content" id="qui-nous-sommes">
@@ -431,7 +457,7 @@ function AboutPage({ embedded = false }) {
       <h2>Qui nous sommes.</h2>
       <p>One Network est spécialisé dans l’intégration de solutions informatiques et de communication, la cybersécurité, les infrastructures de centres de données et l’automatisation des bâtiments.</p>
       <p>Nous accompagnons les entreprises, les acteurs industriels et les institutions dans la conception, le déploiement et la maintenance de leurs infrastructures. Notre démarche associe analyse des besoins, ingénierie et mise en œuvre technique.</p>
-      <a className="about-text-link" href="#expertise-details">Découvrir nos expertises <span>↗</span></a>
+      <a className="about-text-link" href={sitePath("/expertises/")}>Découvrir nos expertises <span>↗</span></a>
       <div className="original-pill-grid">
         <article><span>01</span><h3>Solutions informatiques et de communication</h3></article>
         <article><span>02</span><h3>Cybersécurité</h3></article>
@@ -455,12 +481,12 @@ function AboutPage({ embedded = false }) {
       <p>Nous concevons, déployons et maintenons les solutions qui connectent vos équipes, protègent vos données et accompagnent l’évolution de vos installations.</p>
       <p>Réseaux, cybersécurité, serveurs, centres de données et bâtiments : nous réunissons plusieurs expertises pour vous accompagner tout au long de votre projet.</p>
     </section>
-  </main>;
+  </main></>;
 }
 
 function SectorsPage() {
   const sectors = ["Entreprises", "Industrie", "Administrations", "Santé", "Éducation", "Banque et finance", "Commerce et distribution", "Énergie et services aux collectivités", "Hôtellerie", "Infrastructures et construction"];
-  return <main id="secteurs-detail" className="subpage original-page singlepage-section">
+  return <><SiteHeader active="secteurs" /><main id="secteurs-detail" className="subpage original-page">
     <section className="sub-hero">
       <p className="sub-eyebrow">Secteurs</p>
       <h1>Nos secteurs<br />d’activité.</h1>
@@ -469,8 +495,8 @@ function SectorsPage() {
     <section className="original-sector-grid" aria-label="Nos secteurs d’activité">
       {sectors.map((sector, index) => <article className="original-sector" key={sector}><span>{String(index + 1).padStart(2, "0")}</span><h2>{sector}</h2></article>)}
     </section>
-    <p className="original-section-link"><a href="#expertise-details">Découvrir nos expertises <span>↗</span></a></p>
-  </main>;
+    <p className="original-section-link"><a href={sitePath("/expertises/")}>Découvrir nos expertises <span>↗</span></a></p>
+  </main></>;
 }
 
 function ContactPage() {
@@ -497,7 +523,7 @@ function ContactPage() {
     setSubmitted(true);
     window.location.href = `mailto:contact@onenetwork.dz?subject=${encodeURIComponent("Demande de contact — One Network")}&body=${encodeURIComponent(body)}`;
   }
-  return <main id="contact" className="subpage original-page singlepage-section">
+  return <><SiteHeader active="contact" /><main id="contact" className="subpage original-page">
     <section className="contact-page-intro">
       <p className="sub-eyebrow">Contact</p>
       <h2>Parlons de votre projet.</h2>
@@ -542,7 +568,7 @@ function ContactPage() {
         </div>
       </form>
     </section>
-  </main>;
+  </main></>;
 }
 
 function ExpertisePage({ embedded = false, includeContact = true }) {
@@ -585,17 +611,7 @@ function ExpertisePage({ embedded = false, includeContact = true }) {
 
   return <main id={embedded ? "expertise-details" : undefined} className={embedded ? "subpage expertise-page singlepage-section" : "subpage expertise-page"}>
     <div className="expertise-atmosphere" aria-hidden="true" />
-    {!embedded && <header className="sub-nav">
-      <a className="sub-logo" href="/">One network.</a>
-      <nav aria-label="Navigation principale">
-        <a href="/">Accueil</a>
-        <a href="/a-propos">À propos</a>
-        <a href="/expertises" aria-current="page">Expertises</a>
-        <a href="/secteurs">Secteurs</a>
-        <a href="/partenaires">Partenaires</a>
-        <a className="sub-contact" href="/contact">Nous contacter <span><Icon /></span></a>
-      </nav>
-    </header>}
+    {!embedded && <SiteHeader active="expertises" />}
 
     <section className="expertise-hero">
       <div className="expertise-hero-copy">
@@ -666,8 +682,26 @@ function ExpertisePage({ embedded = false, includeContact = true }) {
   </main>;
 }
 
+function PartnersPage() {
+  const partners = [
+    { number: "01", title: "Réseaux & communications", text: "Des technologies pour relier les équipes, les sites et les systèmes." },
+    { number: "02", title: "Cybersécurité", text: "Des solutions de protection adaptées aux risques et aux usages." },
+    { number: "03", title: "Infrastructures", text: "Des équipements fiables pour les environnements informatiques critiques." },
+  ];
+  return <><SiteHeader active="partenaires" /><main className="subpage original-page partners-page">
+    <section className="sub-hero"><p className="sub-eyebrow">Partenaires</p><h1>Un écosystème<br />de confiance.</h1><p className="sub-intro">One Network s’appuie sur un écosystème de technologies et de partenaires pour construire des solutions adaptées à chaque environnement.</p></section>
+    <section className="original-content"><h2>La bonne technologie pour chaque besoin.</h2><p>Notre approche multi-constructeurs permet d’étudier les solutions selon vos objectifs, vos contraintes et votre environnement technique.</p>
+      <div className="original-pill-grid">{partners.map(item => <article key={item.number}><span>{item.number}</span><h3>{item.title}</h3><p>{item.text}</p></article>)}</div>
+    </section>
+    <section className="original-highlight"><p className="sub-eyebrow">Parlons de votre projet</p><h2>Construisons la solution adaptée à vos besoins.</h2><p>Échangeons sur vos infrastructures et les technologies qui peuvent les accompagner.</p><p className="original-section-link"><a href={sitePath("/contact/")}>Nous contacter <span>↗</span></a></p></section>
+  </main></>;
+}
+
 function App() {
-  const path = window.location.pathname.replace(/\/+$/, "") || "/";
+  const rawPath = window.location.pathname;
+  const base = (import.meta.env.BASE_URL || "/").replace(/\/$/, "");
+  const withoutBase = base && base !== "/" && rawPath.startsWith(base) ? rawPath.slice(base.length) || "/" : rawPath;
+  const path = withoutBase.replace(/\/+$/, "") || "/";
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -683,26 +717,14 @@ function App() {
     };
   }, []);
 
-  useEffect(() => {
-    const routeTargets = {
-      "/a-propos": "a-propos-section",
-      "/expertises": "expertise-details",
-      "/expertises/reseaux": "reseaux",
-      "/expertises/datacenter": "datacenter",
-      "/expertises/cybersecurite": "cyber",
-      "/expertises/batiments": "batiments",
-      "/secteurs": "secteurs-detail",
-      "/partenaires": "partenaires",
-      "/contact": "contact",
-    };
-    const targetId = routeTargets[path];
-    if (!targetId) return undefined;
-    const timer = window.setTimeout(() => document.getElementById(targetId)?.scrollIntoView({ behavior: "auto", block: "start" }), 100);
-    return () => window.clearTimeout(timer);
-  }, [path]);
-
   return <>
-    <NetworkCanvas />
+    {path === "/" && <NetworkCanvas />}
+    {path === "/a-propos" && <AboutPage />}
+    {path === "/expertises" && <ExpertisePage />}
+    {path === "/secteurs" && <SectorsPage />}
+    {path === "/partenaires" && <PartnersPage />}
+    {path === "/contact" && <ContactPage />}
+    {!["/", "/a-propos", "/expertises", "/secteurs", "/partenaires", "/contact"].includes(path) && <main className="subpage original-page"><section className="sub-hero"><p className="sub-eyebrow">Page introuvable</p><h1>Cette page<br/>n’existe pas.</h1><p className="sub-intro">La page demandée n’a pas été trouvée.</p><p className="original-section-link"><a href={sitePath("/")}>Retour à l’accueil <span>↗</span></a></p></section></main>}
     {loading && <div className="site-loader" aria-label="Chargement de One Network">
       <iframe src={`${import.meta.env.BASE_URL}loading.html`} title="Chargement de One Network" />
     </div>}
