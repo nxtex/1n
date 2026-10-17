@@ -526,6 +526,128 @@ function SubPage({ path }) {
 }
 
 
+
+function ExpertisePage() {
+  const domains = [
+    { id: "reseaux", number: "01", title: "Réseaux et communications", icon: "⌁", items: ["Réseaux LAN, WAN et Wi-Fi", "Infrastructure de câblage", "Téléphonie IP et communications unifiées", "Salles de réunion et visioconférence"] },
+    { id: "serveurs", number: "02", title: "Serveurs, stockage et sauvegarde", icon: "▤", items: ["Infrastructures serveurs et virtualisation", "Stockage SAN et NAS", "Sauvegarde et protection des données"] },
+    { id: "cyber", number: "03", title: "Cybersécurité", icon: "◇", items: ["Protection des réseaux par pare-feu nouvelle génération et VPN", "Protection des utilisateurs", "Sécurisation des postes de travail et des terminaux"] },
+    { id: "datacenter", number: "04", title: "Infrastructures de centres de données", icon: "▥", items: ["Aménagement des salles informatiques", "Distribution électrique", "Refroidissement et supervision de l’environnement technique"] },
+  ];
+  const buildingGroups = [
+    { title: "Sûreté", items: ["Vidéosurveillance", "Contrôle d’accès", "Détection d’intrusion", "Interphonie"] },
+    { title: "Incendie", items: ["Détection incendie", "Systèmes d’alarme vocale pour l’évacuation"] },
+    { title: "Bâtiment intelligent", items: ["Gestion technique des bâtiments (GTB et GTC)", "Comptage intelligent", "Gestion de l’éclairage"] },
+  ];
+  const steps = [
+    { number: "01", title: "Comprendre", text: "Analyser vos besoins, votre environnement et les objectifs du projet." },
+    { number: "02", title: "Concevoir", text: "Définir l’architecture de la solution et préparer les études techniques." },
+    { number: "03", title: "Réaliser", text: "Installer, configurer et intégrer les équipements retenus." },
+    { number: "04", title: "Maintenir et faire évoluer", text: "Assurer le support et accompagner vos installations dans la durée." },
+  ];
+
+  useEffect(() => {
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const items = document.querySelectorAll('.expertise-page .expertise-reveal');
+    if (reduceMotion || !('IntersectionObserver' in window)) {
+      items.forEach((item) => item.classList.add('is-visible'));
+      return undefined;
+    }
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -35px 0px' });
+    items.forEach((item) => observer.observe(item));
+    return () => observer.disconnect();
+  }, []);
+
+  return <main className="subpage expertise-page">
+    <div className="expertise-atmosphere" aria-hidden="true" />
+    <header className="sub-nav">
+      <a className="sub-logo" href="/">One network.</a>
+      <nav aria-label="Navigation principale">
+        <a href="/">Accueil</a>
+        <a href="/a-propos">À propos</a>
+        <a href="/expertises" aria-current="page">Expertises</a>
+        <a href="/secteurs">Secteurs</a>
+        <a href="/partenaires">Partenaires</a>
+        <a className="sub-contact" href="/contact">Nous contacter <span><Icon /></span></a>
+      </nav>
+    </header>
+
+    <section className="expertise-hero">
+      <div className="expertise-hero-copy">
+        <p className="expertise-kicker"><span /> Nos expertises</p>
+        <h1>Des domaines<br /><em>d’expertise.</em></h1>
+        <p className="expertise-intro">Des expertises complémentaires pour concevoir une solution adaptée à votre environnement.</p>
+      </div>
+      <aside className="expertise-jump">
+        <p>Du bâtiment au cloud</p>
+        {domains.map((domain) => <a href={'#' + domain.id} key={domain.id}>{domain.title}<span>↘</span></a>)}
+        <a href="#batiments">Sûreté et automatisation des bâtiments<span>↘</span></a>
+      </aside>
+      <div className="expertise-hero-foot"><span>ONE NETWORK / EXPERTISES</span><span>CONNECTER · PROTÉGER · FAIRE ÉVOLUER</span></div>
+    </section>
+
+    <section className="expertise-domains" aria-label="Domaines d’expertise">
+      {domains.map((domain, index) => <article className={'expertise-domain expertise-reveal' + (index === 3 ? ' domain-four' : '')} id={domain.id} key={domain.id}>
+        <div className="expertise-domain-heading">
+          <span className="expertise-domain-icon" aria-hidden="true">{domain.icon}</span>
+          <div><span className="expertise-domain-number">{domain.number} / 05</span><h2>{domain.title}</h2></div>
+        </div>
+        <ul>{domain.items.map((item) => <li key={item}>{item}</li>)}</ul>
+      </article>)}
+      <article className="expertise-domain expertise-domain-wide expertise-reveal" id="batiments">
+        <div className="expertise-domain-heading">
+          <span className="expertise-domain-icon" aria-hidden="true">⌂</span>
+          <div><span className="expertise-domain-number">05 / 05</span><h2>Sûreté et automatisation des bâtiments</h2></div>
+        </div>
+        <div className="expertise-building-groups">
+          {buildingGroups.map((group) => <div key={group.title}><h3>{group.title}</h3><ul>{group.items.map((item) => <li key={item}>{item}</li>)}</ul></div>)}
+        </div>
+      </article>
+    </section>
+
+    <section className="expertise-method">
+      <div className="expertise-section-heading expertise-reveal">
+        <p className="expertise-kicker"><span /> Notre accompagnement</p>
+        <h2>Du besoin à la<br /><em>maintenance.</em></h2>
+        <p>Nous vous accompagnons à chaque étape : comprendre votre besoin, concevoir la solution, la mettre en place et la maintenir dans la durée.</p>
+      </div>
+      <div className="expertise-steps">
+        {steps.map((step) => <article className="expertise-step expertise-reveal" key={step.number}>
+          <span>{step.number}</span><h3>{step.title}</h3><p>{step.text}</p>
+        </article>)}
+      </div>
+    </section>
+
+    <section className="expertise-choice expertise-reveal">
+      <div><p className="expertise-kicker"><span /> Approche multi-constructeurs</p><h2>Un choix technologique<br /><em>adapté au projet.</em></h2></div>
+      <p>Notre approche multi-constructeurs nous permet de sélectionner les technologies selon vos besoins et vos contraintes, plutôt que de nous limiter à un fournisseur unique.</p>
+    </section>
+
+    <section className="expertise-contact" id="contact">
+      <div className="expertise-contact-copy">
+        <p className="expertise-kicker"><span /> Contact</p>
+        <h2>Parlons de<br /><em>votre projet.</em></h2>
+        <p>Nouvelle installation, modernisation d’un site ou évolution de vos infrastructures : contactez-nous pour échanger sur vos besoins.</p>
+      </div>
+      <div className="expertise-contact-details">
+        <div><span>E-mail</span><a href="mailto:contact@onenetwork.com">contact@onenetwork.com</a></div>
+        <div><span>Site web</span><a href="https://www.onenetwork.dz">www.onenetwork.dz</a></div>
+      </div>
+    </section>
+
+    <footer className="sub-footer expertise-footer">
+      <span>ONE NETWORK</span><p>Building networks. Bridging solutions.</p><a href="#top" onClick={(event) => { event.preventDefault(); window.scrollTo({ top: 0, behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' }); }}>Haut de page <span>↑</span></a>
+    </footer>
+  </main>;
+}
+
 function AboutPage() {
   const principles = [
     { n: "01", title: "Comprendre avant d’agir", text: "Chaque environnement a ses usages, ses contraintes et ses priorités. La bonne solution commence par une lecture claire du besoin." },
@@ -639,7 +761,7 @@ function App() {
     };
   }, []);
 
-  const page = path === "/" || path === "/index.html" ? <NetworkCanvas /> : path === "/a-propos" ? <AboutPage /> : <SubPage path={path} />;
+  const page = path === "/" || path === "/index.html" ? <NetworkCanvas /> : path === "/a-propos" ? <AboutPage /> : path === "/expertises" ? <ExpertisePage /> : <SubPage path={path} />;
   return <>
     {page}
     {loading && <div className="site-loader" aria-label="Chargement de One Network">
