@@ -292,7 +292,6 @@ function NetworkCanvas() {
         gsap.to(page.querySelector('h1'), { x: nx * 3, duration: 1.2, ease: 'power3.out', overwrite: 'auto' });
       };
       listen(window, 'pointermove', onPointerMove, { passive: true });
-
       [...page.querySelectorAll('.glass')].forEach((element) => {
         listen(element, 'pointerenter', () => gsap.to(element, { '--sheen': 0.13, duration: 0.6 }));
         listen(element, 'pointermove', (event) => {
@@ -302,7 +301,6 @@ function NetworkCanvas() {
         });
         listen(element, 'pointerleave', () => gsap.to(element, { '--sheen': 0, duration: 0.8 }));
       });
-
       const links = [...page.querySelectorAll('.links a')];
       links.forEach((link) => {
         listen(link, 'pointerenter', () => {
@@ -311,7 +309,6 @@ function NetworkCanvas() {
         });
         listen(link, 'pointerleave', () => gsap.to(links, { opacity: 1, duration: 0.4, overwrite: 'auto' }));
       });
-
       function magnet(element, strength) {
         if (!element) return;
         listen(element, 'pointermove', (event) => {
@@ -373,13 +370,13 @@ function NetworkCanvas() {
         <a className="logo" href="#accueil" aria-label="One network, accueil">One network.</a>
         <ul className="links">
           <li><a href="#accueil" aria-current="page">Accueil</a></li>
-          <li><a href="#apropos">À propos</a></li>
+          <li><a href="#accueil">À propos</a></li>
           <li><a href="#expertises">Expertises</a></li>
           <li><a href="#secteurs">Secteurs</a></li>
           <li><a href="#partenaires">Partenaires</a></li>
-          <li><a href="#contact">Contact</a></li>
+          <li><a href="mailto:contact@onenetwork.dz">Contact</a></li>
         </ul>
-        <a className="cta" href="#contact">Nous contacter <span className="dot"><Icon /></span></a>
+        <a className="cta" href="mailto:contact@onenetwork.dz">Nous contacter <span className="dot"><Icon /></span></a>
       </header>
 
       <section className="hero" id="accueil">
@@ -390,8 +387,8 @@ function NetworkCanvas() {
           <a className="btn-round" href="#expertises" aria-label="Découvrir nos expertises"><Icon /></a>
           <a className="label" href="#expertises">Découvrir nos expertises</a>
           <span className="rule" />
-          <a className="video" href="#video">Voir la vidéo</a>
-          <a className="play" href="#video" aria-label="Voir la vidéo"><Icon name="play" /></a>
+          <a className="video" href="#accueil">Voir la vidéo</a>
+          <a className="play" href="#accueil" aria-label="Voir la vidéo"><Icon name="play" /></a>
         </div>
         <div className="scroll" aria-hidden="true">
           <svg viewBox="0 0 10 60"><path d="M5 2v11M2 10l3 3 3-3"/><path d="M5 30v28"/><path d="M5 41v4" /></svg>
@@ -408,13 +405,13 @@ function NetworkCanvas() {
       </aside>
 
       <nav className="glass services" id="expertises" aria-label="Expertises">
-        <a className="svc s1" href="#reseaux"><span className="n">01</span><span className="t">Réseaux &amp;<br />infrastructures</span><span className="go"><Icon /></span></a>
+        <a className="svc s1" href="#expertises"><span className="n">01</span><span className="t">Réseaux &amp;<br />infrastructures</span><span className="go"><Icon /></span></a>
         <i className="sep a" />
-        <a className="svc s2" href="#datacenter"><span className="n">02</span><span className="t">Datacenter &amp;<br />virtualisation</span><span className="go"><Icon /></span></a>
+        <a className="svc s2" href="#expertises"><span className="n">02</span><span className="t">Datacenter &amp;<br />virtualisation</span><span className="go"><Icon /></span></a>
         <i className="sep b" />
-        <a className="svc s3 one-line" href="#cyber"><span className="n">03</span><span className="t">Cybersécurité</span><span className="go"><Icon /></span></a>
+        <a className="svc s3 one-line" href="#expertises"><span className="n">03</span><span className="t">Cybersécurité</span><span className="go"><Icon /></span></a>
         <i className="sep c" />
-        <a className="svc s4" href="#securite"><span className="n">04</span><span className="t">Sécurité électronique<br />&amp; bâtiments</span><span className="go"><Icon /></span></a>
+        <a className="svc s4" href="#expertises"><span className="n">04</span><span className="t">Sécurité électronique<br />&amp; bâtiments</span><span className="go"><Icon /></span></a>
         <i className="sep d" />
         <a className="all" href="#secteurs" id="secteurs"><span className="plus2"><Icon name="plus" /></span><span className="txt">Tous nos<br />secteurs</span></a>
       </nav>
