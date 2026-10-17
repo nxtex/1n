@@ -374,9 +374,9 @@ function NetworkCanvas() {
           <li><a href="#expertises">Expertises</a></li>
           <li><a href="#secteurs">Secteurs</a></li>
           <li><a href="#partenaires">Partenaires</a></li>
-          <li><a href="mailto:contact@onenetwork.dz">Contact</a></li>
+          <li><a href="#expertises">Contact</a></li>
         </ul>
-        <a className="cta" href="mailto:contact@onenetwork.dz">Nous contacter <span className="dot"><Icon /></span></a>
+        <a className="cta" href="#expertises">Nous contacter <span className="dot"><Icon /></span></a>
       </header>
 
       <section className="hero" id="accueil">
