@@ -481,7 +481,7 @@ function AboutPage({ embedded = false }) {
       <p>Nous concevons, déployons et maintenons les solutions qui connectent vos équipes, protègent vos données et accompagnent l’évolution de vos installations.</p>
       <p>Réseaux, cybersécurité, serveurs, centres de données et bâtiments : nous réunissons plusieurs expertises pour vous accompagner tout au long de votre projet.</p>
     </section>
-  </main>;
+  </main></>;
 }
 
 function SectorsPage() {
