@@ -537,9 +537,9 @@ function ContactPage() {
           <button type="button" onClick={() => copyValue("contact@onenetwork.dz")}>{copied === "contact@onenetwork.dz" ? "Copié" : "Copier l’e-mail"}</button>
         </div>
         <div className="contact-page-card">
-          <span className="contact-page-label">Site web</span>
-          <a href="https://www.onenetwork.dz">www.onenetwork.dz</a>
-          <button type="button" onClick={() => copyValue("https://www.onenetwork.dz")}>{copied === "https://www.onenetwork.dz" ? "Copié" : "Copier le lien"}</button>
+          <span className="contact-page-label">Téléphone</span>
+          <a href="tel:+33770966620">+33 7 70 96 66 20</a>
+          <button type="button" onClick={() => copyValue("+33 7 70 96 66 20")}>{copied === "+33 7 70 96 66 20" ? "Copié" : "Copier le numéro"}</button>
         </div>
         <p className="contact-page-note">Le formulaire prépare un e-mail dans votre application de messagerie. Votre message n’est pas envoyé automatiquement depuis le site.</p>
       </aside>
@@ -750,7 +750,7 @@ function App() {
     <GlobalNavigation active={active} onNavigate={navigate} />
     {path === "/" && <NetworkCanvas />}
     {path === "/a-propos" && <AboutPage />}
-    {path === "/expertises" && <ExpertisePage />}
+    {path === "/expertises" && <ExpertisePage includeContact={false} />}
     {path === "/secteurs" && <SectorsPage />}
     {path === "/partenaires" && <PartnersPage />}
     {path === "/contact" && <ContactPage />}
