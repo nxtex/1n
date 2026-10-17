@@ -115,3 +115,37 @@ h1 .ln:nth-child(2)>span{background-image:linear-gradient(100deg,#e3e6f4 0%,#aab
  .brand b,.brand span{font-size:11px;line-height:15px}
 }
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+
+
+/* Separate content pages — the original homepage/network canvas above is preserved. */
+.subpage{min-height:100vh;padding:0 clamp(22px,5.2vw,84px);background:radial-gradient(55% 42% at 82% 12%,rgba(34,52,92,.28),transparent 72%),linear-gradient(180deg,#05070e 0%,#080c16 58%,#04060b 100%);color:var(--fg);overflow:hidden}
+.sub-nav{min-height:94px;display:flex;align-items:center;justify-content:space-between;gap:28px;border-bottom:1px solid rgba(255,255,255,.1)}
+.sub-logo{font-size:30px;letter-spacing:-.045em;white-space:nowrap}
+.sub-nav nav{display:flex;align-items:center;gap:clamp(14px,2.1vw,32px);font-size:13px;color:rgba(244,245,249,.78)}
+.sub-nav nav a{transition:color .2s ease}.sub-nav nav a:hover{color:#fff}
+.sub-nav .sub-contact{display:flex;align-items:center;gap:16px;background:#f4f5f9;color:#080b13;border-radius:999px;padding:13px 17px 13px 20px;white-space:nowrap}
+.sub-nav .sub-contact span{display:grid;place-items:center;background:#080b13;color:#fff;border-radius:50%;width:27px;height:27px}
+.sub-hero{padding:clamp(74px,10vw,150px) 0 clamp(56px,7vw,100px);max-width:1000px}
+.sub-eyebrow{margin:0 0 25px;color:rgba(255,210,165,.8);font-size:11px;letter-spacing:.3em;text-transform:uppercase}
+.sub-hero h1{position:static;white-space:normal;font-size:clamp(44px,7.5vw,108px);line-height:.98;letter-spacing:-.055em;font-weight:400;max-width:1050px}
+.sub-intro{max-width:650px;margin:30px 0 0;font-size:clamp(17px,1.7vw,22px);line-height:1.55;color:rgba(244,245,249,.68);font-weight:300}
+.sub-sections{max-width:1050px;border-top:1px solid rgba(255,255,255,.16)}
+.sub-section{display:grid;grid-template-columns:72px 1fr 34px;gap:22px;align-items:start;padding:28px 0 32px;border-bottom:1px solid rgba(255,255,255,.12)}
+.sub-number{font-size:12px;letter-spacing:.08em;color:rgba(255,210,165,.85)}
+.sub-section h2,.sub-card h2{margin:0;font-size:clamp(20px,2.5vw,30px);line-height:1.2;font-weight:400;letter-spacing:-.025em}
+.sub-section p,.sub-card p{max-width:620px;margin:12px 0 0;color:rgba(244,245,249,.62);font-size:15px;line-height:1.65;font-weight:300}
+.sub-arrow{display:grid;place-items:center;width:34px;height:34px;border:1px solid rgba(255,255,255,.24);border-radius:50%;color:#fff;transition:transform .25s ease,background .25s ease}
+.sub-card:hover .sub-arrow{transform:translate(3px,-3px);background:rgba(255,255,255,.1)}
+.sub-cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;max-width:1100px}
+.sub-card{position:relative;min-height:220px;padding:28px;border:1px solid rgba(255,255,255,.13);border-radius:20px;background:linear-gradient(140deg,rgba(255,255,255,.065),rgba(255,255,255,.018));transition:background .25s ease,border-color .25s ease}
+.sub-card:hover{background:linear-gradient(140deg,rgba(255,255,255,.105),rgba(255,255,255,.025));border-color:rgba(255,255,255,.28)}
+.sub-card h2{max-width:350px;margin-top:30px}
+.sub-card p{max-width:390px;margin-top:10px}
+.sub-card .sub-arrow{position:absolute;right:24px;bottom:24px}
+.sub-footer{display:flex;align-items:center;justify-content:space-between;gap:24px;margin-top:clamp(80px,12vw,160px);padding:28px 0 34px;border-top:1px solid rgba(255,255,255,.13)}
+.sub-footer>span{font-size:11px;letter-spacing:.24em}
+.sub-footer p{margin:0;color:rgba(244,245,249,.42);font-size:11px;letter-spacing:.14em;text-transform:uppercase}
+.sub-footer>a{display:flex;align-items:center;gap:18px;font-size:13px}
+.sub-footer>a span{font-size:18px}
+@media(max-width:900px){.sub-nav{align-items:flex-start;padding:22px 0;flex-direction:column}.sub-nav nav{width:100%;flex-wrap:wrap;gap:14px 20px}.sub-nav .sub-contact{padding:8px 12px 8px 16px}.sub-nav .sub-contact span{width:24px;height:24px}.sub-hero{padding-top:76px}.sub-cards{grid-template-columns:1fr}.sub-card{min-height:190px}.sub-footer{align-items:flex-start;flex-direction:column;gap:14px}}
+@media(max-width:520px){.subpage{padding-inline:22px}.sub-logo{font-size:27px}.sub-nav nav{font-size:12px}.sub-nav nav a{white-space:nowrap}.sub-hero h1{font-size:clamp(42px,12vw,62px)}.sub-section{grid-template-columns:34px 1fr;gap:14px}.sub-section .sub-arrow{grid-column:2}.sub-section p{font-size:14px}.sub-footer p{line-height:1.6}}
