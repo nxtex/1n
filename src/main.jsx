@@ -356,8 +356,8 @@ function NetworkCanvas() {
       <button className="glass card synotec-card" type="button" onClick={() => setSynotecOpen(true)} aria-label="En savoir plus sur Synotec" aria-haspopup="dialog">
         <div className="thumb" aria-hidden="true" />
         <span className="plus synotec-mark" aria-hidden="true"><Icon name="plus" /></span>
-        <span className="synotec-kicker">SMART NETWORK AND SECURITY SOLUTIONS</span>
-        <h2>L’intégration d’un côté.<br />La distribution de l’autre.</h2>
+        <span className="synotec-kicker">L’ÉCOSYSTÈME ONE NETWORK</span>
+        <h2>Smart Network and Security Solutions</h2>
         <span className="sub">En savoir plus <span aria-hidden="true">↗</span></span>
         <span className="bar" />
       </button>
