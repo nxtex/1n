@@ -705,3 +705,15 @@ body{color:#08152f}
 @media(max-width:900px){
  .site-navigation .site-nav-contact{color:#fff}
 }
+
+/* Final light-theme refinements */
+.site-loader{background:#f6f8fc}
+.synotec-overlay{background:rgba(238,243,251,.82)}
+.synotec-card{background:linear-gradient(135deg,#ffffff,#f2f5fb 82%);border-color:rgba(8,21,47,.14);box-shadow:0 16px 40px rgba(17,38,78,.09)}
+.synotec-card h2{color:#08152f}
+.synotec-card .synotec-kicker{color:rgba(8,21,47,.58)}
+.synotec-card .sub{color:rgba(8,21,47,.72)}
+.synotec-card .sub span{color:#3158CE}
+.synotec-card .synotec-mark{background:rgba(49,88,206,.07);color:#3158CE;border-color:rgba(49,88,206,.4)}
+.synotec-card .bar{background:#3158CE}
+.synotec-card:hover{border-color:rgba(49,88,206,.4);box-shadow:0 18px 44px rgba(17,38,78,.13)}
