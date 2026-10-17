@@ -698,10 +698,16 @@ function PartnersPage() {
 }
 
 function App() {
-  const rawPath = window.location.pathname;
   const base = (import.meta.env.BASE_URL || "/").replace(/\/$/, "");
+  const routeFromFallback = new URLSearchParams(window.location.search).get("route");
+  const rawPath = routeFromFallback || window.location.pathname;
   const withoutBase = base && base !== "/" && rawPath.startsWith(base) ? rawPath.slice(base.length) || "/" : rawPath;
   const path = withoutBase.replace(/\/+$/, "") || "/";
+  useEffect(() => {
+    if (!routeFromFallback) return;
+    const destination = (base || "") + (path === "/" ? "/" : path + "/");
+    window.history.replaceState(null, "", destination);
+  }, []);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
