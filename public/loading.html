@@ -18,6 +18,8 @@ body{background:radial-gradient(ellipse at 50% 55%,#ffffff 0%,#f8faff 38%,var(--
 .stage::before{content:"";position:absolute;inset:-30% -10%;background:radial-gradient(closest-side,var(--glow),transparent 70%);z-index:0;pointer-events:none}
 svg{position:relative;z-index:1;width:100%;height:auto;max-width:100%;overflow:visible}
 .b{fill:var(--blue)} .d{fill:var(--ink)}
+/* Keep the horizontal stroke of the E in NETWORK navy, not bright blue. */
+.b[data-r="net"][data-i="1"]{fill:var(--ink)}
 svg [data-r]{transform-box:fill-box;transform-origin:50% 50%}
 .bar{position:relative;z-index:1;width:min(180px,40vw);height:3px;border-radius:3px;background:var(--track);overflow:hidden}
 .bar i{display:block;height:100%;background:var(--blue);border-radius:3px;transform-origin:left center;transform:scaleX(0)}
