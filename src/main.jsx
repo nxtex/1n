@@ -246,8 +246,6 @@ function NetworkCanvas() {
       startIdle();
       // Keep only subtle ambient details; no staged entrance animation.
       idleTweens.push(gsap.to(page.querySelector('h1 .ln:nth-child(2) > span'), { backgroundPosition: '100% 0', duration: 7, ease: 'sine.inOut', yoyo: true, repeat: -1, delay: 3.7 }));
-      idleTweens.push(gsap.to(page.querySelector('.scroll svg'), { y: 6, duration: 1.3, ease: 'sine.inOut', yoyo: true, repeat: -1, delay: 4 }));
-      idleTweens.push(gsap.to(page.querySelector('.scroll span'), { opacity: 0.35, duration: 1.3, ease: 'sine.inOut', yoyo: true, repeat: -1, delay: 4 }));
       idleTweens.push(gsap.to(page.querySelector('.trust .chev'), { x: 5, duration: 0.9, ease: 'sine.inOut', yoyo: true, repeat: -1, delay: 4 }));
     }
 
@@ -350,9 +348,9 @@ function NetworkCanvas() {
           <a className="video" href="#accueil">Voir la vidéo</a>
           <a className="play" href="#accueil" aria-label="Voir la vidéo"><Icon name="play" /></a>
         </div>
-        <div className="scroll" aria-hidden="true">
-          <svg viewBox="0 0 10 60"><path d="M5 2v11M2 10l3 3 3-3"/><path d="M5 30v28"/><path d="M5 41v4" /></svg>
-          <span>Scroll</span>
+        <div className="scroll" aria-label="Défiler vers le bas">
+          <svg viewBox="0 0 28 28" aria-hidden="true"><circle cx="14" cy="14" r="12.5"/><path d="M14 7.5v12M9.5 15l4.5 4.5 4.5-4.5"/></svg>
+          <span>SCROLL</span>
         </div>
       </section>
 
