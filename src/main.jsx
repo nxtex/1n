@@ -474,7 +474,7 @@ function ContactPage() {
         <p>Nouvelle installation, modernisation d’un site ou évolution de vos infrastructures : contactez-nous pour échanger sur vos besoins.</p>
       </div>
       <div className="original-contact-details">
-        <div><span>E-mail</span><a href="mailto:contact@onenetwork.com">contact@onenetwork.com</a><button type="button" onClick={() => copyValue("contact@onenetwork.com")}>{copied === "contact@onenetwork.com" ? "Copié" : "Copier"}</button></div>
+        <div><span>E-mail</span><a href="mailto:contact@onenetwork.dz">contact@onenetwork.dz</a><button type="button" onClick={() => copyValue("contact@onenetwork.dz")}>{copied === "contact@onenetwork.dz" ? "Copié" : "Copier"}</button></div>
         <div><span>Site web</span><a href="https://www.onenetwork.dz">www.onenetwork.dz</a><button type="button" onClick={() => copyValue("https://www.onenetwork.dz")}>{copied === "https://www.onenetwork.dz" ? "Copié" : "Copier"}</button></div>
       </div>
     </section>
@@ -591,7 +591,7 @@ function ExpertisePage({ embedded = false, includeContact = true }) {
         <p>Nouvelle installation, modernisation d’un site ou évolution de vos infrastructures : contactez-nous pour échanger sur vos besoins.</p>
       </div>
       <div className="expertise-contact-details">
-        <div><span>E-mail</span><a href="mailto:contact@onenetwork.com">contact@onenetwork.com</a></div>
+        <div><span>E-mail</span><a href="mailto:contact@onenetwork.dz">contact@onenetwork.dz</a></div>
         <div><span>Site web</span><a href="https://www.onenetwork.dz">www.onenetwork.dz</a></div>
       </div>
     </section>}
