@@ -380,9 +380,9 @@ function NetworkCanvas() {
         <i className="hr l" />
         <a className="trust" href="#partenaires-detail" id="partenaires">
           <span className="avatars" aria-hidden="true">
-            <svg viewBox="0 0 36 36"><rect width="36" height="36" fill="#7b8696"/><path d="M3 36c1-8 8-11 15-11s14 3 15 11z" fill="#1c2431"/><path d="M14 25l4 5 4-5z" fill="#f2f2f2"/><ellipse cx="18" cy="16" rx="6.3" ry="7.6" fill="#e3b799"/><path d="M11.3 14.5c-.4-6 4-8.6 7-8.6s7.2 2.2 6.6 8.6c-1.2-3.2-3.6-4.2-6.6-4.2s-5.6 1-7 4.2z" fill="#4a3426"/></svg>
-            <svg viewBox="0 0 36 36"><rect width="36" height="36" fill="#a49a90"/><path d="M3 36c1-8 8-11 15-11s14 3 15 11z" fill="#2a2f3a"/><path d="M14 25l4 5 4-5z" fill="#eee"/><ellipse cx="18" cy="16" rx="6.2" ry="7.5" fill="#d9a785"/><path d="M11.4 15c-.8-6.2 3.8-9 6.8-9s7 2.6 6.4 9c-1-3.4-3.4-4.6-6.4-4.6S12.8 11.6 11.4 15z" fill="#2b211b"/></svg>
-            <svg viewBox="0 0 36 36"><rect width="36" height="36" fill="#6e7d90"/><path d="M3 36c1-8 8-11 15-11s14 3 15 11z" fill="#161c28"/><path d="M14 25l4 5 4-5z" fill="#f0f0f0"/><ellipse cx="18" cy="16" rx="6.4" ry="7.7" fill="#cf9877"/><path d="M11.2 14c.2-5.6 4.2-8 7-8s6.8 2.4 7 8c-1.4-2.8-3.8-3.8-7-3.8s-5.6 1-7 3.8z" fill="#5a3b28"/><path d="M12.5 19.5c1.5 4.5 9.5 4.5 11 0-1 3.4-3.6 4.6-5.5 4.6s-4.5-1.2-5.5-4.6z" fill="#5a3b28" opacity=".55"/></svg>
+            <svg viewBox="0 0 36 36" role="img"><circle cx="18" cy="18" r="18" fill="#171717"/><path d="M8 25V11h4l6 8 6-8h4v14h-4v-8l-6 7-6-7v8z" fill="#fff"/></svg>
+            <svg viewBox="0 0 36 36" role="img"><circle cx="18" cy="18" r="18" fill="#555"/><path d="M9 9h18v4H13v4h11v4H13v2h14v4H9z" fill="#fff"/></svg>
+            <svg viewBox="0 0 36 36" role="img"><circle cx="18" cy="18" r="18" fill="#888"/><path d="M18 6l11 6v12l-11 6-11-6V12zm0 4.5L11 14v8l7 3.8 7-3.8v-8z" fill="#fff"/><path d="M16 14h4v8h-4z" fill="#fff"/></svg>
           </span>
           <span className="txt">Ils nous font confiance</span>
           <span className="chev"><Icon name="chev" /></span>
