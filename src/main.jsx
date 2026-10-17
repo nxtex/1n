@@ -320,21 +320,21 @@ function NetworkCanvas() {
     };
   }, []);
 
-  return <div className="page" ref={pageRef}>
+  return <><div className="page" ref={pageRef}>
     <canvas id="net" ref={canvasRef} aria-hidden="true" />
     <div className="vignette" />
     <div className="stage">
       <header className="glass nav">
         <a className="logo" href="#accueil" aria-label="One network, accueil">One network.</a>
         <ul className="links">
-          <li><a href="/" aria-current="page">Accueil</a></li>
-          <li><a href="/a-propos">À propos</a></li>
-          <li><a href="/expertises">Expertises</a></li>
-          <li><a href="/secteurs">Secteurs</a></li>
-          <li><a href="/partenaires">Partenaires</a></li>
-          <li><a href="/contact">Contact</a></li>
+          <li><a href="#accueil" aria-current="page">Accueil</a></li>
+          <li><a href="#a-propos-section">À propos</a></li>
+          <li><a href="#expertise-details">Expertises</a></li>
+          <li><a href="#secteurs-detail">Secteurs</a></li>
+          <li><a href="#partenaires-detail">Partenaires</a></li>
+          <li><a href="#contact">Contact</a></li>
         </ul>
-        <a className="cta" href="/contact">Nous contacter <span className="dot"><Icon /></span></a>
+        <a className="cta" href="#contact">Nous contacter <span className="dot"><Icon /></span></a>
       </header>
 
       <section className="hero" id="accueil">
@@ -342,8 +342,8 @@ function NetworkCanvas() {
         <h1><span className="ln"><span>Des infrastructures</span></span><span className="ln"><span>pour demain.</span></span></h1>
         <p className="lede">Concevoir, déployer et accompagner des infrastructures performantes, sécurisées et évolutives.</p>
         <div className="actions">
-          <a className="btn-round" href="/expertises" aria-label="Découvrir nos expertises"><Icon /></a>
-          <a className="label" href="/expertises">Découvrir nos expertises</a>
+          <a className="btn-round" href="#expertise-details" aria-label="Découvrir nos expertises"><Icon /></a>
+          <a className="label" href="#expertise-details">Découvrir nos expertises</a>
           <span className="rule" />
           <a className="video" href="#accueil">Voir la vidéo</a>
           <a className="play" href="#accueil" aria-label="Voir la vidéo"><Icon name="play" /></a>
@@ -363,22 +363,22 @@ function NetworkCanvas() {
       </aside>
 
       <nav className="glass services" id="expertises" aria-label="Expertises">
-        <a className="svc s1" href="/expertises/reseaux"><span className="n">01</span><span className="t">Réseaux &amp;<br />infrastructures</span><span className="go"><Icon /></span></a>
+        <a className="svc s1" href="#reseaux"><span className="n">01</span><span className="t">Réseaux &amp;<br />infrastructures</span><span className="go"><Icon /></span></a>
         <i className="sep a" />
-        <a className="svc s2" href="/expertises/datacenter"><span className="n">02</span><span className="t">Datacenter &amp;<br />virtualisation</span><span className="go"><Icon /></span></a>
+        <a className="svc s2" href="#datacenter"><span className="n">02</span><span className="t">Datacenter &amp;<br />virtualisation</span><span className="go"><Icon /></span></a>
         <i className="sep b" />
-        <a className="svc s3 one-line" href="/expertises/cybersecurite"><span className="n">03</span><span className="t">Cybersécurité</span><span className="go"><Icon /></span></a>
+        <a className="svc s3 one-line" href="#cyber"><span className="n">03</span><span className="t">Cybersécurité</span><span className="go"><Icon /></span></a>
         <i className="sep c" />
-        <a className="svc s4" href="/expertises/batiments"><span className="n">04</span><span className="t">Sécurité électronique<br />&amp; bâtiments</span><span className="go"><Icon /></span></a>
+        <a className="svc s4" href="#batiments"><span className="n">04</span><span className="t">Sécurité électronique<br />&amp; bâtiments</span><span className="go"><Icon /></span></a>
         <i className="sep d" />
-        <a className="all" href="/secteurs" id="secteurs"><span className="plus2"><Icon name="plus" /></span><span className="txt">Tous nos<br />secteurs</span></a>
+        <a className="all" href="#secteurs-detail" id="secteurs"><span className="plus2"><Icon name="plus" /></span><span className="txt">Tous nos<br />secteurs</span></a>
       </nav>
 
       <footer className="foot">
         <div className="vline" aria-hidden="true"><svg viewBox="0 0 10 60"><path d="M5 2v22M2 21l3 3 3-3"/><path d="M5 36v22M2 40l3-4 3 4"/></svg></div>
         <i className="spark" />
         <i className="hr l" />
-        <a className="trust" href="/partenaires" id="partenaires">
+        <a className="trust" href="#partenaires-detail" id="partenaires">
           <span className="avatars" aria-hidden="true">
             <svg viewBox="0 0 36 36"><rect width="36" height="36" fill="#7b8696"/><path d="M3 36c1-8 8-11 15-11s14 3 15 11z" fill="#1c2431"/><path d="M14 25l4 5 4-5z" fill="#f2f2f2"/><ellipse cx="18" cy="16" rx="6.3" ry="7.6" fill="#e3b799"/><path d="M11.3 14.5c-.4-6 4-8.6 7-8.6s7.2 2.2 6.6 8.6c-1.2-3.2-3.6-4.2-6.6-4.2s-5.6 1-7 4.2z" fill="#4a3426"/></svg>
             <svg viewBox="0 0 36 36"><rect width="36" height="36" fill="#a49a90"/><path d="M3 36c1-8 8-11 15-11s14 3 15 11z" fill="#2a2f3a"/><path d="M14 25l4 5 4-5z" fill="#eee"/><ellipse cx="18" cy="16" rx="6.2" ry="7.5" fill="#d9a785"/><path d="M11.4 15c-.8-6.2 3.8-9 6.8-9s7 2.6 6.4 9c-1-3.4-3.4-4.6-6.4-4.6S12.8 11.6 11.4 15z" fill="#2b211b"/></svg>
@@ -391,7 +391,13 @@ function NetworkCanvas() {
         <p className="brand"><b>ONE NETWORK</b><span>Building networks.<br />Bridging solutions.</span></p>
       </footer>
     </div>
-  </div>;
+  </div>
+  <ExpertisePage embedded includeContact={false} />
+  <AboutPage embedded />
+  <SubPage path="/secteurs" embedded id="secteurs-detail" />
+  <SubPage path="/partenaires" embedded id="partenaires-detail" />
+  <SubPage path="/contact" embedded id="contact" />
+</>;
 }
 
 
@@ -489,11 +495,11 @@ const pageContent = {
   }
 };
 
-function SubPage({ path }) {
+function SubPage({ path, embedded = false, id }) {
   const data = pageContent[path] || pageContent["/expertises"];
   const isOverview = Boolean(data.cards);
-  return <main className="subpage">
-    <header className="sub-nav">
+  return <main id={id} className={embedded ? "subpage singlepage-section" : "subpage"}>
+    {!embedded && <header className="sub-nav">
       <a className="sub-logo" href="/">One network.</a>
       <nav aria-label="Navigation principale">
         <a href="/">Accueil</a>
@@ -503,7 +509,7 @@ function SubPage({ path }) {
         <a href="/partenaires">Partenaires</a>
         <a className="sub-contact" href="/contact">Parlons de votre projet <span>↗</span></a>
       </nav>
-    </header>
+    </header>}
     <section className="sub-hero">
       <p className="sub-eyebrow">{data.eyebrow}</p>
       <h1>{data.title}</h1>
@@ -527,7 +533,7 @@ function SubPage({ path }) {
 
 
 
-function ExpertisePage() {
+function ExpertisePage({ embedded = false, includeContact = true }) {
   const domains = [
     { id: "reseaux", number: "01", title: "Réseaux et communications", icon: "⌁", items: ["Réseaux LAN, WAN et Wi-Fi", "Infrastructure de câblage", "Téléphonie IP et communications unifiées", "Salles de réunion et visioconférence"] },
     { id: "serveurs", number: "02", title: "Serveurs, stockage et sauvegarde", icon: "▤", items: ["Infrastructures serveurs et virtualisation", "Stockage SAN et NAS", "Sauvegarde et protection des données"] },
@@ -565,9 +571,9 @@ function ExpertisePage() {
     return () => observer.disconnect();
   }, []);
 
-  return <main className="subpage expertise-page">
+  return <main id={embedded ? "expertise-details" : undefined} className={embedded ? "subpage expertise-page singlepage-section" : "subpage expertise-page"}>
     <div className="expertise-atmosphere" aria-hidden="true" />
-    <header className="sub-nav">
+    {!embedded && <header className="sub-nav">
       <a className="sub-logo" href="/">One network.</a>
       <nav aria-label="Navigation principale">
         <a href="/">Accueil</a>
@@ -577,7 +583,7 @@ function ExpertisePage() {
         <a href="/partenaires">Partenaires</a>
         <a className="sub-contact" href="/contact">Nous contacter <span><Icon /></span></a>
       </nav>
-    </header>
+    </header>}
 
     <section className="expertise-hero">
       <div className="expertise-hero-copy">
@@ -630,7 +636,7 @@ function ExpertisePage() {
       <p>Notre approche multi-constructeurs nous permet de sélectionner les technologies selon vos besoins et vos contraintes, plutôt que de nous limiter à un fournisseur unique.</p>
     </section>
 
-    <section className="expertise-contact" id="contact">
+    {includeContact && <section className="expertise-contact" id="contact">
       <div className="expertise-contact-copy">
         <p className="expertise-kicker"><span /> Contact</p>
         <h2>Parlons de<br /><em>votre projet.</em></h2>
@@ -640,15 +646,15 @@ function ExpertisePage() {
         <div><span>E-mail</span><a href="mailto:contact@onenetwork.com">contact@onenetwork.com</a></div>
         <div><span>Site web</span><a href="https://www.onenetwork.dz">www.onenetwork.dz</a></div>
       </div>
-    </section>
+    </section>}
 
-    <footer className="sub-footer expertise-footer">
+    {!embedded && <footer className="sub-footer expertise-footer">
       <span>ONE NETWORK</span><p>Building networks. Bridging solutions.</p><a href="#top" onClick={(event) => { event.preventDefault(); window.scrollTo({ top: 0, behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' }); }}>Haut de page <span>↑</span></a>
-    </footer>
+    </footer>}
   </main>;
 }
 
-function AboutPage() {
+function AboutPage({ embedded = false }) {
   const principles = [
     { n: "01", title: "Comprendre avant d’agir", text: "Chaque environnement a ses usages, ses contraintes et ses priorités. La bonne solution commence par une lecture claire du besoin." },
     { n: "02", title: "Penser l’ensemble", text: "Réseaux, infrastructures, cloud et sécurité ne fonctionnent pas en silos. Leur cohérence fait la différence." },
@@ -660,8 +666,8 @@ function AboutPage() {
     { n: "03", title: "Intégrer", text: "Mettre en œuvre avec méthode et attention aux détails." },
     { n: "04", title: "Accompagner", text: "Faire vivre la solution et préparer ses prochaines évolutions." }
   ];
-  return <main className="subpage about-page">
-    <header className="sub-nav">
+  return <main id={embedded ? "a-propos-section" : undefined} className={embedded ? "subpage about-page singlepage-section" : "subpage about-page"}>
+    {!embedded && <header className="sub-nav">
       <a className="sub-logo" href="/">One network.</a>
       <nav aria-label="Navigation principale">
         <a href="/">Accueil</a>
@@ -669,9 +675,9 @@ function AboutPage() {
         <a href="/expertises">Expertises</a>
         <a href="/secteurs">Secteurs</a>
         <a href="/partenaires">Partenaires</a>
-        <a className="sub-contact" href="/contact">Parlons de votre projet <span>↗</span></a>
+        <a className="sub-contact" href={embedded ? "#contact" : "/contact"}>Parlons de votre projet <span>↗</span></a>
       </nav>
-    </header>
+    </header>}
 
     <section className="about-hero">
       <div className="about-hero-copy">
@@ -761,9 +767,26 @@ function App() {
     };
   }, []);
 
-  const page = path === "/" || path === "/index.html" ? <NetworkCanvas /> : path === "/a-propos" ? <AboutPage /> : path === "/expertises" ? <ExpertisePage /> : <SubPage path={path} />;
+  useEffect(() => {
+    const routeTargets = {
+      "/a-propos": "a-propos-section",
+      "/expertises": "expertise-details",
+      "/expertises/reseaux": "reseaux",
+      "/expertises/datacenter": "datacenter",
+      "/expertises/cybersecurite": "cyber",
+      "/expertises/batiments": "batiments",
+      "/secteurs": "secteurs-detail",
+      "/partenaires": "partenaires-detail",
+      "/contact": "contact",
+    };
+    const targetId = routeTargets[path];
+    if (!targetId) return undefined;
+    const timer = window.setTimeout(() => document.getElementById(targetId)?.scrollIntoView({ behavior: "auto", block: "start" }), 100);
+    return () => window.clearTimeout(timer);
+  }, [path]);
+
   return <>
-    {page}
+    <NetworkCanvas />
     {loading && <div className="site-loader" aria-label="Chargement de One Network">
       <iframe src="/loading.html" title="Chargement de One Network" />
     </div>}
