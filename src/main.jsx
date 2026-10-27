@@ -683,18 +683,35 @@ function ExpertisePage({ embedded = false, includeContact = true }) {
 }
 
 function PartnersPage() {
-  const partners = [
-    { number: "01", title: "Réseaux & communications", text: "Des technologies pour relier les équipes, les sites et les systèmes." },
-    { number: "02", title: "Cybersécurité", text: "Des solutions de protection adaptées aux risques et aux usages." },
-    { number: "03", title: "Infrastructures", text: "Des équipements fiables pour les environnements informatiques critiques." },
+  const groups = [
+    { number: "01", title: "Réseaux & collaboration", brands: [
+      ["huawei","HUAWEI"],["cisco","cisco"],["aruba","aruba"],["avaya","AVAYA"],["alcatel","alcatel"],["ubiquiti","UBIQUITI"],["tplink","tp-link"],["dlink","D-Link"],["legrand","legrand"],["siemon","SIEMON"],["briticom","BRITICOM"],["generalcable","GENERAL CABLE"],["exfo","EXFO"],["alcatel","alcatel"],["aruba","aruba"]
+    ]},
+    { number: "02", title: "Cybersécurité", brands: [
+      ["fortinet","FORTINET"],["sophos","sophos"],["kaspersky","kaspersky"],["eset","eset"],["sangfor","SANGFOR"],["forcepoint","Forcepoint"]
+    ]},
+    { number: "03", title: "Infrastructures datacenter", brands: [
+      ["aten","ATEN"],["apc","APC"],["canovate","CANOVATE"],["boreas","BOREAS"],["exagate","EXAGATE"]
+    ]},
+    { number: "04", title: "Serveurs, stockage & backup", brands: [
+      ["qnap","QNAP"],["synology","Synology"],["xfusion","xFUSION"],["dell","DELL"],["vmware","vmware"],["proxmox","proxmox"],["hpe","HPE"]
+    ]},
+    { number: "05", title: "Sécurité électronique & automatisation", brands: [
+      ["honeywell","Honeywell"],["apollo","APOLLO"],["dahua","dahua"],["siemens","SIEMENS"],["hikvision","HIKVISION"],["zkteco","ZKTeco"],["koontech","KOONTECH"],["abb","ABB"]
+    ]},
   ];
-  return <><main className="subpage original-page partners-page">
-    <section className="sub-hero"><p className="sub-eyebrow">Partenaires</p><h1>Un écosystème<br />de confiance.</h1><p className="sub-intro">One Network s’appuie sur un écosystème de technologies et de partenaires pour construire des solutions adaptées à chaque environnement.</p></section>
-    <section className="original-content"><h2>La bonne technologie pour chaque besoin.</h2><p>Notre approche multi-constructeurs permet d’étudier les solutions selon vos objectifs, vos contraintes et votre environnement technique.</p>
-      <div className="original-pill-grid">{partners.map(item => <article key={item.number}><span>{item.number}</span><h3>{item.title}</h3><p>{item.text}</p></article>)}</div>
+  return <main className="subpage original-page partners-page">
+    <section className="sub-hero"><p className="sub-eyebrow">Partenaires</p><h1>Un écosystème<br />de confiance.</h1><p className="sub-intro">Un ensemble de technologies complémentaires pour concevoir des infrastructures adaptées à chaque environnement.</p></section>
+    <section className="partners-ecosystem">
+      <div className="partners-ecosystem-intro"><p className="sub-eyebrow">Notre écosystème technologique</p><h2>Les technologies au service<br/>de vos projets.</h2><p>Notre approche multi-constructeurs permet d’étudier les solutions selon vos objectifs, vos contraintes et votre environnement technique.</p></div>
+      {groups.map(group => <section className="partners-brand-group" key={group.number} aria-labelledby={"partners-group-" + group.number}>
+        <div className="partners-brand-heading"><span>{group.number}</span><h3 id={"partners-group-" + group.number}>{group.title}</h3><i aria-hidden="true"/></div>
+        <div className="partners-brand-list">{group.brands.map(([kind,name], index) => <span className={"partners-brand brand-" + kind} key={kind + "-" + index}>{name}</span>)}</div>
+      </section>)}
+      <p className="partners-logo-note">Les lettrages reprennent les versions stylisées présentes dans la maquette HTML fournie ; les fichiers officiels vectoriels des marques ne sont pas intégrés dans cette source.</p>
     </section>
     <section className="original-highlight"><p className="sub-eyebrow">Parlons de votre projet</p><h2>Construisons la solution adaptée à vos besoins.</h2><p>Échangeons sur vos infrastructures et les technologies qui peuvent les accompagner.</p><p className="original-section-link"><a href={sitePath("/contact/")}>Nous contacter <span>↗</span></a></p></section>
-  </main></>;
+  </main>;
 }
 
 function App() {
